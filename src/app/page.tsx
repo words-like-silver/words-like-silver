@@ -2,8 +2,8 @@ export default function Home() {
     return (
         <main className="flex min-h-screen flex-col items-center justify-between p-24">
             <div>
-                https://vrjpqtdp.api.sanity.io/v2022-03-07/data/query/production?query=*[_type
-                == "article"]
+                {`https://vrjpqtdp.api.sanity.io/v2022-03-07/data/query/production?query=*[_type
+                == "article"]`}
             </div>
             <pre>
                 {JSON.stringify(
