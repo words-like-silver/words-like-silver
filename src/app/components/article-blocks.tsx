@@ -12,7 +12,11 @@ export default function ArticleBlocks() {
     return (
         <section className="gap-8 mt-16 flex px-16 text-lg leading-none">
             {articles.map((article) => (
-                <Link href="/" className="flex border-black border">
+                <Link
+                    href="/"
+                    key={article}
+                    className="flex border-black border"
+                >
                     <div className="relative aspect-square w-32">
                         <Image
                             src="https://source.unsplash.com/random"

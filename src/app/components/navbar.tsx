@@ -17,7 +17,7 @@ export default function Navbar() {
             <div className="flex justify-between items-center">
                 {pages.slice(0, halfPages + 1).map((page) => {
                     return (
-                        <Link href="/" className="px-4">
+                        <Link href="/" className="px-4" key={page}>
                             {page}
                         </Link>
                     );
@@ -35,7 +35,7 @@ export default function Navbar() {
             <div className="flex justify-between items-center">
                 {pages.slice(halfPages + 1).map((page) => {
                     return (
-                        <Link href="/" className="px-4">
+                        <Link href="/" className="px-4" key={page}>
                             {page}
                         </Link>
                     );
