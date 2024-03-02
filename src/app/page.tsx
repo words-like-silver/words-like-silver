@@ -1,15 +1,17 @@
 import ArticleList from "./components/article-list";
 import BookWidget from "./components/book-widget";
 import FeatureArticle from "./components/feature-article";
+import FeaturedArticlesBlock from "./components/featured-articles-block";
 
 export default function Home() {
     return (
         <main className="min-h-screen">
-            <section className="grid grid-cols-[1fr,1.75fr,1fr] px-8 gap-8">
+            <section className="grid mb-16 grid-cols-[1fr,1.75fr,1fr] px-8 gap-8">
                 <ArticleList />
                 <FeatureArticle />
                 <BookWidget />
             </section>
+            <FeaturedArticlesBlock />
             <div>
                 {`https://vrjpqtdp.api.sanity.io/v2022-03-07/data/query/production?query=*[_type
                 == "article"]`}

@@ -2,7 +2,6 @@ import Link from "next/link";
 
 export default function ArticleList() {
     const articles = [
-        //give me a list of articles
         "Mountain Sounds is Coming to Shelves - Here's What You Need to Know",
         "Happy Place by Emily Henry",
         "I Spent My First-Ever Adult Vacation at This Gorgeous Hostel in Costa Rica",

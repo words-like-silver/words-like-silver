@@ -19,6 +19,7 @@ const config: Config = {
             },
             colors: {
                 beige: "#FAF8F1",
+                "dark-green": "#121903",
             },
         },
     },

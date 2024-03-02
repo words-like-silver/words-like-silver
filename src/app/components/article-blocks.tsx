@@ -11,7 +11,7 @@ export default function ArticleBlocks() {
 
     return (
         <section className="gap-8 mt-16 flex px-16 text-lg leading-none">
-            {articles.map((article) => (
+            {articles.map((article, index) => (
                 <Link
                     href="/"
                     key={article}
@@ -19,7 +19,7 @@ export default function ArticleBlocks() {
                 >
                     <div className="relative aspect-square w-32">
                         <Image
-                            src="https://source.unsplash.com/random"
+                            src={`https://source.unsplash.com/random?${index}`}
                             fill
                             alt=""
                         />
