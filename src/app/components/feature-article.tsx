@@ -5,7 +5,7 @@ export default function FeatureArticle() {
     return (
         <Link
             href="/"
-            className="relative w-full group hover:rotate-2 transition-transform aspect-square"
+            className="relative w-full group transition-transform aspect-square"
         >
             <Image
                 src="/images/feature_article.png"
