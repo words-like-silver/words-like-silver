@@ -7,20 +7,8 @@ import MoreArticles from "./components/more-articles";
 import NewArticleList from "./components/new-articles-list";
 
 export default function Home() {
-    return (
-        <main className="min-h-screen">
-            <section className="grid mb-16 grid-cols-[1fr,1.75fr,1fr] px-8 gap-8">
-                <NewArticleList />
-                <FeatureArticle />
-                <BookWidget />
-            </section>
-            <FeaturedArticlesBlock />
-            <BookCarousel />
-            <section className="grid max-w-7xl mt-16 mx-auto grid-cols-[2fr,1.25fr] px-4 gap-16">
-                <FeatureArticle />
-                <CategoryArticleList />
-            </section>
-            <MoreArticles />
+    const exampleAPI = (
+        <>
             <div>
                 {`https://vrjpqtdp.api.sanity.io/v2022-03-07/data/query/production?query=*[_type
                 == "article"]`}
@@ -229,6 +217,22 @@ export default function Home() {
                     2
                 )}
             </pre>
+        </>
+    );
+    return (
+        <main className="min-h-screen">
+            <section className="grid mb-16 grid-cols-[1fr,1.75fr,1fr] px-8 gap-8">
+                <NewArticleList />
+                <FeatureArticle />
+                <BookWidget />
+            </section>
+            <FeaturedArticlesBlock />
+            <BookCarousel />
+            <section className="grid max-w-7xl mt-16 mx-auto grid-cols-[2fr,1.25fr] px-4 gap-16">
+                <FeatureArticle />
+                <CategoryArticleList />
+            </section>
+            <MoreArticles />
         </main>
     );
 }
