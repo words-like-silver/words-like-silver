@@ -1,17 +1,22 @@
 import VerticalArticle from "./vertical-article";
 
-export default function FeaturedArticlesBlock() {
+export default function MoreArticles() {
     const articles = [
         "Mountain Sounds is Coming to Shelves - Here's What You Need to Know",
         "Happy Place by Emily Henry",
         "I Spent My First-Ever Adult Vacation at This Gorgeous Hostel in Costa Rica",
     ];
     return (
-        <section className="bg-dark-green py-8 text-white">
-            <h2 className="text-center text-3xl mb-8">FEATURED</h2>
+        <section className="my-16">
+            <h2 className="text-center mb-8 text-4xl">FURTHER READING</h2>
             <div className="grid grid-cols-3 px-16 gap-8 justify-center">
-                {articles.map((article, index) => (
-                    <VerticalArticle article={article} key={index} />
+                {articles.map((article) => (
+                    <VerticalArticle
+                        includeReadMore
+                        includeDescription
+                        article={article}
+                        key={article}
+                    />
                 ))}
             </div>
         </section>

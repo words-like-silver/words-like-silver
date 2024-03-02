@@ -9,25 +9,17 @@ export default function ArticleList() {
         "10 Spring Break-Ish Books Coming Out in March",
     ];
     return (
-        <div>
-            <h2 className="font-sailing-club text-center text-3xl italic">
-                new
-            </h2>
-            <ul>
-                {articles.map((article, index) => (
-                    <li
-                        className="px-4 my-4 text-center border-b pb-4 text-3xl border-black"
-                        key={index}
-                    >
-                        <Link href="/" className="w-full h-full block">
-                            {article}
-                        </Link>
-                    </li>
-                ))}
-            </ul>
-            <div className="font-sailing-club text-center text-3xl italic">
-                all posts
-            </div>
-        </div>
+        <ul>
+            {articles.map((article, index) => (
+                <li
+                    className="px-4 my-4 text-center border-b pb-4 text-3xl border-black"
+                    key={index}
+                >
+                    <Link href="/" className="w-full h-full block">
+                        {article}
+                    </Link>
+                </li>
+            ))}
+        </ul>
     );
 }

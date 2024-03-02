@@ -14,7 +14,7 @@ export default function FeatureArticle() {
                 className="object-cover"
             />
             <div className="absolute bottom-24 px-4 w-full">
-                <div className="bg-beige/80 py-4 mx-auto max-w-sm">
+                <div className="bg-beige/80 py-4 mx-auto max-w-sm border border-black">
                     <h2 className="text-3xl group-hover:underline text-center">
                         This Sumptuous Boutique Hotel in Charleston Is a
                         Timeless Escape

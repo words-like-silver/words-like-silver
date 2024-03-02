@@ -1,19 +1,26 @@
-import ArticleList from "./components/article-list";
 import BookCarousel from "./components/book-carousel";
 import BookWidget from "./components/book-widget";
+import CategoryArticleList from "./components/category-article-list";
 import FeatureArticle from "./components/feature-article";
 import FeaturedArticlesBlock from "./components/featured-articles-block";
+import MoreArticles from "./components/more-articles";
+import NewArticleList from "./components/new-articles-list";
 
 export default function Home() {
     return (
         <main className="min-h-screen">
             <section className="grid mb-16 grid-cols-[1fr,1.75fr,1fr] px-8 gap-8">
-                <ArticleList />
+                <NewArticleList />
                 <FeatureArticle />
                 <BookWidget />
             </section>
             <FeaturedArticlesBlock />
             <BookCarousel />
+            <section className="grid max-w-7xl mt-16 mx-auto grid-cols-[2fr,1.25fr] px-4 gap-16">
+                <FeatureArticle />
+                <CategoryArticleList />
+            </section>
+            <MoreArticles />
             <div>
                 {`https://vrjpqtdp.api.sanity.io/v2022-03-07/data/query/production?query=*[_type
                 == "article"]`}
