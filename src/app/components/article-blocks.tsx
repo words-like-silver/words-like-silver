@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function ArticleBlocks() {
     const articles = [
@@ -9,9 +10,9 @@ export default function ArticleBlocks() {
     ];
 
     return (
-        <section className="flex gap-8 mt-16 px-16 lg:text-xl">
+        <section className="gap-8 mt-16 flex px-16 text-lg leading-none">
             {articles.map((article) => (
-                <div className="flex border-black border">
+                <Link href="/" className="flex border-black border">
                     <div className="relative aspect-square w-32">
                         <Image
                             src="https://source.unsplash.com/random"
@@ -19,8 +20,8 @@ export default function ArticleBlocks() {
                             alt=""
                         />
                     </div>
-                    <div className="mt-4 px-4">{article}</div>
-                </div>
+                    <div className="pt-4 px-4 pb-2">{article}</div>
+                </Link>
             ))}
         </section>
     );

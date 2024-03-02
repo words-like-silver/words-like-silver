@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Navbar() {
     const pages = [
@@ -12,10 +13,14 @@ export default function Navbar() {
     ];
     const halfPages = Math.floor(pages.length / 2);
     return (
-        <nav className="grid grid-cols-[2fr,1fr,2fr] mx-16 lg:text-4xl my-16">
+        <nav className="hidden lg:grid grid-cols-[2fr,1fr,2fr] mx-16 lg:text-4xl my-16">
             <div className="flex justify-between items-center">
                 {pages.slice(0, halfPages + 1).map((page) => {
-                    return <div className="px-4">{page}</div>;
+                    return (
+                        <Link href="/" className="px-4">
+                            {page}
+                        </Link>
+                    );
                 })}
             </div>
             <div>
@@ -29,7 +34,11 @@ export default function Navbar() {
             </div>
             <div className="flex justify-between items-center">
                 {pages.slice(halfPages + 1).map((page) => {
-                    return <div className="px-4">{page}</div>;
+                    return (
+                        <Link href="/" className="px-4">
+                            {page}
+                        </Link>
+                    );
                 })}
             </div>
         </nav>
