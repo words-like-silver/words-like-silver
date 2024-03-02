@@ -1,4 +1,5 @@
 import ArticleList from "./components/article-list";
+import BookCarousel from "./components/book-carousel";
 import BookWidget from "./components/book-widget";
 import FeatureArticle from "./components/feature-article";
 import FeaturedArticlesBlock from "./components/featured-articles-block";
@@ -12,6 +13,7 @@ export default function Home() {
                 <BookWidget />
             </section>
             <FeaturedArticlesBlock />
+            <BookCarousel />
             <div>
                 {`https://vrjpqtdp.api.sanity.io/v2022-03-07/data/query/production?query=*[_type
                 == "article"]`}

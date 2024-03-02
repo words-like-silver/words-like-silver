@@ -21,6 +21,9 @@ const config: Config = {
                 beige: "#FAF8F1",
                 "dark-green": "#121903",
             },
+            aspectRatio: {
+                book: "0.65",
+            },
         },
     },
     plugins: [],

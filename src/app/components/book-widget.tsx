@@ -7,7 +7,7 @@ export default function BookWidget() {
                 books
             </h2>
             <div className="px-6">
-                <div className="relative w-full h-64">
+                <div className="relative aspect-book w-full">
                     <Image src="/images/book.png" fill alt="book" />
                 </div>
             </div>
