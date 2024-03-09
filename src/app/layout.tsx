@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import Image from "next/image";
 import ArticleBlocks from "./components/article-blocks";
+import Footer from "./components/footer";
 import Navbar from "./components/navbar";
 import "./globals.css";
 
@@ -63,6 +64,7 @@ export default function RootLayout({
                 </div>
                 <Navbar />
                 {children}
+                <Footer />
             </body>
         </html>
     );
