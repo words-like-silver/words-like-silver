@@ -15,7 +15,7 @@ export default function Navbar() {
     return (
         <>
             <nav className="hidden border-b border-black z-10 bg-beige sticky top-0 lg:grid grid-cols-[2fr,1fr,2fr] px-16 lg:text-4xl py-4 mt-12">
-                <div className="flex justify-between items-center">
+                <div className="flex justify-around items-center">
                     {pages.slice(0, halfPages + 1).map((page) => {
                         return (
                             <Link href="/" className="px-4" key={page}>
@@ -25,7 +25,7 @@ export default function Navbar() {
                     })}
                 </div>
                 <div>
-                    <div className="relative h-32 mx-auto w-56">
+                    <div className="relative w-full aspect-[3] mx-auto">
                         <Image
                             src="/images/words_logo.png"
                             fill
@@ -33,7 +33,7 @@ export default function Navbar() {
                         />
                     </div>
                 </div>
-                <div className="flex justify-between items-center">
+                <div className="flex justify-around items-center">
                     {pages.slice(halfPages + 1).map((page) => {
                         return (
                             <Link href="/" className="px-4" key={page}>
@@ -43,7 +43,7 @@ export default function Navbar() {
                     })}
                 </div>
             </nav>
-            <div className="bg-beige mb-16 sticky h-px top-36 z-20 -mt-px"></div>
+            <div className="bg-beige mb-16 sticky h-px top-36 -translate-y-px z-20"></div>
         </>
     );
 }

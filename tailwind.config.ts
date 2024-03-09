@@ -11,6 +11,7 @@ const config: Config = {
             fontFamily: {
                 "frys-baskerville": "var(--font-frys-baskerville)",
                 "sailing-club": "var(--font-sailing-club)",
+                calligraphy: "var(--desirable-caligraphy)",
             },
             backgroundImage: {
                 "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

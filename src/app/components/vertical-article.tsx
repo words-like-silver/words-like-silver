@@ -25,7 +25,7 @@ export default function VerticalArticle({
             </div>
             <div className="text-center text-4xl py-8">{article}</div>
             {includeDescription && (
-                <p className="text-3xl">
+                <p className="text-3xl inline-block">
                     I’ve spent the last five years writing, revising, and
                     developing the characters from my YA Southern Gothic,
                     Mountain Sounds, which is soon to hit shelves next week.
