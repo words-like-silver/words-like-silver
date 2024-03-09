@@ -23,7 +23,7 @@ export default function VerticalArticle({
                     alt=""
                 />
             </div>
-            <div className="text-center text-4xl py-8">{article}</div>
+            <div className="text-center text-4xl underline py-8">{article}</div>
             {includeDescription && (
                 <p className="text-3xl inline-block">
                     I’ve spent the last five years writing, revising, and

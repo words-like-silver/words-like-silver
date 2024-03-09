@@ -229,7 +229,7 @@ export default function Home() {
             <FeaturedArticlesBlock />
             <BookCarousel />
             <section className="grid max-w-7xl mt-16 mx-auto grid-cols-[2fr,1.25fr] px-4 gap-16">
-                <FeatureArticle />
+                <FeatureArticle background />
                 <CategoryArticleList />
             </section>
             <MoreArticles />

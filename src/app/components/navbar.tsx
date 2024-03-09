@@ -14,7 +14,7 @@ export default function Navbar() {
     const halfPages = Math.floor(pages.length / 2);
     return (
         <>
-            <nav className="hidden border-b border-black z-10 bg-beige sticky top-0 lg:grid grid-cols-[2fr,1fr,2fr] px-16 lg:text-4xl py-4 mt-12">
+            <nav className="hidden border-b border-black z-20 bg-beige sticky top-0 lg:grid grid-cols-[2fr,1fr,2fr] px-16 lg:text-4xl py-4 mt-12">
                 <div className="flex justify-around items-center">
                     {pages.slice(0, halfPages + 1).map((page) => {
                         return (
