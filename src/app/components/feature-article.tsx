@@ -20,7 +20,7 @@ export default function FeatureArticle({
                     src="/images/feature_article.png"
                     alt="feature article"
                     fill
-                    className="object-cover z-10"
+                    className="object-cover"
                 />
             </div>
             <div className="absolute bottom-24 px-4 w-full">
@@ -32,7 +32,7 @@ export default function FeatureArticle({
                 </div>
             </div>
             {background && (
-                <div className="absolute top-0 left-0 w-full h-full -translate-x-3 translate-y-2">
+                <div className="absolute top-0 -z-10 left-0 w-full h-full -translate-x-3 translate-y-2">
                     <Image
                         src="/images/paper_background.png"
                         alt="sheet of paper"
