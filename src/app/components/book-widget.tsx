@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function BookWidget() {
     return (
-        <div className="border max-w-[18rem] border-black pt-12 pb-4 px-4">
+        <div className="mx-auto border max-w-[18rem] border-black pt-12 pb-4 px-4">
             <h2 className="text-3xl italic text-center mb-4 font-sailing-club">
                 books
             </h2>

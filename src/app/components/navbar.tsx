@@ -43,7 +43,7 @@ export default function Navbar() {
                     })}
                 </div>
             </nav>
-            <div className="bg-beige mb-16 sticky h-px top-36 -translate-y-px z-20"></div>
+            <div className="bg-beige hidden lg:block mb-16 sticky h-px top-36 -translate-y-px z-20"></div>
         </>
     );
 }

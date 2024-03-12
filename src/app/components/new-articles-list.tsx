@@ -2,7 +2,7 @@ import ArticleList from "./article-list";
 
 export default function NewArticleList() {
     return (
-        <div>
+        <div className="">
             <h2 className="font-sailing-club text-center text-3xl italic">
                 new
             </h2>

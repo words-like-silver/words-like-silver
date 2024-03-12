@@ -3,9 +3,9 @@ import Link from "next/link";
 export default function Footer() {
     return (
         <footer>
-            <div className="text-beige gap-4 grid py-24 text-2xl grid-cols-[1fr,3fr,1fr] bg-dark-green">
+            <div className="text-beige gap-4 lg:grid py-24 text-2xl grid-cols-[1fr,3fr,1fr] bg-dark-green">
                 <div>
-                    <ul className="flex pb-12 text-3xl flex-col items-center gap-4">
+                    <ul className="flex pb-12 text-3xl justify-center lg:justify-start flex-wrap px-4 lg:px-0 lg:flex-col items-center gap-4">
                         <li>
                             <Link href="/about">ABOUT</Link>
                         </li>
@@ -28,7 +28,7 @@ export default function Footer() {
                     <div className="w-px h-full bg-beige mx-auto"></div>
                 </div>
                 <div className="flex flex-col gap-8 items-center">
-                    <p className="text-center font-frys-baskerville">
+                    <p className="text-center font-frys-baskerville px-4">
                         As a one-person labor of love since 2011, Words Like
                         Silver is made possible only by the support of dedicated
                         readers. If you appreciate my recommendations, I’d
@@ -37,7 +37,7 @@ export default function Footer() {
                         Your support makes all the difference.
                     </p>
                     <div>
-                        <div className="flex gap-32 mt-16">
+                        <div className="flex-col flex lg:flex-row gap-8 lg:gap-32 lg:mt-16">
                             <div>
                                 <h2 className="mb-4 text-3xl">
                                     MONTHLY DONATION
@@ -62,11 +62,11 @@ export default function Footer() {
                                 </p>
                             </div>
                         </div>
-                        <button className="bg-beige mt-6 text-dark-green px-12 mx-auto py-1 text-3xl w-fit">
+                        <button className="block bg-beige mt-6 text-dark-green px-12 mx-auto py-1 text-3xl w-fit">
                             GIVE
                         </button>
                     </div>
-                    <p className="text-center font-frys-baskerville max-w-3xl mx-auto">
+                    <p className="text-center font-frys-baskerville max-w-3xl mx-auto px-4">
                         Subscription numbers also make a significant difference
                         in securing opportunities—so if you regularly peruse
                         Words Like Silver, I’d appreciate if you’d formalize
@@ -82,7 +82,7 @@ export default function Footer() {
                             </div>
                             <input
                                 type="email"
-                                className="w-[432px] text-center px-2 text-black font-frys-baskerville"
+                                className="w-full lg:w-[432px] text-center px-2 text-black font-frys-baskerville"
                             />
                         </label>
                         <label>

@@ -1,3 +1,4 @@
+import ArticleCarousel from "./article-carousel";
 import VerticalArticle from "./vertical-article";
 
 export default function MoreArticles() {
@@ -10,7 +11,7 @@ export default function MoreArticles() {
     return (
         <section className="my-16">
             <h2 className="text-center mb-8 text-4xl">FURTHER READING</h2>
-            <div className="grid grid-cols-4 px-16 gap-8 justify-center">
+            <div className="hidden lg:grid grid-cols-4 px-16 gap-8 justify-center">
                 {articles.map((article) => (
                     <VerticalArticle
                         includeReadMore
@@ -20,6 +21,7 @@ export default function MoreArticles() {
                     />
                 ))}
             </div>
+            <ArticleCarousel />
         </section>
     );
 }

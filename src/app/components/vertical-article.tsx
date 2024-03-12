@@ -15,7 +15,7 @@ export default function VerticalArticle({
             <h3 className="italic inline-block w-full font-sailing-club text-center mb-4 text-3xl">
                 travel
             </h3>
-            <div className="relative aspect-square w-full">
+            <div className="relative mx-auto aspect-square h-64 lg:h-auto lg:w-full">
                 <Image
                     src={`https://source.unsplash.com/random?${article[0]}`}
                     fill

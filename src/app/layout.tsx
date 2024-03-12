@@ -52,17 +52,6 @@ export default function RootLayout({
             <body
                 className={`${frysBaskerville.variable} ${sailingClub.variable} ${desirableCalligraphy.variable} font-sailing-club bg-beige text-lg text-black`}
             >
-                <div className="hidden lg:flex">
-                    <div className="aspect-square relative h-32 mt-16 ml-16">
-                        <Image
-                            src="/images/words_logo_mini.png"
-                            alt="words like silver logo"
-                            fill
-                        />
-                    </div>
-                    <ArticleBlocks />
-                </div>
-                <Navbar />
                 {children}
                 <Footer />
             </body>

@@ -11,7 +11,7 @@ export default function FeatureArticle({
         <Link
             href="/"
             className={clsx(
-                "relative w-full group transition-transform aspect-square",
+                "relative w-full group block transition-transform aspect-square",
                 background && "p-6"
             )}
         >

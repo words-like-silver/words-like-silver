@@ -1,3 +1,4 @@
+import FeaturedArticlesCarousel from "./article-carousel";
 import VerticalArticle from "./vertical-article";
 
 export default function FeaturedArticlesBlock() {
@@ -9,11 +10,12 @@ export default function FeaturedArticlesBlock() {
     return (
         <section className="bg-dark-green py-8 text-white">
             <h2 className="text-center text-3xl mb-8">FEATURED</h2>
-            <div className="grid grid-cols-3 px-16 gap-8 justify-center">
+            <div className="hidden lg:grid grid-cols-3 px-16 gap-8 justify-center">
                 {articles.map((article, index) => (
                     <VerticalArticle article={article} key={index} />
                 ))}
             </div>
+            <FeaturedArticlesCarousel />
         </section>
     );
 }
