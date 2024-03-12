@@ -251,7 +251,7 @@ export default function Home() {
                 <div className="order-1 lg:order-2 ">
                     <FeatureArticle />
                 </div>
-                <div className="order-2 lg:order-3 ">
+                <div className="mt-12 lg:mt-0 order-2 lg:order-3 ">
                     <BookWidget />
                 </div>
             </section>
