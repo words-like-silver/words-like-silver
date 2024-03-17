@@ -3,9 +3,9 @@ import Link from "next/link";
 export default function Footer() {
     return (
         <footer>
-            <div className="text-beige gap-4 lg:grid py-24 text-2xl grid-cols-[1fr,3fr,1fr] bg-dark-green">
-                <div>
-                    <ul className="flex pb-12 text-3xl justify-center lg:justify-start flex-wrap px-4 lg:px-0 lg:flex-col items-center gap-4">
+            <div className="grid-cols-[1fr,3fr,1fr] gap-4 bg-dark-green text-2xl text-beige lg:grid">
+                <div className="flex flex-col pt-24">
+                    <ul className="flex flex-wrap items-center justify-center gap-4 px-4 pb-12 text-3xl lg:flex-col lg:justify-start lg:px-0">
                         <li>
                             <Link href="/about">ABOUT</Link>
                         </li>
@@ -25,10 +25,10 @@ export default function Footer() {
                             <a>TIKTOK</a>
                         </li>
                     </ul>
-                    <div className="w-px h-full bg-beige mx-auto"></div>
+                    <div className="mx-auto h-full w-px bg-beige"></div>
                 </div>
-                <div className="flex flex-col gap-8 items-center">
-                    <p className="text-center font-frys-baskerville px-4">
+                <div className="flex flex-col items-center gap-8 py-24">
+                    <p className="px-4 text-center font-frys-baskerville">
                         As a one-person labor of love since 2011, Words Like
                         Silver is made possible only by the support of dedicated
                         readers. If you appreciate my recommendations, I’d
@@ -37,12 +37,12 @@ export default function Footer() {
                         Your support makes all the difference.
                     </p>
                     <div>
-                        <div className="flex-col flex lg:flex-row gap-8 lg:gap-32 lg:mt-16">
+                        <div className="flex flex-col gap-8 lg:mt-16 lg:flex-row lg:gap-32">
                             <div>
                                 <h2 className="mb-4 text-3xl">
                                     MONTHLY DONATION
                                 </h2>
-                                <ul className="font-frys-baskerville flex flex-col items-center">
+                                <ul className="flex flex-col items-center font-frys-baskerville">
                                     <li>$3/month</li>
                                     <li>$5/month</li>
                                     <li>$7/month</li>
@@ -51,51 +51,51 @@ export default function Footer() {
                                 </ul>
                             </div>
                             <div>
-                                <h2 className="text-center mb-4 text-3xl">
+                                <h2 className="mb-4 text-center text-3xl">
                                     ONE TIME DONATION
                                 </h2>
-                                <p className="text-center font-frys-baskerville max-w-44">
+                                <p className="max-w-44 text-center font-frys-baskerville">
                                     You can also become a one-time supporter
                                     with a donation of any amount.
                                 </p>
                             </div>
                         </div>
-                        <button className="block bg-beige mt-6 text-dark-green px-12 mx-auto py-1 text-3xl w-fit">
+                        <button className="mx-auto mt-6 block w-fit bg-beige px-12 py-1 text-3xl text-dark-green">
                             GIVE
                         </button>
                     </div>
-                    <p className="text-center font-frys-baskerville max-w-3xl mx-auto px-4">
+                    <p className="mx-auto max-w-3xl px-4 text-center font-frys-baskerville">
                         Subscription numbers also make a significant difference
                         in securing opportunities—so if you regularly peruse
                         Words Like Silver, I’d appreciate if you’d formalize
                         your support and hit subscribe below.
                     </p>
                     <div>
-                        <h2 className="mb-4 text-3xl text-center">
+                        <h2 className="mb-4 text-center text-3xl">
                             SUBSCRIBE TO WORDS LIKE SILVER
                         </h2>
                         <label>
-                            <div className="font-sailing-club text-center mb-2 italic">
+                            <div className="mb-2 text-center font-sailing-club italic">
                                 your email address
                             </div>
                             <input
                                 type="email"
-                                className="w-full lg:w-[432px] text-center px-2 text-black font-frys-baskerville"
+                                className="w-full px-2 text-center font-frys-baskerville text-black lg:w-[432px]"
                             />
                         </label>
                         <label>
-                            <div className="mt-4 font-sailing-club text-center mb-2 italic">
+                            <div className="mb-2 mt-4 text-center font-sailing-club italic">
                                 phone number
                             </div>
                             <input
                                 type="tel"
-                                className="text-center w-full px-2 text-black font-frys-baskerville"
+                                className="w-full px-2 text-center font-frys-baskerville text-black"
                             />
                         </label>
                     </div>
                 </div>
-                <div className="flex flex-col items-center">
-                    <div className="aspect-square relative h-52 mt-12">
+                <div className="flex flex-col items-center py-24">
+                    <div className="relative mt-12 aspect-square h-52">
                         <Image
                             src="/images/words_logo_mini_beige.png"
                             alt="words like silver logo"
@@ -104,13 +104,13 @@ export default function Footer() {
                     </div>
                     <div>
                         <div>^</div>
-                        <button className="underline text-3xl">
+                        <button className="text-3xl underline">
                             BACK TO TOP
                         </button>
                     </div>
                 </div>
             </div>
-            <div className="text-center py-1">
+            <div className="py-1 text-center">
                 &copy; WORDS LIKE SILVER LLC 2024. READ OUR{" "}
                 <Link href="/privacy">PRIVACY NOTICE</Link>,{" "}
                 <Link href="/cookie">COOKIE NOTICE</Link>, AND{" "}
