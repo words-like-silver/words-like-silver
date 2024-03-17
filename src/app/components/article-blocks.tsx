@@ -10,7 +10,7 @@ export default function ArticleBlocks() {
     ];
 
     return (
-        <section className="gap-8 mt-16 flex px-16 text-lg leading-none">
+        <section className="gap-8 flex px-16 text-lg leading-none">
             {articles.map((article, index) => (
                 <Link
                     href="/"

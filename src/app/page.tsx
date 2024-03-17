@@ -1,6 +1,4 @@
-import Image from "next/image";
 import ArticleBlocks from "./components/article-blocks";
-import BookCarousel from "./components/book-carousel";
 import BookWidget from "./components/book-widget";
 import CategoryArticleList from "./components/category-article-list";
 import FeatureArticle from "./components/feature-article";
@@ -8,6 +6,7 @@ import FeaturedArticlesBlock from "./components/featured-articles-block";
 import MoreArticles from "./components/more-articles";
 import Navbar from "./components/navbar";
 import NewArticleList from "./components/new-articles-list";
+import Sidebar from "./components/sidebar";
 
 export default function Home() {
     const exampleAPI = (
@@ -223,46 +222,35 @@ export default function Home() {
         </>
     );
     return (
-        <main className="min-h-screen">
-            <div className="px-8 py-4 w-64 mx-auto">
-                <div className="lg:hidden relative w-full aspect-[3]">
-                    <Image
-                        src="/images/words_logo.png"
-                        fill
-                        alt="words like silver logo"
-                    />
+        <main className="">
+            <div className="flex">
+                <Sidebar />
+                <div className="flex-1">
+                    <section className="hidden mt-16 mb-4 lg:block">
+                        <ArticleBlocks />
+                    </section>
+                    <Navbar />
+                    <section className="flex flex-col lg:grid mb-16 mt-4 grid-cols-[1fr,1.75fr,1fr] px-8 gap-8">
+                        <div className="order-3 lg:order-1">
+                            <NewArticleList />
+                        </div>
+                        <div className="order-1 lg:order-2">
+                            <FeatureArticle />
+                        </div>
+                        <div className="mt-12 lg:mt-0 order-2 lg:order-3 ">
+                            <BookWidget />
+                        </div>
+                    </section>
+                    <FeaturedArticlesBlock />
+                    {/* <BookCarousel /> */}
+                    <section className="lg:grid max-w-7xl mt-16 mx-auto grid-cols-[2fr,1.25fr] px-4 gap-16">
+                        <FeatureArticle background />
+                        <div className="mt-16 lg:mt-0">
+                            <CategoryArticleList />
+                        </div>
+                    </section>
                 </div>
             </div>
-            <section className="hidden lg:flex">
-                <div className="aspect-square relative h-32 mt-16 ml-16">
-                    <Image
-                        src="/images/words_logo_mini.png"
-                        alt="words like silver logo"
-                        fill
-                    />
-                </div>
-                <ArticleBlocks />
-            </section>
-            <Navbar />
-            <section className="flex flex-col lg:grid mb-16 grid-cols-[1fr,1.75fr,1fr] px-8 gap-8">
-                <div className="order-3 lg:order-1">
-                    <NewArticleList />
-                </div>
-                <div className="order-1 lg:order-2 ">
-                    <FeatureArticle />
-                </div>
-                <div className="mt-12 lg:mt-0 order-2 lg:order-3 ">
-                    <BookWidget />
-                </div>
-            </section>
-            <FeaturedArticlesBlock />
-            <BookCarousel />
-            <section className="lg:grid max-w-7xl mt-16 mx-auto grid-cols-[2fr,1.25fr] px-4 gap-16">
-                <FeatureArticle background />
-                <div className="mt-16 lg:mt-0">
-                    <CategoryArticleList />
-                </div>
-            </section>
             <MoreArticles />
         </main>
     );

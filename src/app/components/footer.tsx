@@ -42,15 +42,13 @@ export default function Footer() {
                                 <h2 className="mb-4 text-3xl">
                                     MONTHLY DONATION
                                 </h2>
-                                <div>
-                                    <ul className="font-frys-baskerville flex flex-col items-center">
-                                        <li>$3/month</li>
-                                        <li>$5/month</li>
-                                        <li>$7/month</li>
-                                        <li>$10/month</li>
-                                        <li>$25/month</li>
-                                    </ul>
-                                </div>
+                                <ul className="font-frys-baskerville flex flex-col items-center">
+                                    <li>$3/month</li>
+                                    <li>$5/month</li>
+                                    <li>$7/month</li>
+                                    <li>$10/month</li>
+                                    <li>$25/month</li>
+                                </ul>
                             </div>
                             <div>
                                 <h2 className="text-center mb-4 text-3xl">
