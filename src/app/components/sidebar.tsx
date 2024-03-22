@@ -1,7 +1,7 @@
 import Image from "next/image";
 export default function Sidebar() {
     return (
-        <section className="hidden w-64 pt-12 lg:block">
+        <section className="hidden w-72 pt-12 text-2xl lg:block">
             <div className="sticky top-0 z-10 border-b border-b-black bg-beige py-6">
                 <div className="relative mx-auto aspect-square h-24 ">
                     <Image
@@ -12,7 +12,7 @@ export default function Sidebar() {
                 </div>
             </div>
             <div className="sticky top-36 z-20 hidden h-px -translate-y-px bg-beige lg:block"></div>
-            <div className="mt-12 flex flex-col items-center px-8 text-xl ">
+            <div className="sticky top-36 flex flex-col items-center border-b border-b-black bg-beige px-8 pb-6 pt-12 text-xl ">
                 <input className="mb-4 w-full rounded-md border-2 border-black bg-beige px-2" />
                 <div>Email insta twitter</div>
                 <h2 className="mt-6 text-3xl">SUBSCRIBE</h2>
@@ -26,8 +26,10 @@ export default function Sidebar() {
                     RSS feed
                 </div>
             </div>
-            <div className="sticky top-44 px-8">
-                <h2 className="mt-6 text-center text-3xl">SUPPORT</h2>
+            <div className="sticky top-[550px] z-20 hidden h-px -translate-y-px bg-beige lg:block"></div>
+
+            <div className="px-8">
+                <h2 className="text-center text-3xl">SUPPORT</h2>
                 <div className="mt-4 border border-black p-4">
                     <p className="text-center">
                         As a one-person labor of love since 2011, Words Like
@@ -45,6 +47,16 @@ export default function Sidebar() {
                         <li>$10/month</li>
                         <li>$25/month</li>
                     </ul>
+                    <button className="mx-auto mt-2 block rounded-[50%] border border-black px-5 py-2 text-center font-sailing-club italic leading-none">
+                        donate
+                    </button>
+                    <p className="mt-8 text-center">
+                        You can also become a one-time supporter with a donation
+                        of any amount.
+                    </p>
+                    <button className="mx-auto mt-2 block rounded-[50%] border border-black px-5 py-2 text-center font-sailing-club italic leading-none">
+                        donate
+                    </button>
                 </div>
             </div>
         </section>
