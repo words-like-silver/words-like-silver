@@ -7,8 +7,9 @@ import MoreArticles from "./components/more-articles";
 import Navbar from "./components/navbar";
 import NewArticleList from "./components/new-articles-list";
 import Sidebar from "./components/sidebar";
+import { getArticleBySlug } from "./lib/cms/queries";
 
-export default function Home() {
+export default async function Home() {
     const exampleAPI = (
         <>
             <div>
@@ -226,24 +227,24 @@ export default function Home() {
             <div className="flex">
                 <Sidebar />
                 <div className="flex-1">
-                    <section className="hidden mt-16 mb-4 lg:block">
+                    <section className="mb-4 mt-16 hidden lg:block">
                         <ArticleBlocks />
                     </section>
                     <Navbar />
-                    <section className="flex flex-col lg:grid mb-16 mt-4 grid-cols-[1fr,1.75fr,1fr] px-8 gap-8">
+                    <section className="mb-16 mt-4 flex grid-cols-[1fr,1.75fr,1fr] flex-col gap-8 px-8 lg:grid">
                         <div className="order-3 lg:order-1">
                             <NewArticleList />
                         </div>
                         <div className="order-1 lg:order-2">
                             <FeatureArticle />
                         </div>
-                        <div className="mt-12 lg:mt-0 order-2 lg:order-3 ">
+                        <div className="order-2 mt-12 lg:order-3 lg:mt-0 ">
                             <BookWidget />
                         </div>
                     </section>
                     <FeaturedArticlesBlock />
                     {/* <BookCarousel /> */}
-                    <section className="lg:grid max-w-7xl mt-16 mx-auto grid-cols-[2fr,1.25fr] px-4 gap-16">
+                    <section className="mx-auto mt-16 max-w-7xl grid-cols-[2fr,1.25fr] gap-16 px-4 lg:grid">
                         <FeatureArticle background />
                         <div className="mt-16 lg:mt-0">
                             <CategoryArticleList />

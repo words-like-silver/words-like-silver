@@ -29,12 +29,53 @@ export interface Category extends Document {
     title: string;
 }
 
+export type Slug = {
+    current: string;
+    _type: "slug";
+};
+
 export interface NavigationItem extends Document {
     _type: "navigation_item";
     title: string;
-    slug: {
-        current: string;
-        _type: "slug";
-    };
+    slug: Slug;
     sort_order: number;
+}
+
+export interface Body extends Document {
+    _type: "block";
+    style: string;
+    children: {
+        _type: "span";
+        marks: [];
+        text: string;
+        _key: string;
+    }[];
+    markDefs: [];
+}
+
+interface Image extends Document {
+    _type: "image";
+    asset: {
+        _type: "sanity.imageAsset";
+        path: string;
+        metadata: [Object];
+        assetId: string;
+        extension: string;
+        size: number;
+        mimeType: string;
+        url: string;
+        originalFilename: string;
+        uploadId: string;
+        sha1hash: string;
+    };
+}
+
+export interface Article extends Document {
+    _type: "article";
+    title: string;
+    subhead: string;
+    slug: Slug;
+    mainImage: Image;
+    categories: Category[];
+    body: Body[];
 }
