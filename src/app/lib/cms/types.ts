@@ -27,6 +27,7 @@ export type SanityResponse<T> = SanitySuccess<T> | SanityError;
 export interface Category extends Document {
     _type: "category";
     title: string;
+    articles: Article[];
 }
 
 export type Slug = {

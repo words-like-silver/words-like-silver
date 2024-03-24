@@ -7,7 +7,6 @@ import MoreArticles from "./components/more-articles";
 import Navbar from "./components/navbar";
 import NewArticleList from "./components/new-articles-list";
 import Sidebar from "./components/sidebar";
-import { getArticleBySlug } from "./lib/cms/queries";
 
 export default async function Home() {
     const exampleAPI = (
@@ -247,7 +246,7 @@ export default async function Home() {
                     <section className="mx-auto mt-16 max-w-7xl grid-cols-[2fr,1.25fr] gap-16 px-4 lg:grid">
                         <FeatureArticle background />
                         <div className="mt-16 lg:mt-0">
-                            <CategoryArticleList />
+                            <CategoryArticleList category="NEWS" />
                         </div>
                     </section>
                 </div>

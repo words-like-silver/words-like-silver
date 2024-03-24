@@ -26,7 +26,7 @@ export default function Sidebar() {
                     RSS feed
                 </div>
             </div>
-            <div className="sticky top-[550px] z-20 hidden h-px -translate-y-px bg-beige lg:block"></div>
+            <div className="sticky top-[550px] z-20 hidden h-px -translate-y-px bg-beige xl:top-[530px] lg:block"></div>
 
             <div className="px-8">
                 <h2 className="text-center text-3xl">SUPPORT</h2>

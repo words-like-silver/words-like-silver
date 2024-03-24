@@ -1,22 +1,19 @@
 import Link from "next/link";
+import { Article } from "../lib/cms/types";
 
-export default function ArticleList() {
-    const articles = [
-        "Mountain Sounds is Coming to Shelves - Here's What You Need to Know",
-        "Happy Place by Emily Henry",
-        "I Spent My First-Ever Adult Vacation at This Gorgeous Hostel in Costa Rica",
-        "These $50 Parachute Pants Are My Latest Obsession",
-        "10 Spring Break-Ish Books Coming Out in March",
-    ];
+export default function ArticleList({ articles }: { articles: Article[] }) {
     return (
         <ul>
-            {articles.map((article, index) => (
+            {articles.map((article) => (
                 <li
-                    className="px-4 my-4 text-center border-b pb-4 text-3xl border-black"
-                    key={index}
+                    className="my-4 border-b border-black px-4 pb-4 text-center text-3xl"
+                    key={article.slug.current}
                 >
-                    <Link href="/" className="w-full h-full block">
-                        {article}
+                    <Link
+                        href={`/articles/${article.slug.current}`}
+                        className="block h-full w-full"
+                    >
+                        {article.title}
                     </Link>
                 </li>
             ))}
