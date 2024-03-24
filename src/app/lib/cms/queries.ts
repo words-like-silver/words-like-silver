@@ -1,7 +1,13 @@
 "use server";
 import "server-only";
 import { cmsUrl } from "../constants";
-import { Article, Category, NavigationItem, SanityResponse } from "./types";
+import {
+    Article,
+    Category,
+    Homepage,
+    NavigationItem,
+    SanityResponse,
+} from "./types";
 
 export async function getNavigationItems() {
     return await get<NavigationItem>("*[_type == 'navigation_item']");
@@ -27,15 +33,17 @@ export async function getNewArticles(limit: number) {
 
 export async function getArticlesByCategory(category: string, limit: number) {
     const categories = await get<Category>(
-        `*[_type=="category" && title == "${category}"][0...${limit}]{"articles": *[_type=='article' && references(^._id)]{ title,slug }}|order(publishedAt desc)`
+        `*[_type=="category" && title == "${category}"][0...${limit}]{articles[]->{ title,slug,mainImage{asset->{url}}}}|order(publishedAt desc)`
     );
     return categories.map((category) => category.articles).flat();
 }
 
-const exampleQueries = [
-    `{mainImage{asset->{...}},`,
-    `"categories": *[_type=='category' && references(^._id)]{title}}`,
-];
+export async function getFeaturedArticle() {
+    const article = await get<Homepage>(
+        `*[_type=="homepage"]{featured_article->{title,slug,mainImage{asset->{url}}}}`
+    );
+    return article[0].featured_article;
+}
 
 async function get<T>(query: string) {
     try {

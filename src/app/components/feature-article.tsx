@@ -1,39 +1,41 @@
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
+import { Article } from "../lib/cms/types";
 
-export default function FeatureArticle({
+export default async function FeatureArticle({
+    article,
     background,
 }: {
+    article: Article;
     background?: boolean;
 }) {
     return (
         <Link
-            href="/"
+            href={`/articles/${article.slug.current}`}
             className={
-                "relative w-full group block transition-transform aspect-square"
+                "group relative block aspect-square w-full transition-transform"
             }
         >
-            <div className={clsx("w-full h-full", background && "p-4 lg:p-6")}>
-                <div className="w-full h-full relative">
+            <div className={clsx("h-full w-full", background && "p-4 lg:p-6")}>
+                <div className="relative h-full w-full">
                     <Image
-                        src="/images/feature_article.png"
+                        src={article.mainImage.asset.url}
                         alt="feature article"
                         fill
                         className="object-cover"
                     />
                 </div>
             </div>
-            <div className="absolute -bottom-12 lg:bottom-24 px-4 w-full">
-                <div className="bg-beige/80 py-4 mx-auto max-w-sm border border-black">
-                    <h2 className="text-2xl lg:text-3xl group-hover:underline text-center">
-                        This Sumptuous Boutique Hotel in Charleston Is a
-                        Timeless Escape
+            <div className="absolute -bottom-12 w-full px-4 lg:bottom-24">
+                <div className="mx-auto max-w-sm border border-black bg-beige/80 py-4">
+                    <h2 className="text-center text-2xl group-hover:underline lg:text-3xl">
+                        {article.title}
                     </h2>
                 </div>
             </div>
             {background && (
-                <div className="absolute top-0 -z-10 left-0 w-full h-full -translate-x-2 translate-y-1 lg:-translate-x-3 lg:translate-y-2">
+                <div className="absolute left-0 top-0 -z-10 h-full w-full -translate-x-2 translate-y-1 lg:-translate-x-3 lg:translate-y-2">
                     <Image
                         src="/images/paper_background.png"
                         alt="sheet of paper"

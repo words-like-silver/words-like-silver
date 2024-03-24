@@ -80,3 +80,8 @@ export interface Article extends Document {
     categories: Category[];
     body: Body[];
 }
+
+export interface Homepage extends Document {
+    _type: "homepage";
+    featured_article: Article;
+}
