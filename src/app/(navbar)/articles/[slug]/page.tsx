@@ -98,7 +98,7 @@ export default async function Article({
                     <Image src="/images/paper_background.png" alt="" fill />
                 </div>
             </section>
-            <section className="mx-auto my-24 max-w-3xl">
+            <section className="mx-auto mb-44 mt-24 max-w-3xl">
                 {article.body?.map((block) =>
                     (
                         articleBodyMap[block._type || "block"] ||

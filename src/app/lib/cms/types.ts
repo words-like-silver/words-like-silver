@@ -57,8 +57,15 @@ interface Span {
     text: string;
     _key: string;
 }
+
+interface Quote {
+    _type: "quote";
+    _key: string;
+    text: "The first impression of this decadent Southern daydream involved a front porch and a glass of sauvignon blanc.";
+}
 export interface Block extends Document {
     _type: "block";
+    _key: string;
     style: Style;
     children: Span[];
     markDefs: [];
@@ -66,22 +73,25 @@ export interface Block extends Document {
     listItem?: "bullet" | "number";
 }
 
-export type Body = Block | Image;
+export type Body = Block | Image | Quote;
+
+interface Asset extends Document {
+    _type: "sanity.imageAsset";
+    path: string;
+    metadata: [Object];
+    assetId: string;
+    extension: string;
+    size: number;
+    mimeType: string;
+    url: string;
+    originalFilename: string;
+    uploadId: string;
+    sha1hash: string;
+}
 export interface Image extends Document {
     _type: "image";
-    asset: {
-        _type: "sanity.imageAsset";
-        path: string;
-        metadata: [Object];
-        assetId: string;
-        extension: string;
-        size: number;
-        mimeType: string;
-        url: string;
-        originalFilename: string;
-        uploadId: string;
-        sha1hash: string;
-    };
+    _key: string;
+    asset: Asset;
 }
 
 export interface Article extends Document {

@@ -1,3 +1,5 @@
+import ArticleImage from "../(navbar)/articles/[slug]/components/article-image";
+import Quote from "../(navbar)/articles/[slug]/components/quote";
 import TextBlock from "../(navbar)/articles/[slug]/components/text-block";
 import { Body } from "./cms/types";
 
@@ -12,5 +14,7 @@ export enum BodyType {
 export const articleBodyMap: {
     [key: string]: (body: Body) => JSX.Element;
 } = {
-    block: (body: Body) => <TextBlock key={body._id} body={body} />,
+    block: (body: Body) => <TextBlock key={body._key} body={body} />,
+    quote: (body: Body) => <Quote key={body._key} body={body} />,
+    image: (body: Body) => <ArticleImage key={body._key} body={body} />,
 };
