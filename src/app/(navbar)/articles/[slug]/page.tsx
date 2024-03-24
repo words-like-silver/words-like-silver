@@ -93,7 +93,12 @@ export default async function Article({
                 </div>
             </section>
             <section className="relative mx-auto my-16 aspect-video w-full max-w-6xl">
-                <Image src={article.mainImage.asset.url} alt="" fill />
+                <Image
+                    src={article.mainImage.asset.url}
+                    alt=""
+                    fill
+                    className="object-cover"
+                />
                 <div className="absolute -z-10 aspect-square h-full translate-x-1/2 scale-110">
                     <Image src="/images/paper_background.png" alt="" fill />
                 </div>
