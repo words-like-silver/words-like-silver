@@ -47,7 +47,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body
-                className={`${frysBaskerville.variable} ${sailingClub.variable} ${desirableCalligraphy.variable} font-sailing-club bg-beige text-lg text-black`}
+                className={`${frysBaskerville.variable} ${sailingClub.variable} ${desirableCalligraphy.variable} bg-beige font-frys-baskerville text-black`}
             >
                 {children}
                 <Footer />

@@ -12,7 +12,7 @@ export default function VerticalArticle({
 }) {
     return (
         <Link href="/" className="block">
-            <h3 className="italic inline-block w-full font-sailing-club text-center mb-4 text-3xl">
+            <h3 className="mb-4 inline-block w-full text-center font-sailing-club text-3xl italic">
                 travel
             </h3>
             <div className="relative mx-auto aspect-square h-64 lg:h-auto lg:w-full">
@@ -23,9 +23,9 @@ export default function VerticalArticle({
                     alt=""
                 />
             </div>
-            <div className="text-center text-4xl underline py-8">{article}</div>
+            <div className="py-8 text-center text-3xl underline">{article}</div>
             {includeDescription && (
-                <p className="text-3xl inline-block">
+                <p className="inline-block text-xl">
                     I’ve spent the last five years writing, revising, and
                     developing the characters from my YA Southern Gothic,
                     Mountain Sounds, which is soon to hit shelves next week.
@@ -35,7 +35,7 @@ export default function VerticalArticle({
             {includeReadMore && (
                 <Link
                     href="/"
-                    className="block font-sailing-club italic text-3xl mt-8 underline text-center"
+                    className="mt-8 block text-center font-sailing-club text-3xl italic underline"
                 >
                     read more
                 </Link>

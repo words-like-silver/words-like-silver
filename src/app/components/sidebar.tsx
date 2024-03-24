@@ -16,7 +16,7 @@ export default function Sidebar() {
                 <input className="mb-4 w-full rounded-md border-2 border-black bg-beige px-2" />
                 <div>Email insta twitter</div>
                 <h2 className="mt-6 text-3xl">SUBSCRIBE</h2>
-                <p className="mt-4 border border-black p-4 text-center">
+                <p className="mt-4 border border-black p-4 text-center text-2xl">
                     Curated reflections on books, travel, style, arts, and more.
                 </p>
                 <div className="mt-6 font-sailing-club italic underline">
@@ -26,12 +26,12 @@ export default function Sidebar() {
                     RSS feed
                 </div>
             </div>
-            <div className="sticky top-[550px] z-20 hidden h-px -translate-y-px bg-beige xl:top-[530px] lg:block"></div>
+            <div className="sticky top-[550px] z-20 hidden h-px -translate-y-px bg-beige lg:block xl:top-[530px]"></div>
 
             <div className="px-8">
                 <h2 className="text-center text-3xl">SUPPORT</h2>
                 <div className="mt-4 border border-black p-4">
-                    <p className="text-center">
+                    <p className="text-center text-2xl">
                         As a one-person labor of love since 2011, Words Like
                         Silver is made possible only by the support of dedicated
                         dedicated readers. If you appreciate my recommendations,
@@ -40,7 +40,7 @@ export default function Sidebar() {
                         <br />
                         Your support makes all the difference.
                     </p>
-                    <ul className="flex flex-col items-center pt-6 font-frys-baskerville">
+                    <ul className="flex flex-col items-center pt-6">
                         <li>$3/month</li>
                         <li>$5/month</li>
                         <li>$7/month</li>

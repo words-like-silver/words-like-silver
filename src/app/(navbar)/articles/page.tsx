@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getAllArticleSlugs } from "../lib/cms/queries";
+import { getAllArticleSlugs } from "../../lib/cms/queries";
 
 export default async function Articles() {
     const articleSlugs = await getAllArticleSlugs();

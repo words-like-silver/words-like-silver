@@ -20,7 +20,7 @@ export async function getAllArticleSlugs() {
 
 export async function getArticleBySlug(slug: string) {
     const articles = await get<Article>(
-        `*[_type == 'article' && slug.current == '${slug}']`
+        `*[_type == 'article' && slug.current == '${slug}']{title,_createdAt,subhead,slug,mainImage{asset->{url}},body,"categories": *[_type == "category" && references(^._id)]{slug,title}}`
     );
     return articles?.[0];
 }

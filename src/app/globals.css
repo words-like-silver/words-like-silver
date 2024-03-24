@@ -5,3 +5,7 @@
 a {
     @apply hover:underline;
 }
+
+h2 {
+    @apply font-sailing-club;
+}

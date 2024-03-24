@@ -28,6 +28,7 @@ export interface Category extends Document {
     _type: "category";
     title: string;
     articles: Article[];
+    slug: Slug;
 }
 
 export type Slug = {
