@@ -57,7 +57,7 @@ export default async function Article({
     console.log(article.categories);
     return (
         <main>
-            <section className="mx-auto  mt-16 max-w-6xl">
+            <section className="mx-auto my-16 max-w-6xl">
                 <div className="flex flex-wrap items-center justify-center gap-4 font-sailing-club">
                     {article.categories.map((category) => (
                         <Link
