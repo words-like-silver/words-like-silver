@@ -90,7 +90,7 @@ export default async function Article({
                     <div>twitter</div>
                 </div>
             </section>
-            <section className="relative mx-auto mt-16 aspect-video w-full max-w-6xl">
+            <section className="relative mx-auto my-16 aspect-video w-full max-w-6xl">
                 <Image src={article.mainImage.asset.url} alt="" fill />
                 <div className="absolute -z-10 aspect-square h-full translate-x-1/2 scale-110">
                     <Image src="/images/paper_background.png" alt="" fill />
