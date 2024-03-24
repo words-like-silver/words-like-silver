@@ -14,7 +14,6 @@ interface SanitySuccess<T> {
 }
 
 interface SanityError {
-    success: false;
     error: {
         description: string;
         names: string[];
@@ -43,19 +42,32 @@ export interface NavigationItem extends Document {
     sort_order: number;
 }
 
-export interface Body extends Document {
+type Marks =
+    | "em"
+    | "strong"
+    | "code"
+    | "underline"
+    | "strike-through"
+    | "highlight";
+type Style = "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+
+interface Span {
+    _type: "span";
+    marks: Marks[];
+    text: string;
+    _key: string;
+}
+export interface Block extends Document {
     _type: "block";
-    style: string;
-    children: {
-        _type: "span";
-        marks: [];
-        text: string;
-        _key: string;
-    }[];
+    style: Style;
+    children: Span[];
     markDefs: [];
+    level?: number;
+    listItem?: "bullet" | "number";
 }
 
-interface Image extends Document {
+export type Body = Block | Image;
+export interface Image extends Document {
     _type: "image";
     asset: {
         _type: "sanity.imageAsset";

@@ -1,4 +1,5 @@
 import { getAllArticleSlugs, getArticleBySlug } from "@/app/lib/cms/queries";
+import { articleBodyMap } from "@/app/lib/constants";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -54,7 +55,7 @@ export default async function Article({
     params: { slug: string };
 }) {
     const article = await getArticleBySlug(params.slug);
-    console.log(article.categories);
+
     return (
         <main>
             <section className="mx-auto my-16 max-w-6xl">
@@ -63,6 +64,7 @@ export default async function Article({
                         <Link
                             href={`/categories/${category.slug.current}`}
                             className="text-4xl underline"
+                            key={category.slug.current}
                         >
                             {category.title}
                         </Link>
@@ -95,6 +97,14 @@ export default async function Article({
                 <div className="absolute -z-10 aspect-square h-full translate-x-1/2 scale-110">
                     <Image src="/images/paper_background.png" alt="" fill />
                 </div>
+            </section>
+            <section className="mx-auto max-w-3xl my-24">
+                {article.body.map((block) =>
+                    (
+                        articleBodyMap[block._type || "block"] ||
+                        articleBodyMap["block"]
+                    )(block)
+                )}
             </section>
         </main>
     );
