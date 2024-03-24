@@ -91,7 +91,7 @@ export interface Article extends Document {
     slug: Slug;
     mainImage: Image;
     categories: Category[];
-    body: Body[];
+    body: Body[] | null;
 }
 
 export interface Homepage extends Document {
