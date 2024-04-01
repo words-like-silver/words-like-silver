@@ -63,12 +63,18 @@ interface Quote {
     _key: string;
     text: "The first impression of this decadent Southern daydream involved a front porch and a glass of sauvignon blanc.";
 }
+
+interface MarkDefs {
+    _type: "link";
+    _key: string;
+    href: string;
+}
 export interface Block extends Document {
     _type: "block";
     _key: string;
     style: Style;
     children: Span[];
-    markDefs: [];
+    markDefs: MarkDefs[];
     level?: number;
     listItem?: "bullet" | "number";
 }
@@ -102,6 +108,7 @@ export interface Article extends Document {
     mainImage: Image;
     categories: Category[];
     body: Body[] | null;
+    sidebar: Body[] | null;
 }
 
 export interface Homepage extends Document {

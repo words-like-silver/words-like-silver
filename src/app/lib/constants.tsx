@@ -12,9 +12,14 @@ export enum BodyType {
 }
 
 export const articleBodyMap: {
-    [key: string]: (body: Body) => JSX.Element;
+    [key: string]: (body: Body, options?: Record<string, any>) => JSX.Element;
 } = {
-    block: (body: Body) => <TextBlock key={body._key} body={body} />,
+    block: (body: Body, options) => (
+        <TextBlock key={body._key} body={body} options={options} />
+    ),
     quote: (body: Body) => <Quote key={body._key} body={body} />,
-    image: (body: Body) => <ArticleImage key={body._key} body={body} />,
+    image: (body: Body, options) => (
+        <ArticleImage key={body._key} body={body} options={options} />
+    ),
+    horizontal_rule: () => <hr className="my-4 border-t-black" />,
 };

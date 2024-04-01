@@ -20,7 +20,7 @@ export async function getAllArticleSlugs() {
 
 export async function getArticleBySlug(slug: string) {
     const articles = await get<Article>(
-        `*[_type == 'article' && slug.current == '${slug}']{...,mainImage{asset->{url}},body[]{...,asset->{url,_id}},"categories": *[_type == "category" && references(^._id)]{slug,title}}`
+        `*[_type == 'article' && slug.current == '${slug}']{...,mainImage{asset->{url}},body[]{...,asset->{url,_id}},sidebar[]{...,asset->{url,_id}},"categories": *[_type == "category" && references(^._id)]{slug,title}}`
     );
     return articles.at(0);
 }
