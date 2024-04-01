@@ -11,7 +11,7 @@ export default function MobileArticlesCarousel({
     return (
         <div className="mx-auto max-w-64 lg:hidden">
             {articles.map((article) => (
-                <VerticalArticle article={article} />
+                <VerticalArticle key={article._rev} article={article} />
             ))}
         </div>
     );
