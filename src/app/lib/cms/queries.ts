@@ -45,6 +45,13 @@ export async function getFeaturedArticle() {
     return article[0].featured_article;
 }
 
+export async function getHorizontalArticles() {
+    const articles = await get<Homepage>(
+        `*[_type == 'homepage']{top_bar_articles[]->{title,slug,mainImage{asset->{url}}}}`
+    );
+    return articles;
+}
+
 async function get<T>(query: string) {
     try {
         const searchParams = new URLSearchParams();

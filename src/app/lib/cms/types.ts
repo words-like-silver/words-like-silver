@@ -107,4 +107,5 @@ export interface Article extends Document {
 export interface Homepage extends Document {
     _type: "homepage";
     featured_article: Article;
+    top_bar_articles: Article[];
 }

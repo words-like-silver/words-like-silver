@@ -98,6 +98,7 @@ export default async function Article({
                     alt=""
                     fill
                     className="object-cover"
+                    priority
                 />
                 <div className="absolute -z-10 aspect-square h-full translate-x-1/2 scale-110">
                     <Image src="/images/paper_background.png" alt="" fill />

@@ -1,8 +1,8 @@
-import ArticleBlocks from "./components/article-blocks";
 import BookWidget from "./components/book-widget";
 import CategoryArticleList from "./components/category-article-list";
 import FeatureArticle from "./components/feature-article";
 import FeaturedArticlesBlock from "./components/featured-articles-block";
+import HorizontalArticleBlocks from "./components/horizontal-article-blocks";
 import MoreArticles from "./components/more-articles";
 import Navbar from "./components/navbar";
 import NewArticleList from "./components/new-articles-list";
@@ -18,7 +18,7 @@ export default async function Home() {
                 <Sidebar />
                 <div className="flex-1">
                     <section className="mb-4 mt-16 hidden lg:block">
-                        <ArticleBlocks />
+                        <HorizontalArticleBlocks />
                     </section>
                     <Navbar />
                     <section className="mb-16 mt-4 flex grid-cols-[1fr,1.75fr,1fr] flex-col gap-8 px-8 lg:grid">
