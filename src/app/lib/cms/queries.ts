@@ -27,7 +27,7 @@ export async function getArticleBySlug(slug: string) {
 
 export async function getNewArticles(limit: number) {
     return await get<Article>(
-        `*[_type == 'article'][0...${limit}]{title,slug}|order(publishedAt desc)`
+        `*[_type == 'article'][0...${limit}]{title,slug,subhead,"categories":*[_type == "category" && references(^._id)]{slug,title},mainImage{asset->{url}}}|order(publishedAt desc)`
     );
 }
 
@@ -57,6 +57,13 @@ export async function getHorizontalArticles() {
         `*[_type == 'homepage']{top_bar_articles[]->{title,slug,mainImage{asset->{url}}}}`
     );
     return homepages.at(0)?.top_bar_articles;
+}
+
+export async function getFeaturedArticleRow() {
+    const homepages = await get<Homepage>(
+        `*[_type == 'homepage']{featured_article_row[]->{title,slug,mainImage{asset->{url}},"categories":*[_type == "category" && references(^._id)]{slug,title}}}`
+    );
+    return homepages.at(0)?.featured_article_row;
 }
 
 async function get<T>(query: string) {

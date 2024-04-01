@@ -1,21 +1,19 @@
-import FeaturedArticlesCarousel from "./article-carousel";
+import { getFeaturedArticleRow } from "../lib/cms/queries";
+import MobileArticlesCarousel from "./mobile-article-carousel";
 import VerticalArticle from "./vertical-article";
 
-export default function FeaturedArticlesBlock() {
-    const articles = [
-        "Mountain Sounds is Coming to Shelves - Here's What You Need to Know",
-        "Happy Place by Emily Henry",
-        "I Spent My First-Ever Adult Vacation at This Gorgeous Hostel in Costa Rica",
-    ];
+export default async function FeaturedArticlesBlock() {
+    const articles = await getFeaturedArticleRow();
+    if (!articles || !articles.length) return null;
     return (
         <section className="bg-dark-green py-8 text-white">
-            <h2 className="text-center text-3xl mb-8">FEATURED</h2>
-            <div className="hidden lg:grid grid-cols-3 px-16 gap-8 justify-center">
+            <h2 className="mb-8 text-center text-3xl">FEATURED</h2>
+            <div className="hidden grid-cols-3 justify-center gap-8 px-16 lg:grid">
                 {articles.map((article, index) => (
                     <VerticalArticle article={article} key={index} />
                 ))}
             </div>
-            <FeaturedArticlesCarousel />
+            <MobileArticlesCarousel articles={articles} />
         </section>
     );
 }

@@ -109,4 +109,5 @@ export interface Homepage extends Document {
     featured_article: Article;
     featured_article_secondary: Article;
     top_bar_articles: Article[];
+    featured_article_row: Article[];
 }

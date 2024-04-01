@@ -10,7 +10,7 @@ export default async function HorizontalArticleBlocks() {
         <section className="flex gap-8 px-16 text-sm leading-none">
             {articles.map((article) => (
                 <Link
-                    href="/"
+                    href={`/articles/${article.slug.current}`}
                     key={article._rev}
                     className="flex flex-1 border border-black"
                 >

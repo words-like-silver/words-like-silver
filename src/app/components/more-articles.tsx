@@ -1,27 +1,23 @@
-import ArticleCarousel from "./article-carousel";
+import { getNewArticles } from "../lib/cms/queries";
+import MobileArticlesCarousel from "./mobile-article-carousel";
 import VerticalArticle from "./vertical-article";
 
-export default function MoreArticles() {
-    const articles = [
-        "Mountain Sounds is Coming to Shelves - Here's What You Need to Know",
-        "Happy Place by Emily Henry",
-        "I Spent My First-Ever Adult Vacation at This Gorgeous Hostel in Costa Rica",
-        "I Spent My First-Ever Adult Vacation at This Gorgeous Hostel in Costa Rica",
-    ];
+export default async function MoreArticles() {
+    const latestArticles = await getNewArticles(100);
     return (
         <section className="my-16">
-            <h2 className="text-center mb-8 text-4xl">FURTHER READING</h2>
-            <div className="hidden lg:grid grid-cols-4 px-16 gap-8 justify-center">
-                {articles.map((article) => (
+            <h2 className="mb-8 text-center text-4xl">FURTHER READING</h2>
+            <div className="hidden grid-cols-4 justify-center gap-8 px-16 lg:grid">
+                {latestArticles.map((article) => (
                     <VerticalArticle
                         includeReadMore
                         includeDescription
                         article={article}
-                        key={article}
+                        key={article._rev}
                     />
                 ))}
             </div>
-            <ArticleCarousel />
+            <MobileArticlesCarousel articles={latestArticles} />
         </section>
     );
 }
