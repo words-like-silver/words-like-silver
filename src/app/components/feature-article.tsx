@@ -7,9 +7,10 @@ export default async function FeatureArticle({
     article,
     background,
 }: {
-    article: Article;
+    article: Article | undefined;
     background?: boolean;
 }) {
+    if (!article) return null;
     return (
         <Link
             href={`/articles/${article.slug.current}`}

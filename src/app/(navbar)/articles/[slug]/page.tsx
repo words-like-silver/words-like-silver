@@ -2,6 +2,7 @@ import { getAllArticleSlugs, getArticleBySlug } from "@/app/lib/cms/queries";
 import { articleBodyMap } from "@/app/lib/constants";
 import Image from "next/image";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 export async function generateStaticParams() {
     const articleSlugs = await getAllArticleSlugs();
@@ -55,6 +56,7 @@ export default async function Article({
     params: { slug: string };
 }) {
     const article = await getArticleBySlug(params.slug);
+    if (!article) return redirect("/");
 
     return (
         <main>

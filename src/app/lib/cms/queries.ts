@@ -15,14 +15,14 @@ export async function getNavigationItems() {
 
 export async function getAllArticleSlugs() {
     const articles = await get<Article>("*[_type == 'article']{slug}");
-    return articles.map((article) => article.slug.current);
+    return articles.map((article) => article!.slug.current);
 }
 
 export async function getArticleBySlug(slug: string) {
     const articles = await get<Article>(
         `*[_type == 'article' && slug.current == '${slug}']{...,mainImage{asset->{url}},body[]{...,asset->{url,_id}},"categories": *[_type == "category" && references(^._id)]{slug,title}}`
     );
-    return articles?.[0];
+    return articles.at(0);
 }
 
 export async function getNewArticles(limit: number) {
@@ -35,21 +35,28 @@ export async function getArticlesByCategory(category: string, limit: number) {
     const categories = await get<Category>(
         `*[_type=="category" && title == "${category}"][0...${limit}]{articles[]->{ title,slug,mainImage{asset->{url}}}}|order(publishedAt desc)`
     );
-    return categories.map((category) => category.articles).flat();
+    return categories.map((category) => category!.articles).flat();
 }
 
 export async function getFeaturedArticle() {
-    const article = await get<Homepage>(
+    const homepages = await get<Homepage>(
         `*[_type=="homepage"]{featured_article->{title,slug,mainImage{asset->{url}}}}`
     );
-    return article[0].featured_article;
+    return homepages.at(0)?.featured_article;
+}
+
+export async function getFeaturedArticleSecondary() {
+    const homepages = await get<Homepage>(
+        `*[_type=="homepage"]{featured_article_secondary->{title,slug,mainImage{asset->{url}}}}`
+    );
+    return homepages.at(0)?.featured_article_secondary;
 }
 
 export async function getHorizontalArticles() {
-    const articles = await get<Homepage>(
+    const homepages = await get<Homepage>(
         `*[_type == 'homepage']{top_bar_articles[]->{title,slug,mainImage{asset->{url}}}}`
     );
-    return articles;
+    return homepages.at(0)?.top_bar_articles;
 }
 
 async function get<T>(query: string) {
@@ -64,6 +71,6 @@ async function get<T>(query: string) {
         return data.result;
     } catch (error) {
         console.error(error);
-        return [];
+        return [] as Array<T>;
     }
 }

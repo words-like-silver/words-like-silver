@@ -3,10 +3,8 @@ import Link from "next/link";
 import { getHorizontalArticles } from "../lib/cms/queries";
 
 export default async function HorizontalArticleBlocks() {
-    const homepage = await getHorizontalArticles();
-    console.log(homepage);
-    if (!homepage || !homepage[0] || !homepage[0].top_bar_articles) return null;
-    const articles = homepage[0].top_bar_articles;
+    const articles = await getHorizontalArticles();
+    if (!articles || !articles.length) return null;
 
     return (
         <section className="flex gap-8 px-16 text-sm leading-none">
@@ -14,7 +12,7 @@ export default async function HorizontalArticleBlocks() {
                 <Link
                     href="/"
                     key={article._rev}
-                    className="flex border border-black flex-1"
+                    className="flex flex-1 border border-black"
                 >
                     <div className="relative aspect-square w-32">
                         <Image src={article.mainImage.asset.url} fill alt="" />

@@ -4,7 +4,6 @@ import { getNavigationItems } from "../lib/cms/queries";
 
 export default async function Navbar() {
     const navigationItems = await getNavigationItems();
-
     const halfOfNumNavItems = Math.floor(navigationItems.length / 2);
     return (
         <>

@@ -7,10 +7,15 @@ import MoreArticles from "./components/more-articles";
 import Navbar from "./components/navbar";
 import NewArticleList from "./components/new-articles-list";
 import Sidebar from "./components/sidebar";
-import { getArticlesByCategory, getFeaturedArticle } from "./lib/cms/queries";
+import {
+    getArticlesByCategory,
+    getFeaturedArticle,
+    getFeaturedArticleSecondary,
+} from "./lib/cms/queries";
 
 export default async function Home() {
     const featuredArticle = await getFeaturedArticle();
+    const featuredArticleSecondary = await getFeaturedArticleSecondary();
     const categoryArticles = await getArticlesByCategory("NEWS", 6);
     return (
         <main className="">
@@ -37,12 +42,12 @@ export default async function Home() {
                     <section className="mx-auto mt-16 max-w-7xl grid-cols-[2fr,1.25fr] gap-16 px-4 lg:grid">
                         <FeatureArticle
                             background
-                            article={categoryArticles[0]}
+                            article={featuredArticleSecondary}
                         />
                         <div className="mt-16 lg:mt-0">
                             <CategoryArticleList
                                 category={"NEWS"}
-                                articles={categoryArticles.slice(1)}
+                                articles={categoryArticles}
                             />
                         </div>
                     </section>

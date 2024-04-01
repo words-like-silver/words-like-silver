@@ -8,7 +8,7 @@ interface Document {
 
 interface SanitySuccess<T> {
     query: string;
-    result: T[];
+    result: Array<T>;
     ms: number;
     error: undefined;
 }
@@ -107,5 +107,6 @@ export interface Article extends Document {
 export interface Homepage extends Document {
     _type: "homepage";
     featured_article: Article;
+    featured_article_secondary: Article;
     top_bar_articles: Article[];
 }
