@@ -1,14 +1,27 @@
+import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 import { getNavigationItems } from "../lib/cms/queries";
 
-export default async function Navbar() {
+export default async function Navbar({ secondary }: { secondary?: boolean }) {
     const navigationItems = await getNavigationItems();
     const halfOfNumNavItems = Math.floor(navigationItems.length / 2);
     return (
         <>
-            <nav className="sticky top-0 z-20 grid-cols-[2fr,1fr,2fr] border-b border-black bg-beige px-16 font-sailing-club lg:grid lg:min-h-[145px] lg:py-4 lg:text-4xl">
-                <div className="hidden items-center justify-around lg:flex">
+            <nav
+                className={clsx(
+                    "sticky top-0 z-20 border-b border-black bg-beige px-16 font-sailing-club lg:min-h-[145px] lg:py-4 lg:text-4xl",
+                    secondary
+                        ? "flex justify-around"
+                        : "grid-cols-[2fr,1fr,2fr] lg:grid"
+                )}
+            >
+                <div
+                    className={clsx(
+                        "hidden items-center justify-around lg:flex",
+                        secondary && "order-2 flex-1"
+                    )}
+                >
                     {navigationItems
                         .slice(0, halfOfNumNavItems + 1)
                         .map((navItem) => {
@@ -23,7 +36,13 @@ export default async function Navbar() {
                             );
                         })}
                 </div>
-                <Link href="/" className="flex items-center py-2 lg:py-0">
+                <Link
+                    href="/"
+                    className={clsx(
+                        "flex items-center py-2 lg:py-0",
+                        secondary && "order-1 w-80"
+                    )}
+                >
                     <div className="relative mx-auto aspect-[3] w-52 lg:w-full">
                         <Image
                             src="/images/words_logo.png"
@@ -32,7 +51,12 @@ export default async function Navbar() {
                         />
                     </div>
                 </Link>
-                <div className="hidden items-center justify-around lg:flex">
+                <div
+                    className={clsx(
+                        "hidden items-center justify-around lg:flex",
+                        secondary && "order-3 flex-1"
+                    )}
+                >
                     {navigationItems
                         .slice(halfOfNumNavItems + 1)
                         .map((navItem) => {

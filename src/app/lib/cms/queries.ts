@@ -66,6 +66,18 @@ export async function getFeaturedArticleRow() {
     return homepages.at(0)?.featured_article_row;
 }
 
+export async function getAllCategorySlugs() {
+    const categories = await get<Category>("*[_type == 'category']{slug}");
+    return categories.map((category) => category!.slug.current);
+}
+
+export async function getCategoryBySlug(slug: string) {
+    const articles = await get<Category>(
+        `*[_type == 'category' && slug.current == '${slug}']{...,articles[]->{title,slug,subhead,mainImage{asset->{url}}}, featuredArticles[]->{title,slug,subhead,mainImage{asset->{url}}}}`
+    );
+    return articles.at(0);
+}
+
 async function get<T>(query: string) {
     try {
         const searchParams = new URLSearchParams();

@@ -11,7 +11,7 @@ export default function ArticleHeader({ article }: { article: Article }) {
                 <div className="flex flex-wrap items-center justify-center gap-4 font-sailing-club">
                     {article.categories.map((category) => (
                         <Link
-                            href={`/categories/${category.slug.current}`}
+                            href={`/${category.slug.current}`}
                             className="text-4xl underline"
                             key={category.slug.current}
                         >

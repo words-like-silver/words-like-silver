@@ -1,6 +1,6 @@
-import ArticleImage from "../(navbar)/articles/[slug]/components/article-image";
-import Quote from "../(navbar)/articles/[slug]/components/quote";
-import TextBlock from "../(navbar)/articles/[slug]/components/text-block";
+import ArticleImage from "../(primary_navbar)/articles/[slug]/components/article-image";
+import Quote from "../(primary_navbar)/articles/[slug]/components/quote";
+import TextBlock from "../(primary_navbar)/articles/[slug]/components/text-block";
 import { Body } from "./cms/types";
 
 export const cmsUrl =
