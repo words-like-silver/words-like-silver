@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Article } from "../lib/cms/types";
+import { processSanityBlock } from "../lib/text/process-sanity-block";
 
 export default function VerticalArticle({
     article,
@@ -24,9 +25,12 @@ export default function VerticalArticle({
                     alt=""
                 />
             </div>
-            <div className="py-8 text-center text-3xl underline">
-                {article.title}
-            </div>
+            <div
+                className="py-8 text-center text-3xl underline"
+                dangerouslySetInnerHTML={{
+                    __html: processSanityBlock(article.title[0]),
+                }}
+            ></div>
             {includeDescription && (
                 <p className="inline-block text-xl">{article.subhead}</p>
             )}

@@ -1,4 +1,5 @@
 import { Body } from "@/app/lib/cms/types";
+import { processSanityBlock } from "@/app/lib/text/process-sanity-block";
 import clsx from "clsx";
 
 export default function TextBlock({
@@ -10,31 +11,7 @@ export default function TextBlock({
 }) {
     if (body._type !== "block") return null;
 
-    let innerHtml = body.children
-        .map((span) => {
-            if (span.marks.length === 0) {
-                if (span.text === "") return `<br/>`;
-                return span.text;
-            }
-            let html = span.marks.reduce((acc: string, mark: string) => {
-                if (mark === "strong") return `<strong>${acc}</strong>`;
-                if (mark === "em") return `<em>${acc}</em>`;
-                if (mark === "underline") return `<u>${acc}</u>`;
-                if (mark === "strike-through") return `<s>${acc}</s>`;
-                if (mark === "code") return `<code>${acc}</code>`;
-                if (mark === "highlight")
-                    return `<span style="background-color:yellow">${acc}</span>`;
-                if (mark === "sailing-club") {
-                    return `<span style="font-family:var(--font-sailing-club)">${acc}</span>`;
-                }
-                return acc;
-            }, span.text);
-            if (span.marks.length > 0 && body.markDefs?.[0]?.href) {
-                html = `<a href=${body.markDefs.at(0)?.href} target="_blank" rel="noopenner noreferrer" style="text-decoration:underline">${html}</a>`;
-            }
-            return html;
-        })
-        .join("");
+    const innerHtml = processSanityBlock(body);
 
     if (body.style === "h2") {
         return (

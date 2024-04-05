@@ -2,6 +2,7 @@ import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 import { Article } from "../lib/cms/types";
+import { processSanityBlock } from "../lib/text/process-sanity-block";
 
 export default async function FeatureArticle({
     article,
@@ -30,9 +31,12 @@ export default async function FeatureArticle({
             </div>
             <div className="absolute -bottom-12 w-full px-4 lg:bottom-24">
                 <div className="mx-auto max-w-sm border border-black bg-beige/80 py-4">
-                    <h2 className="text-center text-2xl group-hover:underline lg:text-3xl">
-                        {article.title}
-                    </h2>
+                    <h2
+                        className="text-center text-2xl group-hover:underline lg:text-3xl"
+                        dangerouslySetInnerHTML={{
+                            __html: processSanityBlock(article.title[0]),
+                        }}
+                    ></h2>
                 </div>
             </div>
             {background && (

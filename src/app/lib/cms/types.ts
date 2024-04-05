@@ -1,3 +1,5 @@
+import { HeaderType } from "../constants";
+
 interface Document {
     _createdAt: string;
     _rev: string;
@@ -102,13 +104,14 @@ export interface Image extends Document {
 
 export interface Article extends Document {
     _type: "article";
-    title: string;
+    title: [Block];
     subhead: string;
     slug: Slug;
     mainImage: Image;
     categories: Category[];
     body: Body[] | null;
     sidebar: Body[] | null;
+    headerType: HeaderType;
 }
 
 export interface Homepage extends Document {

@@ -23,3 +23,8 @@ export const articleBodyMap: {
     ),
     horizontal_rule: () => <hr className="my-4 border-t-black" />,
 };
+
+export enum HeaderType {
+    horizontalImage = "horizontalImage",
+    book = "book",
+}

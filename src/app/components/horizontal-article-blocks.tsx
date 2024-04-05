@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getHorizontalArticles } from "../lib/cms/queries";
+import { processSanityBlock } from "../lib/text/process-sanity-block";
 
 export default async function HorizontalArticleBlocks() {
     const articles = await getHorizontalArticles();
@@ -17,7 +18,12 @@ export default async function HorizontalArticleBlocks() {
                     <div className="relative aspect-square w-32">
                         <Image src={article.mainImage.asset.url} fill alt="" />
                     </div>
-                    <div className="px-4 pb-2 pt-4">{article.title}</div>
+                    <div
+                        className="px-4 pb-2 pt-4"
+                        dangerouslySetInnerHTML={{
+                            __html: processSanityBlock(article.title[0]),
+                        }}
+                    ></div>
                 </Link>
             ))}
         </section>

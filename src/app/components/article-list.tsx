@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Article } from "../lib/cms/types";
+import { processSanityBlock } from "../lib/text/process-sanity-block";
 
 export default function ArticleList({ articles }: { articles: Article[] }) {
     return (
@@ -12,9 +13,10 @@ export default function ArticleList({ articles }: { articles: Article[] }) {
                     <Link
                         href={`/articles/${article.slug.current}`}
                         className="block h-full w-full"
-                    >
-                        {article.title}
-                    </Link>
+                        dangerouslySetInnerHTML={{
+                            __html: processSanityBlock(article.title[0]),
+                        }}
+                    ></Link>
                 </li>
             ))}
         </ul>
