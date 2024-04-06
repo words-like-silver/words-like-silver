@@ -7,7 +7,7 @@ export default async function NewArticleList() {
     return (
         <div className="">
             <h2 className="text-center font-sailing-club text-3xl italic">
-                new
+                new posts
             </h2>
             <ArticleList articles={newArticles} />
             <Link

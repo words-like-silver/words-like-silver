@@ -118,8 +118,9 @@ export interface Article extends Document {
 
 export interface Homepage extends Document {
     _type: "homepage";
-    featured_article: Article;
-    featured_article_secondary: Article;
-    top_bar_articles: Article[];
-    featured_article_row: Article[];
+    featuredArticle: Article;
+    featuredArticleSecondary: Article;
+    topBarArticles: Article[];
+    featuredArticleRow: Article[];
+    featuredCategory: Category;
 }

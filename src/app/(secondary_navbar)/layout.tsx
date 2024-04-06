@@ -7,7 +7,7 @@ export default function NavbarLayout({
 }) {
     return (
         <>
-            <Navbar secondary />
+            <Navbar hideSearchBar secondary />
             {children}
         </>
     );

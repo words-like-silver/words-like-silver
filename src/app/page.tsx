@@ -8,7 +8,6 @@ import Navbar from "./components/navbar";
 import NewArticleList from "./components/new-articles-list";
 import Sidebar from "./components/sidebar";
 import {
-    getArticlesByCategory,
     getFeaturedArticle,
     getFeaturedArticleSecondary,
 } from "./lib/cms/queries";
@@ -16,7 +15,6 @@ import {
 export default async function Home() {
     const featuredArticle = await getFeaturedArticle();
     const featuredArticleSecondary = await getFeaturedArticleSecondary();
-    const categoryArticles = await getArticlesByCategory("NEWS", 6);
     return (
         <main className="">
             <div className="mt-16 hidden lg:block">
@@ -44,10 +42,7 @@ export default async function Home() {
                         article={featuredArticleSecondary}
                     />
                     <div className="mt-16 lg:mt-0">
-                        <CategoryArticleList
-                            category={"NEWS"}
-                            articles={categoryArticles}
-                        />
+                        <CategoryArticleList />
                     </div>
                 </section>
             </div>

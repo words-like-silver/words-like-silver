@@ -7,19 +7,24 @@ export default async function Navbar({
     secondary,
     hideLogo,
     fontSizeClassName,
+    hideSearchBar,
 }: {
     secondary?: boolean;
     hideLogo?: boolean;
     fontSizeClassName?: string;
+    hideSearchBar?: boolean;
 }) {
     const navigationItems = await getNavigationItems();
     const halfOfNumNavItems = Math.floor(navigationItems.length / 2);
     return (
         <>
             <nav className="sticky top-0 z-20 flex border-b border-black bg-beige font-sailing-club lg:min-h-[145px] lg:py-4">
-                <div className="hidden lg:flex w-72 flex-col items-center justify-center px-8">
-                    <input className="h-10 w-full rounded-xl border-2 border-black bg-beige px-2" />
-                </div>
+                {!hideSearchBar && (
+                    <div className="hidden w-72 flex-col items-center justify-center px-8 font-frys-baskerville lg:flex">
+                        <input className="h-10 w-full rounded-xl border-2 border-black bg-beige px-2" />
+                    </div>
+                )}
+
                 <div
                     className={clsx(
                         "flex-1 px-16",
