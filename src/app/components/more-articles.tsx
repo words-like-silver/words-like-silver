@@ -12,6 +12,7 @@ export default async function MoreArticles() {
                     <VerticalArticle
                         includeReadMore
                         includeDescription
+                        includeCategory
                         article={article}
                         key={article._rev}
                     />

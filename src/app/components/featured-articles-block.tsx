@@ -10,7 +10,11 @@ export default async function FeaturedArticlesBlock() {
             <h2 className="mb-8 text-center text-3xl">FEATURED</h2>
             <div className="hidden grid-cols-3 justify-center gap-8 px-16 lg:grid">
                 {articles.map((article, index) => (
-                    <VerticalArticle article={article} key={index} />
+                    <VerticalArticle
+                        includeCategory
+                        article={article}
+                        key={index}
+                    />
                 ))}
             </div>
             <MobileArticlesCarousel articles={articles} />

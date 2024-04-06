@@ -1,3 +1,4 @@
+import VerticalArticle from "@/app/components/vertical-article";
 import { getAllCategorySlugs, getCategoryBySlug } from "@/app/lib/cms/queries";
 import { redirect } from "next/navigation";
 
@@ -50,27 +51,38 @@ export default async function Category({
     const category = await getCategoryBySlug(params.category);
     if (!category) return redirect("/");
     return (
-        <section className="mx-auto my-16 max-w-3xl">
-            <h1 className="my-8 text-balance bg-yellow-300 px-8 text-center font-sailing-club text-6xl">
-                {category.title}
-            </h1>
-            <p className="text-2xl">{category.description}</p>
-            <div className="mt-4 flex items-center justify-center gap-4">
-                <div>email</div>
-                <div>insta</div>
-                <div>twitter</div>
-            </div>
-            <div className="flex flex-col items-center text-2xl">
-                <div className="mt-6 font-sailing-club italic underline">
-                    newsletters
+        <main>
+            <section className="mx-auto my-16 max-w-3xl">
+                <h1 className="my-8 text-balance bg-yellow-300 px-8 text-center font-sailing-club text-6xl">
+                    {category.title}
+                </h1>
+                <p className="text-2xl">{category.description}</p>
+                <div className="mt-4 flex items-center justify-center gap-4">
+                    <div>email</div>
+                    <div>insta</div>
+                    <div>twitter</div>
                 </div>
-                <div className="font-sailing-club italic underline">
-                    support
+                <div className="flex flex-col items-center text-2xl">
+                    <div className="mt-6 font-sailing-club italic underline">
+                        newsletters
+                    </div>
+                    <div className="font-sailing-club italic underline">
+                        support
+                    </div>
+                    <div className="font-sailing-club italic underline">
+                        follow on socials
+                    </div>
                 </div>
-                <div className="font-sailing-club italic underline">
-                    follow on socials
-                </div>
-            </div>
-        </section>
+            </section>
+            <section className="max-w-10xl mb-32 px-32 mx-auto grid grid-cols-[1fr,1.75fr,1fr] items-center gap-16">
+                {category.featuredArticles.map((article) => (
+                    <VerticalArticle
+                        article={article}
+                        key={article.slug.current}
+                        includeDescription
+                    />
+                ))}
+            </section>
+        </main>
     );
 }

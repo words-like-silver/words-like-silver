@@ -7,16 +7,20 @@ export default function VerticalArticle({
     article,
     includeDescription,
     includeReadMore,
+    includeCategory,
 }: {
     article: Article;
     includeDescription?: boolean;
     includeReadMore?: boolean;
+    includeCategory?: boolean;
 }) {
     return (
         <Link href={`/articles/${article.slug.current}`} className="block">
-            <h3 className="mb-4 inline-block w-full text-center font-sailing-club text-3xl italic">
-                {article.categories.at(0)?.title}
-            </h3>
+            {includeCategory && (
+                <h3 className="mb-4 inline-block w-full text-center font-sailing-club text-3xl italic">
+                    {article.categories.at(0)?.title}
+                </h3>
+            )}
             <div className="relative mx-auto aspect-square h-64 lg:h-auto lg:w-full">
                 <Image
                     src={article.mainImage.asset.url}

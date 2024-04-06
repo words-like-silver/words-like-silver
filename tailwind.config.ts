@@ -8,6 +8,11 @@ const config: Config = {
     ],
     theme: {
         extend: {
+            maxWidth: {
+                "8xl": "90rem",
+                "9xl": "100rem",
+                "10xl": "120rem",
+            },
             fontFamily: {
                 "frys-baskerville": "var(--font-frys-baskerville)",
                 "sailing-club": "var(--font-sailing-club)",
