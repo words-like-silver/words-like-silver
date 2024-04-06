@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import Footer from "./components/footer";
 import "./globals.css";
 
 const frysBaskerville = localFont({
@@ -50,7 +49,6 @@ export default function RootLayout({
                 className={`${frysBaskerville.variable} ${sailingClub.variable} ${desirableCalligraphy.variable} bg-beige font-frys-baskerville text-black`}
             >
                 {children}
-                <Footer />
             </body>
         </html>
     );

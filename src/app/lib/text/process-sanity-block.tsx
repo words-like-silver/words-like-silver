@@ -16,7 +16,7 @@ export function processSanityBlock(block: Block) {
                 if (mark === "strike-through") return `<s>${acc}</s>`;
                 if (mark === "code") return `<code>${acc}</code>`;
                 if (mark === "highlight")
-                    return `<span style="background-color:yellow">${acc}</span>`;
+                    return `<span style="background-color:yellow;color:black">${acc}</span>`;
                 if (mark === "sailing-club") {
                     return `<span style="font-family:var(--font-sailing-club)">${acc}</span>`;
                 }

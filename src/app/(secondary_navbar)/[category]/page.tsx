@@ -1,6 +1,9 @@
-import Navbar from "@/app/components/navbar";
 import VerticalArticle from "@/app/components/vertical-article";
-import { getAllCategorySlugs, getCategoryBySlug } from "@/app/lib/cms/queries";
+import {
+    getAllCategorySlugs,
+    getCategoryBySlug,
+    getNavigationItems,
+} from "@/app/lib/cms/queries";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -53,6 +56,7 @@ export default async function Category({
     params: { category: string };
 }) {
     const category = await getCategoryBySlug(params.category);
+    const navigationItems = await getNavigationItems();
     if (!category) return redirect("/");
     return (
         <main>
@@ -129,13 +133,20 @@ export default async function Category({
                     <div>twitter</div>
                 </div>
             </section>
-            <section className="max-w-8xl mx-auto px-16 underline">
-                <Navbar
-                    hideLogo
-                    secondary
-                    hideSearchBar
-                    fontSizeClassName="lg:text-3xl"
-                />
+            <section className="mx-auto max-w-7xl mb-16 px-16 underline">
+                <div className="flex items-center justify-around font-sailing-club lg:text-3xl">
+                    {navigationItems.map((navItem) => {
+                        return (
+                            <Link
+                                href={"/" + navItem.slug.current}
+                                className="px-4 text-center"
+                                key={navItem.slug.current}
+                            >
+                                {navItem.title}
+                            </Link>
+                        );
+                    })}
+                </div>
             </section>
         </main>
     );

@@ -1,3 +1,4 @@
+import BookCarousel from "./components/book-carousel";
 import BookWidget from "./components/book-widget";
 import CategoryArticleList from "./components/category-article-list";
 import FeatureArticle from "./components/feature-article";
@@ -35,7 +36,7 @@ export default async function Home() {
                     </div>
                 </section>
                 <FeaturedArticlesBlock />
-                {/* <BookCarousel /> */}
+                <BookCarousel />
                 <section className="mx-auto mt-16 max-w-7xl grid-cols-[2fr,1.25fr] gap-16 px-4 lg:grid">
                     <FeatureArticle
                         background

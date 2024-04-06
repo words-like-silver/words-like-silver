@@ -5,13 +5,9 @@ import { getNavigationItems } from "../lib/cms/queries";
 
 export default async function Navbar({
     secondary,
-    hideLogo,
-    fontSizeClassName,
     hideSearchBar,
 }: {
     secondary?: boolean;
-    hideLogo?: boolean;
-    fontSizeClassName?: string;
     hideSearchBar?: boolean;
 }) {
     const navigationItems = await getNavigationItems();
@@ -27,11 +23,10 @@ export default async function Navbar({
 
                 <div
                     className={clsx(
-                        "flex-1 px-16",
+                        "flex-1 px-16 lg:text-4xl",
                         secondary
                             ? "flex justify-around"
-                            : "grid-cols-[2fr,1fr,2fr] lg:grid",
-                        fontSizeClassName || "lg:text-4xl"
+                            : "grid-cols-[2fr,1fr,2fr] lg:grid"
                     )}
                 >
                     <div
@@ -54,23 +49,21 @@ export default async function Navbar({
                                 );
                             })}
                     </div>
-                    {!hideLogo && (
-                        <Link
-                            href="/"
-                            className={clsx(
-                                "flex items-center py-2 lg:py-0",
-                                secondary && "order-1 w-80"
-                            )}
-                        >
-                            <div className="relative mx-auto aspect-[3] w-52 lg:w-full">
-                                <Image
-                                    src="/images/words_logo.png"
-                                    fill
-                                    alt="words like silver logo"
-                                />
-                            </div>
-                        </Link>
-                    )}
+                    <Link
+                        href="/"
+                        className={clsx(
+                            "flex items-center py-2 lg:py-0",
+                            secondary && "order-1 w-80"
+                        )}
+                    >
+                        <div className="relative mx-auto aspect-[3] w-52 lg:w-full">
+                            <Image
+                                src="/images/words_logo.png"
+                                fill
+                                alt="words like silver logo"
+                            />
+                        </div>
+                    </Link>
                     <div
                         className={clsx(
                             "hidden items-center justify-around lg:flex",
