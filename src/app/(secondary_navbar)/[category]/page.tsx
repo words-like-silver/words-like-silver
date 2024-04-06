@@ -1,5 +1,7 @@
 import VerticalArticle from "@/app/components/vertical-article";
 import { getAllCategorySlugs, getCategoryBySlug } from "@/app/lib/cms/queries";
+import Image from "next/image";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 
 export async function generateStaticParams() {
@@ -103,7 +105,44 @@ export default async function Category({
                     <button className="font-sailing-club italic">last</button>
                 </div>
             </section>
-            <section></section>
+            <section className="mx-auto mb-8 max-w-xl space-y-8 text-xl">
+                <p>
+                    For more travel recommendations, be sure to follow
+                    @placeandplacebo on Instagram and sign up for my weekly
+                    travel newsletter—including exclusive deals and
+                    recommendations. If Words Like Silver makes a difference to
+                    you, please consider donating towards the upkeep of the
+                    site.
+                </p>
+                <div className="flex flex-col items-center gap-2 font-sailing-club text-2xl underline">
+                    <Link href="/">Give your support</Link>
+                    <Link href="/">Get the newsletter</Link>
+                    <Link href="/">Follow on socials</Link>
+                </div>
+                <div className="grid grid-cols-3 gap-1">
+                    {Array.from({ length: 9 }).map((_, i) => (
+                        <div className="relative aspect-square w-full">
+                            <Image
+                                src={`https://source.unsplash.com/random?${i}`}
+                                alt=""
+                                fill
+                                className="object-cover"
+                            />
+                        </div>
+                    ))}
+                </div>
+                <Link
+                    href="/"
+                    className="block text-center font-sailing-club text-2xl underline"
+                >
+                    Share with a friend
+                </Link>
+                <div className="mt-4 flex items-center justify-center gap-4">
+                    <div>email</div>
+                    <div>insta</div>
+                    <div>twitter</div>
+                </div>
+            </section>
         </main>
     );
 }
