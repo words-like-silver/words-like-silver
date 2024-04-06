@@ -122,7 +122,10 @@ export default async function Category({
                 </div>
                 <div className="grid grid-cols-3 gap-1">
                     {Array.from({ length: 9 }).map((_, i) => (
-                        <div className="relative aspect-square w-full">
+                        <div
+                            className="relative aspect-square w-full"
+                            key={"grid-image-" + i}
+                        >
                             <Image
                                 src={`https://source.unsplash.com/random?${i}`}
                                 alt=""
@@ -144,8 +147,8 @@ export default async function Category({
                     <div>twitter</div>
                 </div>
             </section>
-            <section className="underline max-w-8xl mx-auto px-16">
-                <Navbar hideLogo secondary fontSizeClassName="lg:text-3xl"/>
+            <section className="max-w-8xl mx-auto px-16 underline">
+                <Navbar hideLogo secondary fontSizeClassName="lg:text-3xl" />
             </section>
         </main>
     );
