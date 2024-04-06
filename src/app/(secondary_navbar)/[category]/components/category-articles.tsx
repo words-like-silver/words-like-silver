@@ -16,7 +16,7 @@ export default function CategoryArticles({
     const end = start + LIMIT;
 
     return (
-        <section className="relative mb-32 pb-16 text-white">
+        <section className="relative mb-16 pb-16 text-white">
             <div className="max-w-10xl mx-auto px-28">
                 <div className="grid grid-cols-3 gap-16">
                     {articles.slice(start, end).map((article, index) => (

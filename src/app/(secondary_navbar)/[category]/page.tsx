@@ -82,7 +82,7 @@ export default async function Category({
                     </div>
                 </div>
             </section>
-            <section className="max-w-10xl mx-auto mb-16 grid grid-cols-[1fr,1.75fr,1fr] items-center gap-16 px-20">
+            <section className="max-w-10xl mx-auto mb-32 grid grid-cols-[1fr,1.75fr,1fr] items-center gap-16 px-20">
                 {category.featuredArticles.map((article) => (
                     <VerticalArticle
                         article={article}
