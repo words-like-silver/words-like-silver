@@ -3,17 +3,26 @@ import Image from "next/image";
 import Link from "next/link";
 import { getNavigationItems } from "../lib/cms/queries";
 
-export default async function Navbar({ secondary }: { secondary?: boolean }) {
+export default async function Navbar({
+    secondary,
+    hideLogo,
+    fontSizeClassName,
+}: {
+    secondary?: boolean;
+    hideLogo?: boolean;
+    fontSizeClassName?: string;
+}) {
     const navigationItems = await getNavigationItems();
     const halfOfNumNavItems = Math.floor(navigationItems.length / 2);
     return (
         <>
             <nav
                 className={clsx(
-                    "sticky top-0 z-20 border-b border-black bg-beige px-16 font-sailing-club lg:min-h-[145px] lg:py-4 lg:text-4xl",
+                    "sticky top-0 z-20 border-b border-black bg-beige px-16 font-sailing-club lg:min-h-[145px] lg:py-4",
                     secondary
                         ? "flex justify-around"
-                        : "grid-cols-[2fr,1fr,2fr] lg:grid"
+                        : "grid-cols-[2fr,1fr,2fr] lg:grid",
+                    fontSizeClassName || "lg:text-4xl"
                 )}
             >
                 <div
@@ -36,21 +45,23 @@ export default async function Navbar({ secondary }: { secondary?: boolean }) {
                             );
                         })}
                 </div>
-                <Link
-                    href="/"
-                    className={clsx(
-                        "flex items-center py-2 lg:py-0",
-                        secondary && "order-1 w-80"
-                    )}
-                >
-                    <div className="relative mx-auto aspect-[3] w-52 lg:w-full">
-                        <Image
-                            src="/images/words_logo.png"
-                            fill
-                            alt="words like silver logo"
-                        />
-                    </div>
-                </Link>
+                {!hideLogo && (
+                    <Link
+                        href="/"
+                        className={clsx(
+                            "flex items-center py-2 lg:py-0",
+                            secondary && "order-1 w-80"
+                        )}
+                    >
+                        <div className="relative mx-auto aspect-[3] w-52 lg:w-full">
+                            <Image
+                                src="/images/words_logo.png"
+                                fill
+                                alt="words like silver logo"
+                            />
+                        </div>
+                    </Link>
+                )}
                 <div
                     className={clsx(
                         "hidden items-center justify-around lg:flex",

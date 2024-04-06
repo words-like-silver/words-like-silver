@@ -1,3 +1,4 @@
+import Navbar from "@/app/components/navbar";
 import VerticalArticle from "@/app/components/vertical-article";
 import { getAllCategorySlugs, getCategoryBySlug } from "@/app/lib/cms/queries";
 import Image from "next/image";
@@ -105,7 +106,7 @@ export default async function Category({
                     <button className="font-sailing-club italic">last</button>
                 </div>
             </section>
-            <section className="mx-auto mb-8 max-w-xl space-y-8 text-xl">
+            <section className="mx-auto mb-8 max-w-xl space-y-8 text-2xl">
                 <p>
                     For more travel recommendations, be sure to follow
                     @placeandplacebo on Instagram and sign up for my weekly
@@ -114,7 +115,7 @@ export default async function Category({
                     you, please consider donating towards the upkeep of the
                     site.
                 </p>
-                <div className="flex flex-col items-center gap-2 font-sailing-club text-2xl underline">
+                <div className="flex flex-col items-center gap-2 font-sailing-club text-3xl underline">
                     <Link href="/">Give your support</Link>
                     <Link href="/">Get the newsletter</Link>
                     <Link href="/">Follow on socials</Link>
@@ -133,7 +134,7 @@ export default async function Category({
                 </div>
                 <Link
                     href="/"
-                    className="block text-center font-sailing-club text-2xl underline"
+                    className="block text-center font-sailing-club text-3xl underline"
                 >
                     Share with a friend
                 </Link>
@@ -142,6 +143,9 @@ export default async function Category({
                     <div>insta</div>
                     <div>twitter</div>
                 </div>
+            </section>
+            <section className="underline max-w-8xl mx-auto px-16">
+                <Navbar hideLogo secondary fontSizeClassName="lg:text-3xl"/>
             </section>
         </main>
     );
