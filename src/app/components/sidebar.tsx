@@ -1,19 +1,7 @@
-import Image from "next/image";
 export default function Sidebar() {
     return (
-        <section className="hidden w-72 pt-12 text-2xl lg:block">
-            <div className="sticky top-0 z-10 border-b border-b-black bg-beige py-6">
-                <div className="relative mx-auto aspect-square h-24 ">
-                    <Image
-                        src="/images/words_logo_mini.png"
-                        alt="words like silver logo"
-                        fill
-                    />
-                </div>
-            </div>
-            <div className="sticky top-36 z-20 hidden h-px -translate-y-px bg-beige lg:block"></div>
-            <div className="sticky top-36 flex flex-col items-center border-b border-b-black bg-beige px-8 pb-6 pt-12 text-xl ">
-                <input className="mb-4 w-full rounded-md border-2 border-black bg-beige px-2" />
+        <section className="absolute hidden w-72 text-2xl lg:block">
+            <div className="flex flex-col items-center border-b border-b-black bg-beige px-8 pb-6 text-xl ">
                 <div>Email insta twitter</div>
                 <h2 className="mt-6 text-3xl">SUBSCRIBE</h2>
                 <p className="mt-4 border border-black p-4 text-center text-2xl">

@@ -19,39 +19,37 @@ export default async function Home() {
     const categoryArticles = await getArticlesByCategory("NEWS", 6);
     return (
         <main className="">
-            <div className="flex">
-                <Sidebar />
-                <div className="flex-1">
-                    <section className="mb-4 mt-16 hidden lg:block">
-                        <HorizontalArticleBlocks />
-                    </section>
-                    <Navbar />
-                    <section className="mb-16 mt-4 flex grid-cols-[1fr,1.75fr,1fr] flex-col gap-8 px-8 lg:grid">
-                        <div className="order-3 lg:order-1">
-                            <NewArticleList />
-                        </div>
-                        <div className="order-1 lg:order-2">
-                            <FeatureArticle article={featuredArticle} />
-                        </div>
-                        <div className="order-2 mt-12 lg:order-3 lg:mt-0 ">
-                            <BookWidget />
-                        </div>
-                    </section>
-                    <FeaturedArticlesBlock />
-                    {/* <BookCarousel /> */}
-                    <section className="mx-auto mt-16 max-w-7xl grid-cols-[2fr,1.25fr] gap-16 px-4 lg:grid">
-                        <FeatureArticle
-                            background
-                            article={featuredArticleSecondary}
+            <div className="mt-16 hidden lg:block">
+                <HorizontalArticleBlocks />
+            </div>
+            <Navbar />
+            <Sidebar />
+            <div className="lg:ml-72">
+                <section className="mb-16 mt-4 flex grid-cols-[1fr,1.75fr,1fr] flex-col gap-8 px-8 lg:grid">
+                    <div className="order-3 lg:order-1">
+                        <NewArticleList />
+                    </div>
+                    <div className="order-1 lg:order-2">
+                        <FeatureArticle article={featuredArticle} />
+                    </div>
+                    <div className="order-2 mt-12 lg:order-3 lg:mt-0 ">
+                        <BookWidget />
+                    </div>
+                </section>
+                <FeaturedArticlesBlock />
+                {/* <BookCarousel /> */}
+                <section className="mx-auto mt-16 max-w-7xl grid-cols-[2fr,1.25fr] gap-16 px-4 lg:grid">
+                    <FeatureArticle
+                        background
+                        article={featuredArticleSecondary}
+                    />
+                    <div className="mt-16 lg:mt-0">
+                        <CategoryArticleList
+                            category={"NEWS"}
+                            articles={categoryArticles}
                         />
-                        <div className="mt-16 lg:mt-0">
-                            <CategoryArticleList
-                                category={"NEWS"}
-                                articles={categoryArticles}
-                            />
-                        </div>
-                    </section>
-                </div>
+                    </div>
+                </section>
             </div>
             <MoreArticles />
         </main>

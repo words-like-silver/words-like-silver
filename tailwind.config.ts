@@ -8,6 +8,9 @@ const config: Config = {
     ],
     theme: {
         extend: {
+            screens: {
+                "3xl": "1650px",
+            },
             maxWidth: {
                 "8xl": "90rem",
                 "9xl": "100rem",
