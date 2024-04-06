@@ -10,7 +10,7 @@ export default function CategoryArticles({
 }: {
     articles: Article[];
 }) {
-    const LIMIT = 3;
+    const LIMIT = 9;
     const [page, setPage] = useState(1);
     const start = (page - 1) * LIMIT;
     const end = start + LIMIT;
@@ -19,12 +19,17 @@ export default function CategoryArticles({
         <section className="max-w-10xl relative mx-auto mb-32 px-28 pb-16 text-white">
             <div className="grid grid-cols-3 gap-16">
                 {articles.slice(start, end).map((article, index) => (
-                    <VerticalArticle
-                        article={article}
+                    <div
+                        className="animate-fade-in-up"
                         key={"category-article-" + article.slug.current + index}
-                        includeDescription
-                        includeReadMore
-                    />
+                        style={{ animationDelay: `${index * 100}ms` }}
+                    >
+                        <VerticalArticle
+                            article={article}
+                            includeDescription
+                            includeReadMore
+                        />
+                    </div>
                 ))}
             </div>
             <div className="absolute left-0 top-0 -z-10 mt-32 h-[calc(100%-8rem)] w-full bg-dark-green"></div>
