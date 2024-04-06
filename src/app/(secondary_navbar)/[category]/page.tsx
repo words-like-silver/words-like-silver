@@ -74,15 +74,36 @@ export default async function Category({
                     </div>
                 </div>
             </section>
-            <section className="max-w-10xl mb-32 px-32 mx-auto grid grid-cols-[1fr,1.75fr,1fr] items-center gap-16">
+            <section className="max-w-10xl mx-auto mb-32 grid grid-cols-[1fr,1.75fr,1fr] items-center gap-16 px-20">
                 {category.featuredArticles.map((article) => (
                     <VerticalArticle
                         article={article}
-                        key={article.slug.current}
+                        key={"featured-article-" + article.slug.current}
                         includeDescription
                     />
                 ))}
             </section>
+            <section className="max-w-10xl relative mx-auto mb-32 px-28 pb-16 text-white">
+                <div className="grid grid-cols-3 gap-16">
+                    {category.articles.map((article) => (
+                        <VerticalArticle
+                            article={article}
+                            key={"category-article-" + article.slug.current}
+                            includeDescription
+                            includeReadMore
+                        />
+                    ))}
+                </div>
+                <div className="absolute left-0 top-0 -z-10 mt-32 h-[calc(100%-8rem)] w-full bg-dark-green"></div>
+                <div className="mt-32 flex justify-center gap-4 text-3xl">
+                    <button className="font-sailing-club italic">first</button>
+                    <button>{"<-----"}</button>
+                    <div className="underline">1</div>
+                    <button>{"----->"}</button>
+                    <button className="font-sailing-club italic">last</button>
+                </div>
+            </section>
+            <section></section>
         </main>
     );
 }
