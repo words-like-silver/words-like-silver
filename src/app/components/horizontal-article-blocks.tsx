@@ -22,7 +22,7 @@ export default async function HorizontalArticleBlocks() {
             {articles.map((article, index) => (
                 <Link
                     href={`/articles/${article.slug.current}`}
-                    key={"horizontal-article-" + article._rev}
+                    key={"horizontal-article-" + article._id}
                     className={clsx(
                         "flex flex-1 border border-black",
                         index === 4 && "3xl:flex hidden",

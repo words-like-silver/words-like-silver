@@ -14,7 +14,7 @@ export default async function MoreArticles() {
                         includeDescription
                         includeCategory
                         article={article}
-                        key={article._rev}
+                        key={"more-articles" + article._id}
                     />
                 ))}
             </div>

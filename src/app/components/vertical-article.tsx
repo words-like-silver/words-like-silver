@@ -46,12 +46,9 @@ export default function VerticalArticle({
                 <p className="inline-block text-xl">{article.subhead}</p>
             )}
             {includeReadMore && (
-                <Link
-                    href={`/articles/${article.slug.current}`}
-                    className="mt-8 block text-center font-sailing-club text-3xl italic underline"
-                >
+                <div className="mt-8 block text-center font-sailing-club text-3xl italic underline">
                     read more
-                </Link>
+                </div>
             )}
         </Link>
     );

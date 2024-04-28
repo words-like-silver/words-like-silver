@@ -1,14 +1,15 @@
 import Link from "next/link";
 import { Article } from "../lib/cms/types";
 import { processSanityBlock } from "../lib/text/process-sanity-block";
+import Underline from "./svg/underline";
 
 export default function ArticleList({ articles }: { articles: Article[] }) {
     return (
         <ul>
-            {articles.map((article) => (
+            {articles.map((article, index) => (
                 <li
-                    className="my-4 border-b border-black px-4 pb-4 text-center text-2xl"
-                    key={article.slug.current}
+                    className="relative my-4 px-4 pb-4 text-center text-2xl"
+                    key={"article-list-" + article.slug.current + index}
                 >
                     <Link
                         href={`/articles/${article.slug.current}`}
@@ -17,6 +18,9 @@ export default function ArticleList({ articles }: { articles: Article[] }) {
                             __html: processSanityBlock(article.title[0]),
                         }}
                     ></Link>
+                    <div className="relative pt-4">
+                        <Underline />
+                    </div>
                 </li>
             ))}
         </ul>

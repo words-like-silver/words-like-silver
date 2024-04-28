@@ -5,10 +5,10 @@ export default async function Articles() {
     const articleSlugs = await getAllArticleSlugs();
     return (
         <div className="flex flex-col items-center py-32">
-            {articleSlugs.map((slug) => {
+            {articleSlugs.map((slug, index) => {
                 return (
                     <Link
-                        key={slug}
+                        key={"articles-" + slug + index}
                         href={"/articles/" + slug}
                         className="px-4 py-4 text-3xl text-black"
                     >

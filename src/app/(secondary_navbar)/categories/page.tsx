@@ -5,10 +5,10 @@ export default async function Categories() {
     const categorySlugs = await getAllCategorySlugs();
     return (
         <div className="flex flex-col items-center py-32">
-            {categorySlugs.map((slug) => {
+            {categorySlugs.map((slug, index) => {
                 return (
                     <Link
-                        key={slug}
+                        key={"category-" + slug + index}
                         href={"/" + slug}
                         className="px-4 py-4 text-3xl text-black"
                     >

@@ -27,7 +27,7 @@ export async function getArticleBySlug(slug: string) {
 
 export async function getNewArticles(limit: number) {
     return await get<Article>(
-        `*[_type == 'article'][0...${limit}]{title,slug,subhead,"categories":*[_type == "category" && references(^._id)]{slug,title},mainImage{asset->{url}}}|order(publishedAt desc)`
+        `*[_type == 'article'][0...${limit}]{_id,title,slug,subhead,"categories":*[_type == "category" && references(^._id)]{slug,title},mainImage{asset->{url}}}|order(publishedAt desc)`
     );
 }
 
@@ -38,14 +38,14 @@ export async function getArticlesByCategory(
 ) {
     console.log(category, start, limit);
     const categories = await get<Category>(
-        `*[_type=="category" && title == "${category}"]{articles[${start}...${limit}]->{ title,slug,mainImage{asset->{url}}}}|order(publishedAt desc)`
+        `*[_type=="category" && title == "${category}"]{articles[${start}...${limit}]->{_id,title,slug,mainImage{asset->{url}}}}|order(publishedAt desc)`
     );
     return categories.map((category) => category!.articles).flat();
 }
 
 export async function getFeaturedArticle() {
     const homepages = await get<Homepage>(
-        `*[_type=="homepage"]{featuredArticle->{title,slug,mainImage{asset->{url}}}}`
+        `*[_type=="homepage"]{featuredArticle->{_id,title,slug,mainImage{asset->{url}}}}`
     );
     return homepages.at(0)?.featuredArticle;
 }
@@ -59,14 +59,14 @@ export async function getFeaturedArticleSecondary() {
 
 export async function getHorizontalArticles() {
     const homepages = await get<Homepage>(
-        `*[_type == 'homepage']{topBarArticles[]->{title,slug,mainImage{asset->{url}}}}`
+        `*[_type == 'homepage']{topBarArticles[]->{_id,title,slug,mainImage{asset->{url}}}}`
     );
     return homepages.at(0)?.topBarArticles;
 }
 
 export async function getFeaturedArticleRow() {
     const homepages = await get<Homepage>(
-        `*[_type == 'homepage']{featuredArticleRow[]->{title,slug,mainImage{asset->{url}},"categories":*[_type == "category" && references(^._id)]{slug,title}}}`
+        `*[_type == 'homepage']{featuredArticleRow[]->{_id,title,slug,mainImage{asset->{url}},"categories":*[_type == "category" && references(^._id)]{slug,title}}}`
     );
     return homepages.at(0)?.featuredArticleRow;
 }
