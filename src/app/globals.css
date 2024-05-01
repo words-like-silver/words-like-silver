@@ -23,7 +23,8 @@ h2 {
     top: 0.125em;
     left: -0.05em;
     padding-block: 0.25em;
-    rotate: 1deg;
+    animation: highlight 0.25s ease both;
+    transform-origin: left;
 }
 .highlight-left,
 .highlight-right {
@@ -41,4 +42,13 @@ h2 {
     height: 100%;
     flex: 1;
     background-color: rgba(214, 144, 16, 0.3);
+}
+
+@keyframes highlight {
+    from {
+        transform: scaleX(0);
+    }
+    to {
+        transform: scaleX(1);
+    }
 }

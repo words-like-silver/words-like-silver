@@ -48,7 +48,7 @@ export default function Highlight({ text }: { text: string }) {
                 (line) =>
                     `<span class="highlight-span">\
 ${line.map((element) => element.outerHTML).join("")}\
-<div class="highlight-container">\
+<div class="highlight-container" style="animation-delay:${(Math.random() * 1).toFixed(1)}s; rotate: ${(Math.random() * 4 - 2).toFixed(2)}deg">\
 <div class="highlight-left"></div>\
 <div class="highlight-middle"></div>\
 <div class="highlight-right"></div>\
