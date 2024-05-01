@@ -19,12 +19,9 @@ export default function ArticleHeader({ article }: { article: Article }) {
                         </Link>
                     ))}
                 </div>
-                <h1
-                    className="my-8 text-balance px-8 text-center font-sailing-club text-6xl"
-                    dangerouslySetInnerHTML={{
-                        __html: processSanityBlock(article.title[0]),
-                    }}
-                ></h1>
+                <h1 className="my-8 text-balance px-8 text-center font-sailing-club text-6xl">
+                    {processSanityBlock(article.title[0])}
+                </h1>
                 <p className="text-balance text-center text-2xl">
                     {article.subhead}
                 </p>

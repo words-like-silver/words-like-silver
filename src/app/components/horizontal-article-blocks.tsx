@@ -25,7 +25,7 @@ export default async function HorizontalArticleBlocks() {
                     key={"horizontal-article-" + article._id}
                     className={clsx(
                         "flex flex-1 border border-black",
-                        index === 4 && "3xl:flex hidden",
+                        index === 4 && "hidden 3xl:flex",
                         index === 3 && "hidden 2xl:flex",
                         index === 2 && "hidden xl:flex",
                         index === 1 && "hidden lg:flex"
@@ -34,12 +34,9 @@ export default async function HorizontalArticleBlocks() {
                     <div className="relative aspect-square w-32">
                         <Image src={article.mainImage.asset.url} fill alt="" />
                     </div>
-                    <div
-                        className="mb-2 overflow-hidden px-4 pt-4"
-                        dangerouslySetInnerHTML={{
-                            __html: processSanityBlock(article.title[0]),
-                        }}
-                    ></div>
+                    <div className="mb-2 overflow-hidden px-4 pt-4">
+                        {processSanityBlock(article.title[0])}
+                    </div>
                 </Link>
             ))}
         </section>

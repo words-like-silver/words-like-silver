@@ -15,51 +15,36 @@ export default function TextBlock({
 
     if (body.style === "h2") {
         return (
-            <h2
-                className="text-center font-sailing-club text-5xl"
-                dangerouslySetInnerHTML={{
-                    __html: innerHtml,
-                }}
-            ></h2>
+            <h2 className="text-center font-sailing-club text-5xl">
+                {innerHtml}
+            </h2>
         );
     }
 
     if (body.style === "h3") {
         return (
-            <h2
-                className="text-center font-sailing-club text-4xl"
-                dangerouslySetInnerHTML={{
-                    __html: innerHtml,
-                }}
-            ></h2>
+            <h2 className="text-center font-sailing-club text-4xl">
+                {innerHtml}
+            </h2>
         );
     }
     if (body.style === "h4") {
         return (
-            <h2
-                className="text-center font-sailing-club text-3xl"
-                dangerouslySetInnerHTML={{
-                    __html: innerHtml,
-                }}
-            ></h2>
+            <h2 className="text-center font-sailing-club text-3xl">
+                {innerHtml}
+            </h2>
         );
     }
     if (body.style === "h5") {
         return (
-            <h2
-                className="text-center font-sailing-club text-2xl"
-                dangerouslySetInnerHTML={{
-                    __html: innerHtml,
-                }}
-            ></h2>
+            <h2 className="text-center font-sailing-club text-2xl">
+                {innerHtml}
+            </h2>
         );
     }
     return (
-        <p
-            className={clsx("text-2xl", options?.center && "text-center")}
-            dangerouslySetInnerHTML={{
-                __html: innerHtml,
-            }}
-        ></p>
+        <p className={clsx("text-2xl", options?.center && "text-center")}>
+            {innerHtml}
+        </p>
     );
 }

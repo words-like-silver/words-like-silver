@@ -14,12 +14,11 @@ export default function ArticleList({ articles }: { articles: Article[] }) {
                     <Link
                         href={`/articles/${article.slug.current}`}
                         className="block h-full w-full"
-                        dangerouslySetInnerHTML={{
-                            __html: processSanityBlock(article.title[0]),
-                        }}
-                    ></Link>
+                    >
+                        {processSanityBlock(article.title[0])}
+                    </Link>
                     <div className="relative pt-4">
-                        <Underline />
+                        <Underline className="w-full" />
                     </div>
                 </li>
             ))}

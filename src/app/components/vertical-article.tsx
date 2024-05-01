@@ -36,12 +36,9 @@ export default function VerticalArticle({
                     alt=""
                 />
             </div>
-            <div
-                className="py-8 text-center text-3xl underline"
-                dangerouslySetInnerHTML={{
-                    __html: processSanityBlock(article.title[0]),
-                }}
-            ></div>
+            <div className="py-8 text-center text-3xl underline">
+                {processSanityBlock(article.title[0])}
+            </div>
             {includeDescription && (
                 <p className="inline-block text-xl">{article.subhead}</p>
             )}
