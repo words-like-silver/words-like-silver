@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { debounce } from "../lib/helpers";
 
 export default function Highlight({ text }: { text: string }) {
     const words = text.split(" ");
@@ -15,9 +16,8 @@ export default function Highlight({ text }: { text: string }) {
             .join("")
     );
 
-    function getWordLines(parent: Element) {
+    function getWordLines(parent: Element, children: HTMLCollection) {
         const lines: Element[][] = [];
-        const children = parent.children;
 
         if (!children.length) return [[parent]];
 
@@ -58,55 +58,32 @@ ${line.map((element) => element.outerHTML).join("")}\
             .join("");
     }
 
-    function stripOutUnnecessaryHtml(element: Element) {
-        const strippedElement = element.cloneNode(true) as Element;
-
-        console.log({ strippedElement, children: strippedElement.children });
-
-        strippedElement
-            .getElementsByClassName("highlight-container")[0]
-            .remove();
-
-        const highlightParents =
-            strippedElement.getElementsByClassName("highlight-parent");
-
-        console.log({ strippedElement, children: strippedElement.children });
-
-        Array.from(highlightParents).forEach((parent) => {
-            const children = parent.children;
-            if (children.length) {
-                Array.from(children).forEach((child) =>
-                    strippedElement.append(child)
-                );
-                parent.remove();
-            }
-        });
-        console.log({ strippedElement, children: strippedElement.children });
-
-        return strippedElement;
-    }
-
     useEffect(() => {
         if (!allWordsRef.current) return;
 
-        const wordLines = getWordLines(allWordsRef.current);
+        const wordLines = getWordLines(
+            allWordsRef.current,
+            allWordsRef.current.children
+        );
         setHighlightHTML(wrapWordLines(wordLines));
 
-        // function resizeHandler() {
-        //     debounce(() => {
-        //         if (!allWordsRef.current) return;
-        //         console.log("running");
-        //         const strippedWordsRef = stripOutUnnecessaryHtml(
-        //             allWordsRef.current
-        //         );
-        //         const wordLines = getWordLines(strippedWordsRef);
-        //         setHighlightHTML(wrapWordLines(wordLines));
-        //     }, 750)();
-        // }
+        function resizeHandler() {
+            debounce(() => {
+                if (!allWordsRef.current) return;
 
-        // window.addEventListener("resize", resizeHandler);
-        //
-        // return () => window.removeEventListener("resize", resizeHandler);
+                const children =
+                    allWordsRef.current.getElementsByClassName(
+                        "highlight-parent"
+                    );
+
+                const wordLines = getWordLines(allWordsRef.current, children);
+                setHighlightHTML(wrapWordLines(wordLines));
+            }, 750)();
+        }
+
+        window.addEventListener("resize", resizeHandler);
+
+        return () => window.removeEventListener("resize", resizeHandler);
     }, []);
 
     return (
