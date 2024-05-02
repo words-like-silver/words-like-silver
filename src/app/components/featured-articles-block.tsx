@@ -13,7 +13,7 @@ export default async function FeaturedArticlesBlock() {
                     <VerticalArticle
                         includeCategory
                         article={article}
-                        key={index}
+                        key={"feature-articles-block-" + article._id + index}
                     />
                 ))}
             </div>
