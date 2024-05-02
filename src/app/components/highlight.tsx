@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { debounce } from "../lib/helpers";
+import { getWordLines } from "../lib/text/text-helpers";
 
 export default function Highlight({ text }: { text: string }) {
     const words = text.split(" ");
@@ -16,39 +17,13 @@ export default function Highlight({ text }: { text: string }) {
             .join("")
     );
 
-    function getWordLines(parent: Element, children: HTMLCollection) {
-        const lines: Element[][] = [];
-
-        if (!children.length) return [[parent]];
-
-        const { top: parentTop } = parent.getBoundingClientRect();
-        let currentDeltaTop = 0;
-        let lineIndex = 0;
-
-        Array.from(children).forEach((child) => {
-            const { top: childTop } = child.getBoundingClientRect();
-            const deltaTop = childTop - parentTop;
-
-            if (deltaTop > currentDeltaTop) {
-                lineIndex++;
-            }
-            if (Array.isArray(lines[lineIndex])) {
-                lines[lineIndex].push(child);
-            } else {
-                lines[lineIndex] = [child];
-            }
-            currentDeltaTop = deltaTop;
-        });
-        return lines;
-    }
-
     function wrapWordLines(lines: Element[][]) {
         return lines
             .map(
                 (line) =>
                     `<span class="highlight-span">\
 ${line.map((element) => element.outerHTML).join("")}\
-<div class="highlight-container" style="animation-delay:${(Math.random() * 1).toFixed(1)}s; rotate: ${(Math.random() * 4 - 2).toFixed(2)}deg">\
+<div class="highlight-container" style="animation-delay:${(Math.random() * 1).toFixed(1)}s; rotate: ${(Math.random() * 3 - 1.5).toFixed(2)}deg">\
 <div class="highlight-left"></div>\
 <div class="highlight-middle"></div>\
 <div class="highlight-right"></div>\
@@ -66,6 +41,11 @@ ${line.map((element) => element.outerHTML).join("")}\
             allWordsRef.current.children
         );
         setHighlightHTML(wrapWordLines(wordLines));
+        if (
+            allWordsRef.current.getElementsByClassName("highlight-parent")
+                .length <= 1
+        )
+            return;
 
         function resizeHandler() {
             debounce(() => {
@@ -78,7 +58,7 @@ ${line.map((element) => element.outerHTML).join("")}\
 
                 const wordLines = getWordLines(allWordsRef.current, children);
                 setHighlightHTML(wrapWordLines(wordLines));
-            }, 750)();
+            }, 1000)();
         }
 
         window.addEventListener("resize", resizeHandler);
