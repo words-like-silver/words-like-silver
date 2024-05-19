@@ -40,12 +40,11 @@ export async function generateMetadata({
         robots: "max-image-preview:large",
         openGraph: {
             title: category.title,
-            description: category.description,
+            description: category.description || "",
             siteName: "Words Like Silver",
             type: "website",
             url: `https://www.wordslikesilver.com/${params.category}`,
             locale: "en-US",
-            authors: "Grace Smith",
         },
     };
 }
@@ -61,7 +60,7 @@ export default async function Category({
     return (
         <main>
             <section className="mx-auto my-16 max-w-3xl">
-                <h1 className="my-8 text-balance bg-yellow-300 px-8 text-center font-sailing-club text-6xl">
+                <h1 className="mx-auto my-8 w-fit text-balance rounded-lg bg-yellow/30 px-24 text-center font-sailing-club text-6xl">
                     {category.title}
                 </h1>
                 <p className="text-2xl">{category.description}</p>
@@ -82,12 +81,14 @@ export default async function Category({
                     </div>
                 </div>
             </section>
-            <section className="max-w-10xl mx-auto mb-32 grid grid-cols-[1fr,1.75fr,1fr] items-center gap-16 px-20">
-                {category.featuredArticles.map((article) => (
+            <section className="mx-auto mb-32 grid max-w-10xl grid-cols-[1fr,1.75fr,1fr] items-center gap-16 px-20">
+                {category.featuredArticles?.length === 1 && <div></div>}
+                {category.featuredArticles?.map((article) => (
                     <VerticalArticle
                         article={article}
                         key={"featured-article-" + article.slug.current}
                         includeDescription
+                        textAlign="text-left"
                     />
                 ))}
             </section>
@@ -133,9 +134,9 @@ export default async function Category({
                     <div>twitter</div>
                 </div>
             </section>
-            <section className="mx-auto max-w-7xl mb-16 px-16 underline">
+            <section className="mx-auto mb-16 max-w-7xl px-16 underline">
                 <div className="flex items-center justify-around font-sailing-club lg:text-3xl">
-                    {navigationItems.map((navItem) => {
+                    {navigationItems?.map((navItem) => {
                         return (
                             <Link
                                 href={"/" + navItem.slug.current}

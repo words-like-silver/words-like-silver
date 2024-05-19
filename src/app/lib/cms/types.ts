@@ -30,8 +30,8 @@ export interface Category extends Document {
     title: string;
     articles: Article[];
     slug: Slug;
-    description: string;
-    featuredArticles: Article[];
+    description: string | null;
+    featuredArticles: Article[] | null;
 }
 
 export type Slug = {

@@ -31,7 +31,7 @@ h2 {
 .highlight-right {
     width: 1em;
     height: 100%;
-    background-color: rgba(214, 144, 16, 0.3);
+    @apply bg-yellow/30;
 }
 .highlight-left {
     border-radius: 50% 0 0 50%;
@@ -42,7 +42,7 @@ h2 {
 .highlight-middle {
     height: 100%;
     flex: 1;
-    background-color: rgba(214, 144, 16, 0.3);
+    @apply bg-yellow/30;
 }
 
 @keyframes highlight {

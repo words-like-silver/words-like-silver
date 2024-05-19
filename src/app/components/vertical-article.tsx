@@ -9,12 +9,16 @@ export default function VerticalArticle({
     includeDescription,
     includeReadMore,
     includeCategory,
+    textAlign = "text-center",
 }: {
-    article: Article;
+    article: Article | null;
     includeDescription?: boolean;
     includeReadMore?: boolean;
     includeCategory?: boolean;
+    textAlign?: string;
 }) {
+    if (!article) return null;
+
     return (
         <Link href={`/articles/${article.slug.current}`} className="block">
             {includeCategory && (
@@ -36,7 +40,7 @@ export default function VerticalArticle({
                     alt=""
                 />
             </div>
-            <div className="py-8 text-center text-3xl underline">
+            <div className={clsx("py-8 text-3xl underline", textAlign)}>
                 {processSanityBlock(article.title[0])}
             </div>
             {includeDescription && (

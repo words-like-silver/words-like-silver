@@ -8,18 +8,20 @@ import { useState } from "react";
 export default function CategoryArticles({
     articles,
 }: {
-    articles: Article[];
+    articles: Article[] | null;
 }) {
     const LIMIT = 9;
     const [page, setPage] = useState(1);
     const start = (page - 1) * LIMIT;
     const end = start + LIMIT;
 
+    if (!articles) return null;
+
     return (
         <section className="relative mb-16 pb-16 text-white">
-            <div className="max-w-10xl mx-auto px-28">
+            <div className="mx-auto max-w-10xl px-28">
                 <div className="grid grid-cols-3 gap-16">
-                    {articles.slice(start, end).map((article, index) => (
+                    {articles?.slice(start, end).map((article, index) => (
                         <div
                             className="animate-fade-in-up"
                             key={

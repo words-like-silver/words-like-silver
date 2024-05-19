@@ -29,6 +29,7 @@ const config: Config = {
             colors: {
                 beige: "#FAF8F1",
                 "dark-green": "#121903",
+                yellow: "rgba(214,144,16)",
             },
             aspectRatio: {
                 book: "0.65",
