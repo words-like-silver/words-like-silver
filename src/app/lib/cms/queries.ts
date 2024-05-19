@@ -84,7 +84,7 @@ export async function getAllCategorySlugs() {
 
 export async function getCategoryBySlug(slug: string) {
     const articles = await get<Category>(
-        `*[_type == 'category' && slug.current == '${slug}']{...,articles[]->{title,slug,subhead,mainImage{asset->{url}}}, featuredArticles[]->{title,slug,subhead,mainImage{asset->{url}}}}`
+        `*[_type == 'category' && slug.current == '${slug}']{...,articles[]->{title,slug,subhead,tags[]->{name},mainImage{asset->{url}}}, featuredArticles[]->{title,slug,subhead,mainImage{asset->{url}}}}`
     );
     return articles.at(0);
 }

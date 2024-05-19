@@ -56,6 +56,16 @@ export default async function Category({
 }) {
     const category = await getCategoryBySlug(params.category);
     const navigationItems = await getNavigationItems();
+    const tags: string[] = [];
+    category?.articles.forEach((article) => {
+        const articleTags = article.tags?.map((tag) => tag.name);
+        articleTags?.forEach((tag) => {
+            if (!tags.includes(tag)) {
+                tags.push(tag);
+            }
+        });
+    });
+
     if (!category) return redirect("/");
     return (
         <main>
@@ -92,7 +102,7 @@ export default async function Category({
                     />
                 ))}
             </section>
-            <CategoryArticles articles={category.articles} />
+            <CategoryArticles allArticles={category.articles} tags={tags} />
             <section className="mx-auto mb-8 max-w-xl space-y-8 text-2xl">
                 <p>
                     For more travel recommendations, be sure to follow

@@ -114,6 +114,7 @@ export interface Article extends Document {
     body: Body[] | null;
     sidebar: Body[] | null;
     headerType: HeaderType;
+    tags: Tag[] | null;
 }
 
 export interface Homepage extends Document {
@@ -123,4 +124,9 @@ export interface Homepage extends Document {
     topBarArticles: Article[];
     featuredArticleRow: Article[];
     featuredCategory: Category;
+}
+
+export interface Tag {
+    _type: "tag";
+    name: string;
 }
