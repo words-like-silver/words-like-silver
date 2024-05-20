@@ -16,15 +16,12 @@ export default function NavLink({
         <Link
             href={"/" + slug}
             className={clsx(
-                "relative px-4 text-center",
-                isActive && "underline",
-                !isActive &&
-                    "hover:underline hover:[text-decoration-color:grey]"
+                "relative mx-4 text-center hover:underline hover:[text-decoration-color:grey]"
             )}
         >
             {title}
             {isActive && (
-                <div className="animate-underline-appear absolute -bottom-0.5 left-0 h-[6px] w-full origin-right bg-beige"></div>
+                <div className="animate-underline-appear absolute -bottom-[0.5px] left-0 h-1 w-full origin-left bg-black"></div>
             )}
         </Link>
     );

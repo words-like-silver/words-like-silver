@@ -51,10 +51,10 @@ const config: Config = {
                 },
                 "underline-appear": {
                     from: {
-                        transform: "scaleX(1)",
+                        transform: "scaleX(0)",
                     },
                     to: {
-                        transform: "scaleX(0)",
+                        transform: "scaleX(1)",
                     },
                 },
             },

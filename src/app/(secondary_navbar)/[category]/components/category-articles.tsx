@@ -26,13 +26,13 @@ export default function CategoryArticles({
             setArticles(allArticles);
             return;
         }
-        const filteredArticles = articles.filter((article) => {
-            const tagNames = article.tags?.map((tag) => tag.name);
-            return tagNames?.includes(tag);
-        });
+        const filteredArticles =
+            allArticles?.filter((article) => {
+                const tagNames = article.tags?.map((tag) => tag.name);
+                return tagNames?.includes(tag);
+            }) || [];
         setArticles(filteredArticles);
     };
-    //TODO: Add higlight to active tag
     return (
         <section className="relative mb-16 pb-16">
             <section className="mx-auto mb-16 max-w-7xl px-16">
@@ -40,10 +40,7 @@ export default function CategoryArticles({
                     {tags?.length && (
                         <button
                             className={clsx(
-                                "relative px-4 text-center",
-                                activeTag === "" && "underline",
-                                activeTag !== "" &&
-                                    "hover:underline hover:[text-decoration-color:grey]"
+                                "relative mx-4 text-center hover:underline hover:[text-decoration-color:grey]"
                             )}
                             key={"tag all"}
                             onClick={() => {
@@ -53,7 +50,7 @@ export default function CategoryArticles({
                         >
                             ALL
                             {activeTag === "" && (
-                                <div className="animate-underline-appear absolute bottom-0 left-0 h-[5px] w-full origin-right bg-beige"></div>
+                                <div className="animate-underline-appear absolute bottom-0.5 left-0 h-[3px] w-full origin-left bg-black"></div>
                             )}
                         </button>
                     )}
@@ -62,10 +59,7 @@ export default function CategoryArticles({
                             tag && (
                                 <button
                                     className={clsx(
-                                        "relative px-4 text-center",
-                                        activeTag === tag && "underline",
-                                        activeTag !== tag &&
-                                            "hover:underline hover:[text-decoration-color:grey]"
+                                        "relative mx-4 text-center hover:underline hover:[text-decoration-color:grey]"
                                     )}
                                     key={"tag" + tag}
                                     onClick={() => {
@@ -75,7 +69,7 @@ export default function CategoryArticles({
                                 >
                                     {tag.toUpperCase()}
                                     {activeTag === tag && (
-                                        <div className="animate-underline-appear absolute bottom-0 left-0 h-[5px] w-full origin-right bg-beige"></div>
+                                        <div className="animate-underline-appear absolute bottom-0.5 left-0 h-[3px] w-full origin-left bg-black"></div>
                                     )}
                                 </button>
                             )

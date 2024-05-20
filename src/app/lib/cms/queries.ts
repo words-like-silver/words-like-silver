@@ -1,6 +1,7 @@
 "use server";
 import "server-only";
 import { cmsUrl } from "../constants";
+import { getTextFromBlock } from "../text/process-sanity-block";
 import {
     Article,
     Category,
@@ -36,7 +37,6 @@ export async function getArticlesByCategory(
     start = 0,
     limit: number
 ) {
-    console.log(category, start, limit);
     const categories = await get<Category>(
         `*[_type=="category" && title == "${category}"]{articles[${start}...${limit}]->{_id,title,slug,mainImage{asset->{url}}}}|order(publishedAt desc)`
     );
@@ -83,10 +83,20 @@ export async function getAllCategorySlugs() {
 }
 
 export async function getCategoryBySlug(slug: string) {
-    const articles = await get<Category>(
+    const categories = await get<Category>(
         `*[_type == 'category' && slug.current == '${slug}']{...,articles[]->{title,slug,subhead,tags[]->{name},mainImage{asset->{url}}}, featuredArticles[]->{title,slug,subhead,mainImage{asset->{url}}}}`
     );
-    return articles.at(0);
+    return categories.at(0);
+}
+
+export async function getAllArticles() {
+    const articles = await get<Article>(
+        `*[_type == 'article']{title,subhead,slug,mainImage{asset->{url}}}`
+    );
+    return articles.map((article) => ({
+        ...article,
+        titleText: getTextFromBlock(article.title[0]),
+    }));
 }
 
 async function get<T>(query: string) {

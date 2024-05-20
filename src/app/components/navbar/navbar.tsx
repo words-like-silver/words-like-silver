@@ -3,6 +3,7 @@ import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 import NavLink from "./components/nav-link";
+import SearchBar from "./components/search-bar";
 
 export default async function Navbar({
     secondary,
@@ -13,16 +14,10 @@ export default async function Navbar({
 }) {
     const navigationItems = await getNavigationItems();
     const halfOfNumNavItems = Math.floor(navigationItems.length / 2);
-    //TODO: show active navigation tab
     return (
         <>
             <nav className="sticky top-0 z-20 flex border-b border-black bg-beige font-sailing-club lg:min-h-[145px] lg:py-4">
-                {!hideSearchBar && (
-                    <div className="hidden w-72 flex-col items-center justify-center px-8 font-frys-baskerville lg:flex">
-                        <input className="h-10 w-full rounded-xl border-2 border-black bg-beige px-2" />
-                    </div>
-                )}
-
+                {!hideSearchBar && <SearchBar />}
                 <div
                     className={clsx(
                         "flex-1 px-16 lg:text-4xl",
