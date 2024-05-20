@@ -1,7 +1,8 @@
+import { getNavigationItems } from "@/app/lib/cms/queries";
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
-import { getNavigationItems } from "../lib/cms/queries";
+import NavLink from "./components/nav-link";
 
 export default async function Navbar({
     secondary,
@@ -40,13 +41,11 @@ export default async function Navbar({
                             .slice(0, halfOfNumNavItems + 1)
                             .map((navItem) => {
                                 return (
-                                    <Link
-                                        href={"/" + navItem.slug.current}
-                                        className="px-4 text-center"
-                                        key={navItem.slug.current}
-                                    >
-                                        {navItem.title}
-                                    </Link>
+                                    <NavLink
+                                        slug={navItem.slug.current}
+                                        title={navItem.title}
+                                        key={"navitem" + navItem.slug.current}
+                                    />
                                 );
                             })}
                     </div>
@@ -75,13 +74,11 @@ export default async function Navbar({
                             .slice(halfOfNumNavItems + 1)
                             .map((navItem) => {
                                 return (
-                                    <Link
-                                        href={"/" + navItem.slug.current}
-                                        className="px-4 text-center"
-                                        key={navItem.slug.current}
-                                    >
-                                        {navItem.title}
-                                    </Link>
+                                    <NavLink
+                                        slug={navItem.slug.current}
+                                        title={navItem.title}
+                                        key={"navitem" + navItem.slug.current}
+                                    />
                                 );
                             })}
                     </div>

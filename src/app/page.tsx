@@ -6,7 +6,7 @@ import FeaturedArticlesBlock from "./components/featured-articles-block";
 import Footer from "./components/footer";
 import HorizontalArticleBlocks from "./components/horizontal-article-blocks";
 import MoreArticles from "./components/more-articles";
-import Navbar from "./components/navbar";
+import Navbar from "./components/navbar/navbar";
 import NewArticleList from "./components/new-articles-list";
 import Sidebar from "./components/sidebar";
 import {
