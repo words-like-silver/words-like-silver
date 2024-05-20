@@ -15,7 +15,7 @@ export default function TextBlock({
 
     if (body.style === "h2") {
         return (
-            <h2 className="text-center font-sailing-club text-5xl">
+            <h2 className="mt-8 text-center font-sailing-club text-5xl">
                 {innerHtml}
             </h2>
         );
@@ -23,23 +23,23 @@ export default function TextBlock({
 
     if (body.style === "h3") {
         return (
-            <h2 className="text-center font-sailing-club text-4xl">
+            <h3 className="mt-8 text-center font-sailing-club text-4xl">
                 {innerHtml}
-            </h2>
+            </h3>
         );
     }
     if (body.style === "h4") {
         return (
-            <h2 className="text-center font-sailing-club text-3xl">
+            <h4 className="mt-8 text-center font-sailing-club text-3xl">
                 {innerHtml}
-            </h2>
+            </h4>
         );
     }
     if (body.style === "h5") {
         return (
-            <h2 className="text-center font-sailing-club text-2xl">
+            <h5 className="mt-8 text-center font-sailing-club text-2xl">
                 {innerHtml}
-            </h2>
+            </h5>
         );
     }
     return (

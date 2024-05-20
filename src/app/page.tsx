@@ -39,14 +39,13 @@ export default async function Home() {
                     </section>
                     <FeaturedArticlesBlock />
                     <BookCarousel />
-                    <section className="mx-auto mt-16 max-w-7xl grid-cols-[2fr,1.25fr] gap-16 px-4 lg:grid">
+                    <section className="mx-auto mt-16 max-w-7xl gap-16 px-4 lg:flex">
                         <FeatureArticle
                             background
                             article={featuredArticleSecondary}
                         />
-                        <div className="mt-16 lg:mt-0">
-                            <CategoryArticleList />
-                        </div>
+                        <div className="mt-16 lg:hidden"></div>
+                        <CategoryArticleList />
                     </section>
                 </div>
                 <MoreArticles />

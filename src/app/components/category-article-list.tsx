@@ -3,7 +3,7 @@ import { getFeaturedCategory } from "../lib/cms/queries";
 import ArticleList from "./article-list";
 
 export default async function CategoryArticleList() {
-    const featuredCategory = await getFeaturedCategory(6);
+    const featuredCategory = await getFeaturedCategory(4);
     return (
         <div>
             <h2 className="mb-8 text-center text-4xl">
