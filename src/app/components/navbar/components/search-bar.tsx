@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useState, useTransition } from "react";
 import MagnifyingGlass from "../../svg/magnifying-glass";
 import Throbber from "../../svg/throbber";
+import XIcon from "../../svg/x-icon";
 import { searchArticles } from "../actions";
 
 export default function SearchBar() {
@@ -55,10 +56,21 @@ export default function SearchBar() {
                 </button>
                 {showSearchResults && (
                     <div className="absolute bottom-0 top-10 h-fit w-80 border border-black bg-beige">
-                        <div className="border-b border-black py-1 pl-4 pr-6 font-sailing-club text-xl">
-                            Search Results
+                        <div className="flex items-center justify-between border-b border-black px-4 py-1 font-sailing-club text-xl">
+                            <div>Search Results ({articles.length})</div>
+                            <button
+                                aria-label="close search results"
+                                onClick={() => setShowSearchResults(false)}
+                            >
+                                <XIcon className="h-4 w-4" />
+                            </button>
                         </div>
                         <div className="max-h-[500px] divide-y divide-black overflow-auto">
+                            {articles.length === 0 && (
+                                <div className="px-4 py-6">
+                                    No results found
+                                </div>
+                            )}
                             {articles.map((article) => (
                                 <Link
                                     key={"search-result" + article.item.slug}
