@@ -12,6 +12,7 @@ export default async function Navbar({
 }) {
     const navigationItems = await getNavigationItems();
     const halfOfNumNavItems = Math.floor(navigationItems.length / 2);
+    //TODO: show active navigation tab
     return (
         <>
             <nav className="sticky top-0 z-20 flex border-b border-black bg-beige font-sailing-club lg:min-h-[145px] lg:py-4">

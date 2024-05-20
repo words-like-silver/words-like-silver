@@ -36,6 +36,7 @@ const config: Config = {
             },
             animation: {
                 "fade-in-up": "fade-in-up 0.5s ease-in-out both",
+                "underline-appear": "underline-appear 0.35s ease both",
             },
             keyframes: {
                 "fade-in-up": {
@@ -46,6 +47,14 @@ const config: Config = {
                     "100%": {
                         opacity: "1",
                         transform: "translateY(0)",
+                    },
+                },
+                "underline-appear": {
+                    from: {
+                        transform: "scaleX(1)",
+                    },
+                    to: {
+                        transform: "scaleX(0)",
                     },
                 },
             },
