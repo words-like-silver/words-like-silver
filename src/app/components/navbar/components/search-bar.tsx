@@ -33,7 +33,7 @@ export default function SearchBar() {
                     name="query"
                     type="text"
                     className="h-8 w-56 rounded-xl border-2 border-black bg-beige px-2 pr-8"
-                    // onBlur={() => setShowSearchResults(false)}
+                    onBlur={() => setShowSearchResults(false)}
                     onFocus={() => {
                         if (articles.length > 0) {
                             setShowSearchResults(true);
