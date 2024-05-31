@@ -53,7 +53,7 @@ export default function BookCarousel() {
     };
 
     return (
-        <section className="my-8">
+        <section className="my-16">
             <h2 className="mb-16 text-center text-3xl">RECENTLY READ</h2>
             <div
                 className="relative mx-auto flex w-fit items-center justify-center overflow-visible"
