@@ -53,10 +53,10 @@ export default function BookCarousel() {
     };
 
     return (
-        <section className="my-16">
+        <section className="overflow-hidden py-16">
             <h2 className="mb-16 text-center text-3xl">RECENTLY READ</h2>
             <div
-                className="relative mx-auto flex w-fit items-center justify-center overflow-visible"
+                className="relative ml-[50%] flex w-fit -translate-x-1/2 items-center justify-center overflow-visible"
                 onMouseLeave={() => {
                     handleMouseLeave();
                 }}
@@ -64,7 +64,7 @@ export default function BookCarousel() {
                 {/* <div className="pointer-events-none absolute z-10 h-full w-full bg-gradient-to-r from-beige via-transparent to-beige"></div> */}
                 {Array.from({ length: NUM_BOOKS }).map((_, index) => (
                     <Link
-                        className="relative aspect-book w-32 transition-transform"
+                        className="relative aspect-book w-32 lg:w-44 transition-transform"
                         key={index}
                         onMouseOver={() => handleMouseOver(index)}
                         style={{
