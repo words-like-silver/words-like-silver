@@ -25,8 +25,8 @@ export default async function HorizontalArticleBlocks() {
                     key={"horizontal-article-" + article._id}
                     className={clsx(
                         "flex flex-1 border border-black",
-                        index === 3 && "hidden 2xl:flex",
-                        index === 2 && "hidden xl:flex",
+                        index === 3 && "hidden 3xl:flex",
+                        index === 2 && "hidden 2xl:flex",
                         index === 1 && "hidden lg:flex"
                     )}
                 >
