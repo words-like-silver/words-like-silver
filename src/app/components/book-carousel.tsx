@@ -63,8 +63,8 @@ export default function BookCarousel() {
         const divWidth = rect.width;
         const cursorPosition = e.clientX - rect.x;
         const cursorPositionPercentage = (cursorPosition / divWidth) * 100;
-        if (cursorPositionPercentage < 10) setCursorPositionPercentage(10);
-        else if (cursorPositionPercentage > 90) setCursorPositionPercentage(90);
+        if (cursorPositionPercentage < 20) setCursorPositionPercentage(20);
+        else if (cursorPositionPercentage > 80) setCursorPositionPercentage(80);
         else setCursorPositionPercentage(cursorPositionPercentage);
     };
 
@@ -77,7 +77,7 @@ export default function BookCarousel() {
                 className="pointer-events-none absolute left-0 top-0 z-10 h-full w-full"
                 ref={gradientRef}
                 style={{
-                    backgroundImage: `linear-gradient(to right, #FAF8F1 0%, transparent ${cursorPositionPercentage - 7}%, transparent ${cursorPositionPercentage}%, transparent ${cursorPositionPercentage + 7}%, #FAF8F1 100%)`,
+                    backgroundImage: `linear-gradient(to right, #FAF8F1 0%, transparent ${cursorPositionPercentage - 15}%, transparent ${cursorPositionPercentage}%, transparent ${cursorPositionPercentage + 15}%, #FAF8F1 100%)`,
                 }}
             ></div>
             <div

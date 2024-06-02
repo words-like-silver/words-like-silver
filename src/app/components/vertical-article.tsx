@@ -18,6 +18,7 @@ export default function VerticalArticle({
     textAlign?: string;
 }) {
     if (!article) return null;
+    console.log({ headerType: article.headerType });
 
     return (
         <Link href={`/articles/${article.slug.current}`} className="block">
@@ -32,7 +33,9 @@ export default function VerticalArticle({
                         "Uncategorized"}
                 </h3>
             )}
-            <div className="relative mx-auto aspect-square h-64 lg:h-auto lg:w-full">
+            <div
+                className={`relative mx-auto ${article.headerType === "book" ? "aspect-book" : "aspect-square"} h-64 lg:h-auto lg:w-full`}
+            >
                 <Image
                     src={article.mainImage.asset.url}
                     fill
