@@ -61,7 +61,7 @@ export async function getFeaturedArticleSecondary() {
 
 export async function getHorizontalArticles() {
     const homepages = await get<Homepage>(
-        `*[_type == 'homepage']{topBarArticles[]->{_id,title,slug,mainImage{asset->{url}}}}`
+        `*[_type == 'homepage']{topBarArticles[]->{_id,title,slug,headerType,mainImage{asset->{url}}}}`
     );
     return homepages.at(0)?.topBarArticles;
 }
