@@ -3,10 +3,6 @@ export default function Sidebar() {
         <section className="absolute hidden w-72 text-2xl lg:block">
             <div className="flex flex-col items-center bg-beige px-8 pb-6 text-xl ">
                 <div>Email insta twitter</div>
-                <h2 className="mt-6 text-3xl">SUBSCRIBE</h2>
-                <p className="mt-4 border border-black p-4 text-center text-2xl">
-                    Curated reflections on books, travel, style, arts, and more.
-                </p>
                 <div className="mt-6 font-sailing-club italic underline">
                     newsletters
                 </div>
