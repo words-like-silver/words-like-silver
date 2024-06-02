@@ -93,7 +93,7 @@ export default function BookCarousel() {
                         key={index}
                         onMouseOver={() => handleMouseOver(index)}
                         style={{
-                            transform: `scale(${Number(scales[index]) * (selectedIndex === index ? 1.2 : 1)}) ${selectedIndex === index ? "rotate(5deg)" : ""}`,
+                            transform: `scale(${Number(scales[index]) * (selectedIndex === index ? 1.2 : 1)}) ${selectedIndex === index ? (index < Math.floor(NUM_BOOKS / 2) ? "rotate(-5deg)" : index > Math.floor(NUM_BOOKS / 2) ? "rotate(5deg)" : "") : ""}`,
                             ...(selectedIndex === index && { zIndex: 1 }),
                         }}
                         href={`/articles/${"test"}`}
