@@ -28,7 +28,7 @@ export async function getArticleBySlug(slug: string) {
 
 export async function getNewArticles(limit: number) {
     return await get<Article>(
-        `*[_type == 'article'][0...${limit}]{_id,title,slug,subhead,"categories":*[_type == "category" && references(^._id)]{slug,title},mainImage{asset->{url}}}|order(publishedAt desc)`
+        `*[_type == 'article'][0...${limit}]{_id,title,slug,subhead,headerType,"categories":*[_type == "category" && references(^._id)]{slug,title},mainImage{asset->{url}}}|order(publishedAt desc)`
     );
 }
 
@@ -38,7 +38,7 @@ export async function getArticlesByCategory(
     limit: number
 ) {
     const categories = await get<Category>(
-        `*[_type=="category" && title == "${category}"]{articles[${start}...${limit}]->{_id,title,slug,mainImage{asset->{url}}}}|order(publishedAt desc)`
+        `*[_type=="category" && title == "${category}"]{articles[${start}...${limit}]->{_id,title,headerType,slug,mainImage{asset->{url}}}}|order(publishedAt desc)`
     );
     return categories.map((category) => category!.articles).flat();
 }
@@ -66,14 +66,14 @@ export async function getHorizontalArticles() {
 
 export async function getFeaturedArticleRow() {
     const homepages = await get<Homepage>(
-        `*[_type == 'homepage']{featuredArticleRow[]->{_id,title,slug,mainImage{asset->{url}},"categories":*[_type == "category" && references(^._id)]{slug,title}}}`
+        `*[_type == 'homepage']{featuredArticleRow[]->{_id,title,slug,headerType,mainImage{asset->{url}},"categories":*[_type == "category" && references(^._id)]{slug,title}}}`
     );
     return homepages.at(0)?.featuredArticleRow;
 }
 
 export async function getFeaturedCategory(limit: number) {
     const homepages = await get<Homepage>(
-        `*[_type=="homepage"]{featuredCategory->{...,articles[0...${limit}]->{title,slug,mainImage{asset->{url}}}}}`
+        `*[_type=="homepage"]{featuredCategory->{...,articles[0...${limit}]->{title,slug,headerType,mainImage{asset->{url}}}}}`
     );
     return homepages.at(0)?.featuredCategory;
 }
@@ -84,14 +84,14 @@ export async function getAllCategorySlugs() {
 
 export async function getCategoryBySlug(slug: string) {
     const categories = await get<Category>(
-        `*[_type == 'category' && slug.current == '${slug}']{...,articles[]->{title,slug,subhead,tags[]->{name},mainImage{asset->{url}}}, featuredArticles[]->{title,slug,subhead,mainImage{asset->{url}}}}`
+        `*[_type == 'category' && slug.current == '${slug}']{...,articles[]->{title,slug,subhead,headerType,tags[]->{name},mainImage{asset->{url}}}, featuredArticles[]->{title,slug,subhead,headerType,mainImage{asset->{url}}}}`
     );
     return categories.at(0);
 }
 
 export async function getAllArticles() {
     const articles = await get<Article>(
-        `*[_type == 'article']{title,subhead,slug,mainImage{asset->{url}}}`
+        `*[_type == 'article']{title,subhead,slug,headerType,mainImage{asset->{url}}}`
     );
     return articles.map((article) => ({
         ...article,

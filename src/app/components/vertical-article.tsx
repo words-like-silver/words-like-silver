@@ -34,7 +34,7 @@ export default function VerticalArticle({
                 </h3>
             )}
             <div
-                className={`relative mx-auto ${article.headerType === "book" ? "aspect-book" : "aspect-square"} h-64 lg:h-auto lg:w-full`}
+                className={`relative mx-auto ${article.headerType === "book" ? "aspect-book" : "aspect-square"} h-64 lg:h-96 lg:w-auto`}
             >
                 <Image
                     src={article.mainImage.asset.url}
