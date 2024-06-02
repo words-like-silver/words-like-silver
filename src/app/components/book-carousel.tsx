@@ -77,7 +77,7 @@ export default function BookCarousel() {
                 className="pointer-events-none absolute left-0 top-0 z-10 h-full w-full"
                 ref={gradientRef}
                 style={{
-                    backgroundImage: `linear-gradient(to right, #FAF8F1 ${cursorPositionPercentage < 15 ? "0" : "5"}%, transparent ${cursorPositionPercentage - 5}%, transparent ${cursorPositionPercentage}%, transparent ${cursorPositionPercentage + 5}%, #FAF8F1 ${cursorPositionPercentage > 85 ? "100" : "95"}%)`,
+                    backgroundImage: `linear-gradient(to right, #FAF8F1 0%, transparent ${cursorPositionPercentage - 7}%, transparent ${cursorPositionPercentage}%, transparent ${cursorPositionPercentage + 7}%, #FAF8F1 100%)`,
                 }}
             ></div>
             <div
