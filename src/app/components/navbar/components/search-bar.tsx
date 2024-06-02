@@ -33,7 +33,7 @@ export default function SearchBar() {
                 <input
                     name="query"
                     type="text"
-                    className="h-8 w-56 rounded-xl border-2 border-black bg-beige px-2 pr-8"
+                    className="h-8 w-48 rounded-xl border-2 border-black bg-beige px-2 pr-8"
                     onFocus={() => {
                         if (articles.length > 0) {
                             setShowSearchResults(true);

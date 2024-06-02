@@ -1,7 +1,7 @@
 export default function Sidebar() {
     return (
         <section className="absolute hidden w-72 text-2xl lg:block">
-            <div className="flex flex-col items-center border-b border-b-black bg-beige px-8 pb-6 text-xl ">
+            <div className="flex flex-col items-center bg-beige px-8 pb-6 text-xl ">
                 <div>Email insta twitter</div>
                 <h2 className="mt-6 text-3xl">SUBSCRIBE</h2>
                 <p className="mt-4 border border-black p-4 text-center text-2xl">
@@ -14,7 +14,6 @@ export default function Sidebar() {
                     RSS feed
                 </div>
             </div>
-            <div className="sticky top-[550px] z-20 hidden h-px -translate-y-px bg-beige lg:block xl:top-[530px]"></div>
 
             <div className="px-8">
                 <h2 className="text-center text-3xl">SUPPORT</h2>

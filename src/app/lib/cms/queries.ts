@@ -11,7 +11,9 @@ import {
 } from "./types";
 
 export async function getNavigationItems() {
-    return await get<NavigationItem>("*[_type == 'navigation_item']");
+    return await get<NavigationItem>(
+        "*[_type == 'navigation_item']|order(sort_order asc)"
+    );
 }
 
 export async function getAllArticleSlugs() {

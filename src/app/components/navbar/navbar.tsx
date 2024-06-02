@@ -16,11 +16,11 @@ export default async function Navbar({
     const halfOfNumNavItems = Math.floor(navigationItems.length / 2);
     return (
         <>
-            <nav className="sticky top-0 z-20 flex border-b border-black bg-beige font-sailing-club lg:min-h-[145px] lg:py-4">
+            <nav className="sticky top-0 z-20 flex bg-beige font-sailing-club lg:min-h-[145px] lg:py-4">
                 {!hideSearchBar && <SearchBar />}
                 <div
                     className={clsx(
-                        "flex-1 px-16 lg:text-4xl",
+                        "flex-1 lg:text-3xl",
                         secondary
                             ? "flex justify-around"
                             : "grid-cols-[2fr,1fr,2fr] lg:grid"
@@ -47,7 +47,7 @@ export default async function Navbar({
                     <Link
                         href="/"
                         className={clsx(
-                            "flex items-center py-2 lg:py-0",
+                            "mx-6 flex items-center py-2 lg:py-0",
                             secondary && "order-1 w-80"
                         )}
                     >
@@ -79,7 +79,6 @@ export default async function Navbar({
                     </div>
                 </div>
             </nav>
-            <div className="sticky top-36 z-20 hidden h-px -translate-y-px bg-beige lg:block"></div>
         </>
     );
 }

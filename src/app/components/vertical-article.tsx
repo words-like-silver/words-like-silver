@@ -18,7 +18,6 @@ export default function VerticalArticle({
     textAlign?: string;
 }) {
     if (!article) return null;
-    console.log({ headerType: article.headerType });
 
     return (
         <Link href={`/articles/${article.slug.current}`} className="block">
