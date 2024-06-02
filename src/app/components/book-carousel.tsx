@@ -1,12 +1,12 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { MouseEvent, useMemo, useRef, useState } from "react";
 
 export default function BookCarousel() {
     const NUM_BOOKS = 11;
-    const MIN_SCALE = 0.75;
-    const MAX_SCALE = 1;
+    const MIN_SCALE = 0.65;
+    const MAX_SCALE = 1.1;
     const DISTANCE_TO_SMALLEST = 3;
 
     const generateScales = (selectedIndex: number) => {
@@ -50,21 +50,46 @@ export default function BookCarousel() {
     const handleMouseLeave = () => {
         setSelectedIndex(Math.floor(NUM_BOOKS / 2));
         setScales(defaultScales);
+        setCursorPositionPercentage(50);
+    };
+
+    const gradientRef = useRef<HTMLDivElement>(null);
+    const [cursorPositionPercentage, setCursorPositionPercentage] =
+        useState(50);
+
+    const handleMouseMove = (e: MouseEvent) => {
+        const rect = gradientRef.current?.getBoundingClientRect();
+        if (!rect) return;
+        const divWidth = rect.width;
+        const cursorPosition = e.clientX - rect.x;
+        const cursorPositionPercentage = (cursorPosition / divWidth) * 100;
+        if (cursorPositionPercentage < 10) setCursorPositionPercentage(10);
+        else if (cursorPositionPercentage > 90) setCursorPositionPercentage(90);
+        else setCursorPositionPercentage(cursorPositionPercentage);
     };
 
     return (
-        <section className="overflow-hidden py-16">
-            <h2 className="mb-16 text-center text-3xl">RECENTLY READ</h2>
+        <section className="relative overflow-hidden py-16">
+            <h2 className="relative z-20 mb-16 text-center text-3xl">
+                RECENTLY READ
+            </h2>
             <div
-                className="relative ml-[50%] flex w-fit -translate-x-1/2 items-center justify-center overflow-visible"
+                className="pointer-events-none absolute left-0 top-0 z-10 h-full w-full"
+                ref={gradientRef}
+                style={{
+                    backgroundImage: `linear-gradient(to right, #FAF8F1 ${cursorPositionPercentage < 15 ? "0" : "5"}%, transparent ${cursorPositionPercentage - 5}%, transparent ${cursorPositionPercentage}%, transparent ${cursorPositionPercentage + 5}%, #FAF8F1 ${cursorPositionPercentage > 85 ? "100" : "95"}%)`,
+                }}
+            ></div>
+            <div
+                className="ml-[50%] flex w-fit -translate-x-1/2 items-center justify-center overflow-visible"
                 onMouseLeave={() => {
                     handleMouseLeave();
                 }}
+                onMouseMove={handleMouseMove}
             >
-                {/* <div className="pointer-events-none absolute z-10 h-full w-full bg-gradient-to-r from-beige via-transparent to-beige"></div> */}
                 {Array.from({ length: NUM_BOOKS }).map((_, index) => (
                     <Link
-                        className="relative aspect-book w-32 lg:w-44 transition-transform"
+                        className="relative aspect-book w-32 transition-transform lg:w-44"
                         key={index}
                         onMouseOver={() => handleMouseOver(index)}
                         style={{
