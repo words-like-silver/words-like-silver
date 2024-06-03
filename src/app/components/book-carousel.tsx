@@ -1,40 +1,45 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { MouseEvent, useMemo, useRef, useState } from "react";
+import { MouseEvent, useCallback, useMemo, useRef, useState } from "react";
+import { Article } from "../lib/cms/types";
 
-export default function BookCarousel() {
-    const NUM_BOOKS = 11;
+export default function BookCarousel({ books }: { books: Article[] }) {
+    const NUM_BOOKS = books.length;
     const MIN_SCALE = 0.65;
     const MAX_SCALE = 1.1;
     const DISTANCE_TO_SMALLEST = 3;
 
-    const generateScales = (selectedIndex: number) => {
-        const incrementAmount = (MAX_SCALE - MIN_SCALE) / DISTANCE_TO_SMALLEST;
+    const generateScales = useCallback(
+        (selectedIndex: number) => {
+            const incrementAmount =
+                (MAX_SCALE - MIN_SCALE) / DISTANCE_TO_SMALLEST;
 
-        let current_scale =
-            selectedIndex < DISTANCE_TO_SMALLEST
-                ? MAX_SCALE - (selectedIndex + 1) * incrementAmount
-                : MIN_SCALE;
-        return Array.from({ length: NUM_BOOKS }).map((_, index) => {
-            if (Math.abs(selectedIndex - index) < DISTANCE_TO_SMALLEST) {
-                if (index === selectedIndex) {
-                    current_scale = MAX_SCALE;
-                } else if (index < selectedIndex) {
-                    current_scale += incrementAmount;
-                } else if (index > selectedIndex) {
-                    current_scale -= incrementAmount;
+            let current_scale =
+                selectedIndex < DISTANCE_TO_SMALLEST
+                    ? MAX_SCALE - (selectedIndex + 1) * incrementAmount
+                    : MIN_SCALE;
+            return Array.from({ length: NUM_BOOKS }).map((_, index) => {
+                if (Math.abs(selectedIndex - index) < DISTANCE_TO_SMALLEST) {
+                    if (index === selectedIndex) {
+                        current_scale = MAX_SCALE;
+                    } else if (index < selectedIndex) {
+                        current_scale += incrementAmount;
+                    } else if (index > selectedIndex) {
+                        current_scale -= incrementAmount;
+                    }
+                    return current_scale.toFixed(2);
+                } else {
+                    return MIN_SCALE.toFixed(2);
                 }
-                return current_scale.toFixed(2);
-            } else {
-                return MIN_SCALE.toFixed(2);
-            }
-        });
-    };
+            });
+        },
+        [NUM_BOOKS]
+    );
 
     const defaultScales = useMemo(
         () => generateScales(Math.floor(NUM_BOOKS / 2)),
-        []
+        [NUM_BOOKS, generateScales]
     );
 
     const [scales, setScales] = useState(defaultScales);
@@ -87,7 +92,7 @@ export default function BookCarousel() {
                 }}
                 onMouseMove={handleMouseMove}
             >
-                {Array.from({ length: NUM_BOOKS }).map((_, index) => (
+                {books.map((book, index) => (
                     <Link
                         className="relative aspect-book w-32 transition-transform lg:w-44"
                         key={index}
@@ -98,11 +103,7 @@ export default function BookCarousel() {
                         }}
                         href={`/articles/${"test"}`}
                     >
-                        <Image
-                            src={`https://source.unsplash.com/random?${index}`}
-                            alt="book"
-                            fill
-                        />
+                        <Image src={book.mainImage.asset.url} alt="book" fill />
                     </Link>
                 ))}
             </div>

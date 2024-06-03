@@ -10,6 +10,7 @@ import Navbar from "./components/navbar/navbar";
 import NewArticleList from "./components/new-articles-list";
 import Sidebar from "./components/sidebar";
 import {
+    getArticlesByCategory,
     getFeaturedArticle,
     getFeaturedArticleSecondary,
 } from "./lib/cms/queries";
@@ -17,6 +18,7 @@ import {
 export default async function Home() {
     const featuredArticle = await getFeaturedArticle();
     const featuredArticleSecondary = await getFeaturedArticleSecondary();
+    const books = await getArticlesByCategory("BOOKS", undefined, 11);
     return (
         <>
             <main className="">
@@ -38,7 +40,7 @@ export default async function Home() {
                         </div>
                     </section>
                     <FeaturedArticlesBlock />
-                    <BookCarousel />
+                    <BookCarousel books={books} />
                     <section className="mx-auto mt-32 max-w-7xl gap-16 px-4 lg:flex">
                         <FeatureArticle
                             background

@@ -66,8 +66,6 @@ export default async function Category({
         });
     });
 
-    console.log({ category });
-
     if (!category) return redirect("/");
     return (
         <main>

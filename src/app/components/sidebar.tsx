@@ -14,7 +14,7 @@ export default function Sidebar() {
             <div className="px-8">
                 <h2 className="text-center text-3xl">SUPPORT</h2>
                 <div className="mt-4 border border-black p-4">
-                    <p className="text-center text-2xl">
+                    <p className="text-center text-lg">
                         As a one-person labor of love since 2011, Words Like
                         Silver is made possible only by the support of dedicated
                         dedicated readers. If you appreciate my recommendations,
