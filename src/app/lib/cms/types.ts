@@ -115,6 +115,7 @@ export interface Article extends Document {
     sidebar: Body[] | null;
     headerType: HeaderType;
     tags: Tag[] | null;
+    starred: boolean;
 }
 
 export interface Homepage extends Document {

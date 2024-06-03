@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Article } from "../lib/cms/types";
 import { processSanityBlock } from "../lib/text/process-sanity-block";
+import Star from "./svg/star";
 
 export default function VerticalArticle({
     article,
@@ -20,7 +21,10 @@ export default function VerticalArticle({
     if (!article) return null;
 
     return (
-        <Link href={`/articles/${article.slug.current}`} className="block">
+        <Link
+            href={`/articles/${article.slug.current}`}
+            className="group block"
+        >
             {includeCategory && (
                 <h3
                     className={clsx(
@@ -41,6 +45,11 @@ export default function VerticalArticle({
                     className="object-cover"
                     alt=""
                 />
+                {article.starred === true && (
+                    <div className="absolute left-0 top-0 h-12 w-12 -translate-x-1/2 -translate-y-1/2 transition-transform group-hover:rotate-6 group-hover:scale-125">
+                        <Star className="h-12 w-12" />
+                    </div>
+                )}
             </div>
             <div className={clsx("py-8 text-3xl underline", textAlign)}>
                 {processSanityBlock(article.title[0])}
