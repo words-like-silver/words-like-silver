@@ -88,7 +88,9 @@ export default async function Category({
                         support
                     </div>
                     <div className="font-sailing-club italic underline">
-                        join the book club
+                        {category.title === "BOOKS"
+                            ? "join the book club"
+                            : "follow on socials"}
                     </div>
                 </div>
             </section>
@@ -132,7 +134,11 @@ export default async function Category({
                 <div className="flex flex-col items-center gap-2 font-sailing-club text-3xl underline">
                     <Link href="/">Give your support</Link>
                     <Link href="/">Get the newsletter</Link>
-                    <Link href="/">Join the book club</Link>
+                    <Link href="/">
+                        {category.title === "BOOKS"
+                            ? "Join the book club"
+                            : "Follow on socials"}
+                    </Link>
                 </div>
                 <div className="grid grid-cols-3 gap-1">
                     {Array.from({ length: 9 }).map((_, i) => (

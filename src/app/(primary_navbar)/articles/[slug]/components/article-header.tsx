@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function ArticleHeader({ article }: { article: Article }) {
-    console.log(article.title);
     return (
         <>
             <section className="mx-auto my-16 max-w-6xl px-6 lg:px-8">
