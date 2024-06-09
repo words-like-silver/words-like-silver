@@ -92,6 +92,10 @@ export default function Footer() {
                                 className="w-full px-2 text-center text-black"
                             />
                         </label>
+
+                        <button className="mx-auto mt-12 block w-fit bg-beige px-12 py-1 font-sailing-club text-3xl text-dark-green">
+                            SUBSCRIBE
+                        </button>
                     </div>
                 </div>
                 <div className="flex flex-col items-center py-24">

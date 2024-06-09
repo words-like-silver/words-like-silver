@@ -4,6 +4,7 @@ import {
     getCategoryBySlug,
     getNavigationItems,
 } from "@/app/lib/cms/queries";
+import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -70,7 +71,7 @@ export default async function Category({
     return (
         <main>
             <section className="mx-auto my-16 max-w-3xl">
-                <h1 className="mx-auto my-8 w-fit text-balance rounded-lg bg-yellow/30 px-24 text-center font-sailing-club text-6xl">
+                <h1 className="mx-auto my-8 text-balance px-24 text-center font-sailing-club text-6xl">
                     {category.title}
                 </h1>
                 <p className="text-2xl">{category.description}</p>
@@ -87,20 +88,37 @@ export default async function Category({
                         support
                     </div>
                     <div className="font-sailing-club italic underline">
-                        follow on socials
+                        join the book club
                     </div>
                 </div>
             </section>
-            <section className="mx-auto mb-32 grid max-w-10xl grid-cols-[1fr,1.75fr,1fr] items-center gap-16 px-20">
+            <section
+                className={clsx(
+                    "mx-auto mb-32 flex max-w-10xl justify-center px-20",
+                    category.featuredArticles?.length === 1 ? "" : "gap-x-16"
+                )}
+            >
                 {category.featuredArticles?.length === 1 && <div></div>}
-                {category.featuredArticles?.map((article) => (
-                    <VerticalArticle
-                        article={article}
-                        key={"featured-article-" + article.slug.current}
-                        includeDescription
-                        textAlign="text-left"
-                    />
-                ))}
+                {category.featuredArticles?.map((article, index) => {
+                    return (
+                        <div
+                            key={"featured-article-" + article.slug.current}
+                            className={clsx(
+                                index === 0
+                                    ? "order-2 [flex:1.2]"
+                                    : `order-${index === 1 ? "1" : "3"} mt-14 flex-1 hidden lg:block`,
+                                "max-w-lg"
+                            )}
+                        >
+                            <VerticalArticle
+                                article={article}
+                                includeDescription
+                                textAlign="text-center"
+                                largerImage={index === 0}
+                            />
+                        </div>
+                    );
+                })}
             </section>
             <CategoryArticles allArticles={category.articles} tags={tags} />
             <section className="mx-auto mb-8 max-w-xl space-y-8 text-2xl">
@@ -115,7 +133,7 @@ export default async function Category({
                 <div className="flex flex-col items-center gap-2 font-sailing-club text-3xl underline">
                     <Link href="/">Give your support</Link>
                     <Link href="/">Get the newsletter</Link>
-                    <Link href="/">Follow on socials</Link>
+                    <Link href="/">Join the book club</Link>
                 </div>
                 <div className="grid grid-cols-3 gap-1">
                     {Array.from({ length: 9 }).map((_, i) => (

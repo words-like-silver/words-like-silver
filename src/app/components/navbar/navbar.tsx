@@ -20,7 +20,7 @@ export default async function Navbar({
                 {!hideSearchBar && <SearchBar />}
                 <div
                     className={clsx(
-                        "flex-1 lg:text-3xl",
+                        "flex-1 lg:text-xl xl:text-2xl 2xl:text-3xl",
                         secondary
                             ? "flex justify-around"
                             : "grid-cols-[2fr,1fr,2fr] lg:grid"

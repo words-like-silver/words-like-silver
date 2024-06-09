@@ -11,12 +11,14 @@ export default function VerticalArticle({
     includeReadMore,
     includeCategory,
     textAlign = "text-center",
+    largerImage,
 }: {
     article: Article | null;
     includeDescription?: boolean;
     includeReadMore?: boolean;
     includeCategory?: boolean;
     textAlign?: string;
+    largerImage?: boolean;
 }) {
     if (!article) return null;
 
@@ -25,7 +27,7 @@ export default function VerticalArticle({
             {includeCategory && (
                 <h3
                     className={clsx(
-                        "mb-4 inline-block w-full text-center font-sailing-club text-2xl italic !no-underline hover:!no-underline",
+                        "mb-4 inline-block w-full text-center font-sailing-club text-2xl italic",
                         !article.categories.length && "invisible"
                     )}
                 >
@@ -35,7 +37,7 @@ export default function VerticalArticle({
             )}
             <Link
                 href={`/articles/${article.slug.current}`}
-                className={`relative mx-auto ${article.headerType === "book" ? "aspect-book" : "aspect-square"} h-64 transition-transform duration-300 group-hover:scale-[1.03] lg:h-96 lg:w-auto`}
+                className={`relative mx-auto ${article.headerType === "book" ? "aspect-book" : "aspect-square"} transition-transform duration-300 group-hover:scale-[1.03]  lg:w-auto ${largerImage ? "h-80 xl:h-96 2xl:h-[500px]" : "h-44 xl:h-64 2xl:h-96"}`}
             >
                 <Image
                     src={article.mainImage.asset.url}
