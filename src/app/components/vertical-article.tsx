@@ -37,23 +37,28 @@ export default function VerticalArticle({
             )}
             <Link
                 href={`/articles/${article.slug.current}`}
-                className={`relative mx-auto ${article.headerType === "book" ? "aspect-book" : "aspect-square"} transition-transform duration-300 group-hover:scale-[1.03]  lg:w-auto ${largerImage ? "h-80 xl:h-96 2xl:h-[500px]" : "h-44 xl:h-64 2xl:h-96"}`}
+                className={`relative mx-auto aspect-square w-full transition-transform duration-300 group-hover:scale-[1.03]`}
             >
                 <Image
                     src={article.mainImage.asset.url}
                     fill
-                    className="object-cover"
+                    className={`${article.headerType === "book" ? "object-contain" : "object-cover"}`}
                     alt=""
                 />
                 {article.starred === true && (
-                    <div className="absolute left-0 top-0 h-12 w-12 -translate-x-1/2 -translate-y-1/2 transition-transform group-hover:rotate-6 group-hover:scale-125">
-                        <Star className="h-12 w-12" />
+                    <div className="absolute left-0 top-0 aspect-book h-full translate-x-1/4">
+                        <div className="absolute left-0 top-0 h-12 w-12 -translate-x-1/2 -translate-y-1/2 transition-transform group-hover:rotate-6 group-hover:scale-125">
+                            <Star className="h-12 w-12" />
+                        </div>
                     </div>
                 )}
             </Link>
             <Link
                 href={`/articles/${article.slug.current}`}
-                className={clsx("py-8 text-2xl lg:text-3xl underline", textAlign)}
+                className={clsx(
+                    "py-8 text-2xl underline lg:text-3xl",
+                    textAlign
+                )}
             >
                 {processSanityBlock(article.title[0])}
             </Link>

@@ -94,7 +94,7 @@ export default async function Category({
             </section>
             <section
                 className={clsx(
-                    "mx-auto mb-32 flex max-w-10xl justify-center px-20",
+                    "mx-auto mb-32 max-w-10xl grid-cols-[1fr,1.5fr,1fr] justify-center px-4 lg:grid lg:px-8",
                     category.featuredArticles?.length === 1 ? "" : "gap-x-16"
                 )}
             >
@@ -105,9 +105,8 @@ export default async function Category({
                             key={"featured-article-" + article.slug.current}
                             className={clsx(
                                 index === 0
-                                    ? "order-2 [flex:1.2]"
-                                    : `order-${index === 1 ? "1" : "3"} mt-14 hidden flex-1 lg:block`,
-                                "max-w-lg"
+                                    ? "order-2"
+                                    : `order-${index === 1 ? "1" : "3"} mt-20 hidden lg:block`
                             )}
                         >
                             <VerticalArticle
