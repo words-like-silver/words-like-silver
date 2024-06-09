@@ -1,5 +1,4 @@
 import { getNewArticles } from "../lib/cms/queries";
-import MobileArticlesCarousel from "./mobile-article-carousel";
 import VerticalArticle from "./vertical-article";
 
 export default async function MoreArticles() {
@@ -16,8 +15,8 @@ export default async function MoreArticles() {
 
     return (
         <section className="my-16">
-            <h2 className="mb-8 text-center text-4xl">FURTHER READING</h2>
-            <div className="hidden grid-cols-4 justify-center gap-x-8 px-16 lg:grid">
+            <h2 className="mb-12 mt-24 text-center text-4xl">FURTHER READING</h2>
+            <div className="mx-auto grid max-w-10xl justify-center gap-x-8 px-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {filteredArticles
                     .slice(0, filteredArticles.length - extraArticles)
                     .map((article) => (
@@ -30,12 +29,12 @@ export default async function MoreArticles() {
                         />
                     ))}
             </div>
-            <MobileArticlesCarousel
-                articles={filteredArticles.slice(
-                    0,
-                    filteredArticles.length - extraArticles
-                )}
-            />
+            {/* <MobileArticlesCarousel */}
+            {/*     articles={filteredArticles.slice( */}
+            {/*         0, */}
+            {/*         filteredArticles.length - extraArticles */}
+            {/*     )} */}
+            {/* /> */}
         </section>
     );
 }

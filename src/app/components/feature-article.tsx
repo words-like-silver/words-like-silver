@@ -29,7 +29,12 @@ export default async function FeatureArticle({
                     />
                 </div>
             </div>
-            <div className="absolute -bottom-12 w-full px-4 lg:bottom-24">
+            <div
+                className={clsx(
+                    "absolute w-full px-4 lg:bottom-24",
+                    background ? "-bottom-2" : "-bottom-12"
+                )}
+            >
                 <div className="mx-auto max-w-sm border border-black bg-beige/80 py-4">
                     <h2 className="text-center text-2xl group-hover:underline lg:text-3xl">
                         {processSanityBlock(article.title[0])}
