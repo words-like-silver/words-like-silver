@@ -21,9 +21,12 @@ export default async function BookWidget() {
                         />
                     </div>
                 </div>
-                <h3 className="my-4 text-center text-3xl [text-decoration:inherit]">
+                <h3 className="my-4 text-center text-2xl [text-decoration:inherit]">
                     {processSanityBlock(featuredBook.title[0])}
                 </h3>
+                <div className="mb-2 text-center font-sailing-club text-2xl italic">
+                    my review
+                </div>
             </Link>
             <Link
                 href="/books"

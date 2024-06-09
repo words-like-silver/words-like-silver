@@ -16,7 +16,7 @@ export default async function Navbar({
     const halfOfNumNavItems = Math.floor(navigationItems.length / 2);
     return (
         <>
-            <nav className="sticky top-0 z-20 flex bg-beige font-sailing-club lg:min-h-[145px] lg:py-4">
+            <nav className="sticky top-0 z-30 flex bg-beige font-sailing-club lg:min-h-[145px] lg:py-4">
                 {!hideSearchBar && <SearchBar />}
                 <div
                     className={clsx(

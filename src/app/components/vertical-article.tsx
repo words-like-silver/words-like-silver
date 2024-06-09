@@ -21,14 +21,11 @@ export default function VerticalArticle({
     if (!article) return null;
 
     return (
-        <Link
-            href={`/articles/${article.slug.current}`}
-            className="group block"
-        >
+        <div className="group row-span-5 grid grid-rows-subgrid">
             {includeCategory && (
                 <h3
                     className={clsx(
-                        "mb-4 inline-block w-full text-center font-sailing-club text-2xl italic",
+                        "mb-4 inline-block w-full text-center font-sailing-club text-2xl italic !no-underline hover:!no-underline",
                         !article.categories.length && "invisible"
                     )}
                 >
@@ -36,8 +33,9 @@ export default function VerticalArticle({
                         "Uncategorized"}
                 </h3>
             )}
-            <div
-                className={`relative mx-auto ${article.headerType === "book" ? "aspect-book" : "aspect-square"} h-64 lg:h-96 lg:w-auto`}
+            <Link
+                href={`/articles/${article.slug.current}`}
+                className={`relative mx-auto ${article.headerType === "book" ? "aspect-book" : "aspect-square"} h-64 transition-transform duration-300 group-hover:scale-[1.03] lg:h-96 lg:w-auto`}
             >
                 <Image
                     src={article.mainImage.asset.url}
@@ -50,18 +48,24 @@ export default function VerticalArticle({
                         <Star className="h-12 w-12" />
                     </div>
                 )}
-            </div>
-            <div className={clsx("py-8 text-3xl underline", textAlign)}>
+            </Link>
+            <Link
+                href={`/articles/${article.slug.current}`}
+                className={clsx("py-8 text-3xl underline", textAlign)}
+            >
                 {processSanityBlock(article.title[0])}
-            </div>
+            </Link>
             {includeDescription && (
                 <p className="inline-block text-xl">{article.subhead}</p>
             )}
             {includeReadMore && (
-                <div className="mt-8 block text-center font-sailing-club text-3xl italic underline">
+                <Link
+                    href={`/articles/${article.slug.current}`}
+                    className="mt-8 block text-center font-sailing-club text-3xl italic underline"
+                >
                     read more
-                </div>
+                </Link>
             )}
-        </Link>
+        </div>
     );
 }

@@ -17,7 +17,7 @@ export default async function MoreArticles() {
     return (
         <section className="my-16">
             <h2 className="mb-8 text-center text-4xl">FURTHER READING</h2>
-            <div className="hidden grid-cols-4 justify-center gap-8 px-16 lg:grid">
+            <div className="hidden grid-cols-4 justify-center gap-x-8 px-16 lg:grid">
                 {filteredArticles
                     .slice(0, filteredArticles.length - extraArticles)
                     .map((article) => (
@@ -32,7 +32,7 @@ export default async function MoreArticles() {
             </div>
             <MobileArticlesCarousel
                 articles={filteredArticles.slice(
-                   0,
+                    0,
                     filteredArticles.length - extraArticles
                 )}
             />
