@@ -49,6 +49,9 @@ export default function Footer() {
                                     <li>$10/month</li>
                                     <li>$25/month</li>
                                 </ul>
+                                <button className="mx-auto mt-6 block w-fit bg-beige px-12 py-1 font-sailing-club text-3xl text-dark-green lg:hidden">
+                                    GIVE
+                                </button>
                             </div>
                             <div>
                                 <h2 className="mb-4 text-center font-sailing-club text-3xl">
