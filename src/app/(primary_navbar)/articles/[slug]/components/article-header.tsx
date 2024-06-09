@@ -13,7 +13,7 @@ export default function ArticleHeader({ article }: { article: Article }) {
                     {article.categories.map((category) => (
                         <Link
                             href={`/${category.slug.current}`}
-                            className="text-3xl underline lg:text-4xl"
+                            className="text-xl underline lg:text-3xl"
                             key={category.slug.current}
                         >
                             {category.title}
@@ -27,7 +27,7 @@ export default function ArticleHeader({ article }: { article: Article }) {
                     {article.subhead}
                 </p>
                 <p className="mt-4 text-center font-sailing-club text-xl italic lg:text-2xl">
-                    By Grace Smith
+                    By <Link href="/about">Grace Smith</Link>
                 </p>
                 <p className="text-center font-sailing-club text-lg italic lg:text-xl">
                     Published{" "}
