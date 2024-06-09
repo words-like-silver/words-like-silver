@@ -6,7 +6,7 @@ export default async function CategoryArticleList() {
     const featuredCategory = await getFeaturedCategory(4);
     return (
         <div>
-            <h2 className="mb-8 text-center text-4xl">
+            <h2 className="mb-8 text-center text-3xl lg:text-4xl">
                 {featuredCategory?.title}
             </h2>
             <ArticleList articles={featuredCategory?.articles || []} />

@@ -15,7 +15,9 @@ export default async function MoreArticles() {
 
     return (
         <section className="my-16">
-            <h2 className="mb-12 mt-24 text-center text-4xl">FURTHER READING</h2>
+            <h2 className="mb-12 mt-24 text-center text-3xl lg:text-4xl">
+                FURTHER READING
+            </h2>
             <div className="mx-auto grid max-w-10xl justify-center gap-x-8 px-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {filteredArticles
                     .slice(0, filteredArticles.length - extraArticles)

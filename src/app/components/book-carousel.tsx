@@ -75,7 +75,7 @@ export default function BookCarousel({ books }: { books: Article[] }) {
 
     return (
         <section className="relative overflow-hidden py-16">
-            <h2 className="relative z-20 mb-16 text-center text-3xl">
+            <h2 className="relative z-20 mb-16 text-center text-3xl lg:text-4xl">
                 RECENTLY READ
             </h2>
             <div
