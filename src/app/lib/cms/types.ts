@@ -65,7 +65,8 @@ interface Span {
 interface Quote {
     _type: "quote";
     _key: string;
-    text: "The first impression of this decadent Southern daydream involved a front porch and a glass of sauvignon blanc.";
+    text: string;
+    type: "italic" | "background";
 }
 
 interface MarkDefs {
