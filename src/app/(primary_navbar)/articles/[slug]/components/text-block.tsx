@@ -2,12 +2,17 @@ import { Body } from "@/app/lib/cms/types";
 import { processSanityBlock } from "@/app/lib/text/process-sanity-block";
 import clsx from "clsx";
 
+interface TextBlockOptions {
+    p?: string;
+    noBackground?: boolean;
+}
+
 export default function TextBlock({
     body,
     options,
 }: {
     body: Body;
-    options?: Record<string, any>;
+    options?: TextBlockOptions;
 }) {
     if (body._type !== "block") return null;
 
@@ -42,9 +47,5 @@ export default function TextBlock({
             </h5>
         );
     }
-    return (
-        <p className={clsx("text-2xl", options?.center && "text-center")}>
-            {innerHtml}
-        </p>
-    );
+    return <p className={clsx("text-xl lg:text-2xl", options?.p)}>{innerHtml}</p>;
 }
