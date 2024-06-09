@@ -53,7 +53,7 @@ export default function VerticalArticle({
             </Link>
             <Link
                 href={`/articles/${article.slug.current}`}
-                className={clsx("py-8 text-3xl underline", textAlign)}
+                className={clsx("py-8 text-2xl lg:text-3xl underline", textAlign)}
             >
                 {processSanityBlock(article.title[0])}
             </Link>
@@ -63,7 +63,7 @@ export default function VerticalArticle({
             {includeReadMore && (
                 <Link
                     href={`/articles/${article.slug.current}`}
-                    className="mt-8 block text-center font-sailing-club text-3xl italic underline"
+                    className="mt-8 block text-center font-sailing-club text-2xl italic underline lg:text-3xl"
                 >
                     read more
                 </Link>

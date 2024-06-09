@@ -1,9 +1,9 @@
 "use client";
 
-import VerticalArticle from "@/app/components/vertical-article";
 import { Article } from "@/app/lib/cms/types";
 import clsx from "clsx";
 import { useState } from "react";
+import CategoryVerticalArticle from "./category-vertical-article";
 
 export default function CategoryArticles({
     allArticles,
@@ -35,8 +35,8 @@ export default function CategoryArticles({
     };
     return (
         <section className="relative mb-16 pb-16">
-            <section className="mx-auto mb-16 max-w-7xl px-16">
-                <div className="flex items-center justify-center font-sailing-club text-black lg:text-3xl">
+            <section className="mx-auto mb-16 max-w-7xl px-4">
+                <div className="flex flex-wrap items-center justify-center font-sailing-club text-xl text-black lg:text-3xl">
                     {tags?.length && (
                         <button
                             className={clsx(
@@ -77,8 +77,8 @@ export default function CategoryArticles({
                     })}
                 </div>
             </section>
-            <div className="mx-auto max-w-10xl px-28 text-white">
-                <div className="grid grid-cols-3 gap-16">
+            <div className="mx-auto max-w-10xl px-4 text-white xl:px-28">
+                <div className="grid place-items-center items-start gap-16 md:grid-cols-2 xl:grid-cols-3">
                     {articles?.slice(start, end).map((article, index) => (
                         <div
                             className="animate-fade-in-up"
@@ -89,11 +89,7 @@ export default function CategoryArticles({
                             }
                             style={{ animationDelay: `${index * 100}ms` }}
                         >
-                            <VerticalArticle
-                                article={article}
-                                includeDescription
-                                includeReadMore
-                            />
+                            <CategoryVerticalArticle article={article} />
                         </div>
                     ))}
                 </div>
@@ -146,7 +142,7 @@ export default function CategoryArticles({
                     </button>
                 </div>
             </div>
-            <div className="absolute left-0 top-0 -z-10 mt-32 h-[calc(100%-8rem)] w-full bg-dark-green"></div>
+            <div className="absolute left-0 top-0 -z-10 mt-40 h-[calc(100%-10rem)] w-full bg-dark-green lg:mt-32 lg:h-[calc(100%-8rem)]"></div>
         </section>
     );
 }

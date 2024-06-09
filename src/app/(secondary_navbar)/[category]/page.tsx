@@ -106,7 +106,7 @@ export default async function Category({
                             className={clsx(
                                 index === 0
                                     ? "order-2 [flex:1.2]"
-                                    : `order-${index === 1 ? "1" : "3"} mt-14 flex-1 hidden lg:block`,
+                                    : `order-${index === 1 ? "1" : "3"} mt-14 hidden flex-1 lg:block`,
                                 "max-w-lg"
                             )}
                         >
@@ -162,8 +162,8 @@ export default async function Category({
                     <div>twitter</div>
                 </div>
             </section>
-            <section className="mx-auto mb-16 max-w-7xl px-16 underline">
-                <div className="flex items-center justify-around font-sailing-club lg:text-3xl">
+            <section className="mx-auto mb-16 max-w-7xl px-4 underline">
+                <div className="flex flex-wrap items-center justify-around font-sailing-club text-xl lg:text-3xl">
                     {navigationItems?.map((navItem) => {
                         return (
                             <Link
