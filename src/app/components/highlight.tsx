@@ -70,6 +70,7 @@ ${line.map((element) => element.outerHTML).join("")}\
         <span
             ref={allWordsRef}
             dangerouslySetInnerHTML={{ __html: highlightHTML }}
+            className="[text-decoration:inherit]"
         ></span>
     );
 }

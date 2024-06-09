@@ -11,10 +11,12 @@ h2 {
 }
 
 .highlight-span {
+    text-decoration: inherit;
     position: relative;
     display: inline-block;
 }
 .highlight-container {
+    text-decoration: inherit;
     position: absolute;
     display: flex;
     height: 100%;

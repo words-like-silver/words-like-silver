@@ -79,6 +79,14 @@ export async function getFeaturedCategory(limit: number) {
     );
     return homepages.at(0)?.featuredCategory;
 }
+
+export async function getFeaturedBook() {
+    const homepages = await get<Homepage>(
+        `*[_type=="homepage"]{featuredBook->{title,slug,mainImage{asset->{url}}}}`
+    );
+    return homepages.at(0)?.featuredBook;
+}
+
 export async function getAllCategorySlugs() {
     const categories = await get<Category>("*[_type == 'category']{slug}");
     return categories.map((category) => category!.slug.current);

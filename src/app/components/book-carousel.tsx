@@ -101,7 +101,7 @@ export default function BookCarousel({ books }: { books: Article[] }) {
                             transform: `scale(${Number(scales[index]) * (selectedIndex === index ? 1.2 : 1)}) ${selectedIndex === index ? (index < Math.floor(NUM_BOOKS / 2) ? "rotate(-5deg)" : index > Math.floor(NUM_BOOKS / 2) ? "rotate(5deg)" : "") : ""}`,
                             ...(selectedIndex === index && { zIndex: 1 }),
                         }}
-                        href={`/articles/${"test"}`}
+                        href={`/articles/${book.slug.current}`}
                     >
                         <Image src={book.mainImage.asset.url} alt="book" fill />
                     </Link>

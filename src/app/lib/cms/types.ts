@@ -125,6 +125,7 @@ export interface Homepage extends Document {
     topBarArticles: Article[];
     featuredArticleRow: Article[];
     featuredCategory: Category;
+    featuredBook: Article;
 }
 
 export interface Tag {

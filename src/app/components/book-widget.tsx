@@ -1,23 +1,36 @@
 import Image from "next/image";
+import Link from "next/link";
+import { getFeaturedBook } from "../lib/cms/queries";
+import { processSanityBlock } from "../lib/text/process-sanity-block";
 
-export default function BookWidget() {
+export default async function BookWidget() {
+    const featuredBook = await getFeaturedBook();
+    if (!featuredBook) return null;
     return (
-        <div className="mx-auto border max-w-[18rem] border-black py-8 px-4">
-            <h2 className="text-3xl italic text-center mb-4 font-sailing-club">
+        <div className="mx-auto block max-w-[18rem] border border-black px-4 py-8">
+            <h2 className="mb-4 text-center font-sailing-club text-3xl italic">
                 books
             </h2>
-            <div className="px-6">
-                <div className="relative aspect-book w-full">
-                    <Image src="/images/book.png" fill alt="book" />
+            <Link href={`/articles/${featuredBook.slug.current}`}>
+                <div className="px-6">
+                    <div className="relative aspect-book w-full">
+                        <Image
+                            src={featuredBook.mainImage.asset.url}
+                            fill
+                            alt="book"
+                        />
+                    </div>
                 </div>
-            </div>
-            <h3 className="text-3xl text-center my-4">
-                Anna K: A Love Story Jenny Lee
-            </h3>
-            <div className="text-2xl italic font-sailing-club">
-                <div className="text-center">my review</div>
-                <div className="text-center">all book posts</div>
-            </div>
+                <h3 className="my-4 text-center text-3xl [text-decoration:inherit]">
+                    {processSanityBlock(featuredBook.title[0])}
+                </h3>
+            </Link>
+            <Link
+                href="/books"
+                className="block text-center font-sailing-club text-2xl italic"
+            >
+                all book posts
+            </Link>
         </div>
     );
 }
