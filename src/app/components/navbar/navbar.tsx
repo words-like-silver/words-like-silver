@@ -2,6 +2,7 @@ import { getNavigationItems } from "@/app/lib/cms/queries";
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
+import MobileNavbar from "../mobile-navbar/mobile-navbar";
 import NavLink from "./components/nav-link";
 import SearchBar from "./components/search-bar";
 
@@ -43,6 +44,9 @@ export default async function Navbar({
                                     />
                                 );
                             })}
+                    </div>
+                    <div className="absolute left-4 top-4 z-30 lg:hidden">
+                        <MobileNavbar navigationItems={navigationItems} />
                     </div>
                     <Link
                         href="/"
