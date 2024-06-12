@@ -12,7 +12,7 @@ export default async function BookWidget() {
                 books
             </h2>
             <Link href={`/articles/${featuredBook.slug.current}`}>
-                <div className="px-6">
+                <div className="px-2">
                     <div className="relative aspect-book w-full">
                         <Image
                             src={featuredBook.mainImage.asset.url}

@@ -19,6 +19,7 @@ export default async function Home() {
     const featuredArticle = await getFeaturedArticle();
     const featuredArticleSecondary = await getFeaturedArticleSecondary();
     const books = await getArticlesByCategory("BOOKS", undefined, 11);
+
     return (
         <>
             <main className="">
@@ -28,14 +29,14 @@ export default async function Home() {
                 <Navbar />
                 <Sidebar />
                 <div className="lg:ml-72">
-                    <section className="mb-16 mt-4 flex grid-cols-[1fr,1.75fr,1fr] flex-col gap-8 px-8 lg:grid">
-                        <div className="order-3 lg:order-1">
+                    <section className="mb-16 mt-4 flex flex-col items-center gap-4 px-8 lg:grid xl:grid-cols-[1fr,1.75fr,1fr]">
+                        <div className="order-3 hidden lg:order-1 xl:block">
                             <NewArticleList />
                         </div>
                         <div className="order-1 lg:order-2">
                             <FeatureArticle article={featuredArticle} />
                         </div>
-                        <div className="order-2 mt-12 lg:order-3 lg:mt-0 ">
+                        <div className="order-2 mt-12 hidden lg:order-3 lg:mt-0 xl:block">
                             <BookWidget />
                         </div>
                     </section>

@@ -39,10 +39,10 @@ export async function getArticlesByCategory(
     start = 0,
     limit: number
 ) {
-    const categories = await get<Category>(
-        `*[_type=="category" && title == "${category}"]{articles[${start}...${limit}]->{_id,title,headerType,starred,slug,mainImage{asset->{url}}}}|order(publishedAt desc)`
+    const articles = await get<Article>(
+        `*[_type=="article" && "${category}" in categories[]->title][${start}...${limit}]{_id,title,headerType,starred,slug,mainImage{asset->{url}}}|order(publishedAt desc)`
     );
-    return categories.map((category) => category!.articles).flat();
+    return articles;
 }
 
 export async function getFeaturedArticle() {
@@ -94,7 +94,7 @@ export async function getAllCategorySlugs() {
 
 export async function getCategoryBySlug(slug: string) {
     const categories = await get<Category>(
-        `*[_type == 'category' && slug.current == '${slug}']{...,articles[]->{title,slug,subhead,headerType,starred,tags[]->{name},mainImage{asset->{url}}}, featuredArticles[]->{title,slug,subhead,headerType,starred,mainImage{asset->{url}}}}`
+        `*[_type == 'category' && slug.current == '${slug}']{...,"articles": *[_type == "article" && references(^._id)]{title,slug,subhead,headerType,starred,tags[]->{name},mainImage{asset->{url}}}, featuredArticles[]->{title,slug,subhead,headerType,starred,mainImage{asset->{url}}}}`
     );
     return categories.at(0);
 }
