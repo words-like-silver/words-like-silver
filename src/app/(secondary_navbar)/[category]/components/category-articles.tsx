@@ -1,9 +1,9 @@
 "use client";
 
+import VerticalArticle from "@/app/components/vertical-article";
 import { Article } from "@/app/lib/cms/types";
 import clsx from "clsx";
 import { useState } from "react";
-import CategoryVerticalArticle from "./category-vertical-article";
 
 export default function CategoryArticles({
     allArticles,
@@ -89,7 +89,11 @@ export default function CategoryArticles({
                             }
                             style={{ animationDelay: `${index * 100}ms` }}
                         >
-                            <CategoryVerticalArticle article={article} />
+                            <VerticalArticle
+                                article={article}
+                                includeReadMore
+                                includeDescription
+                            />
                         </div>
                     ))}
                 </div>

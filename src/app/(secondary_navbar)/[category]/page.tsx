@@ -115,7 +115,6 @@ export default async function Category({
                                 article={article}
                                 includeDescription
                                 textAlign="text-center"
-                                largerImage={index === 0}
                             />
                         </div>
                     );

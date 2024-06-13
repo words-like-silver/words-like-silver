@@ -94,7 +94,7 @@ export async function getAllCategorySlugs() {
 
 export async function getCategoryBySlug(slug: string) {
     const categories = await get<Category>(
-        `*[_type == 'category' && slug.current == '${slug}']{...,"articles": *[_type == "article" && references(^._id)]{title,slug,subhead,headerType,starred,tags[]->{name},mainImage{asset->{url}}}, featuredArticles[]->{title,slug,subhead,headerType,starred,mainImage{asset->{url}}}}`
+        `*[_type == 'category' && slug.current == '${slug}']{...,"articles": *[_type == "article" && references(^._id)]{title,slug,subhead,headerType,starred,tags[]->{name},categories[]->{title},mainImage{asset->{url}}}, featuredArticles[]->{title,slug,subhead,headerType,starred,categories[]->{title},mainImage{asset->{url}}}}`
     );
     return categories.at(0);
 }
