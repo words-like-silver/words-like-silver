@@ -12,7 +12,7 @@ import Sidebar from "./components/sidebar";
 import {
     getArticlesByCategory,
     getFeaturedArticle,
-    getFeaturedArticleSecondary
+    getFeaturedArticleSecondary,
 } from "./lib/cms/queries";
 
 export default async function Home() {
@@ -38,9 +38,11 @@ export default async function Home() {
                             <BookWidget />
                         </div>
                     </section>
-                    <FeaturedArticlesBlock />
+                    <div className="mt-24">
+                        <FeaturedArticlesBlock />
+                    </div>
                     <BookCarousel books={books} />
-                    <section className="mx-auto mt-32 max-w-7xl gap-16 px-4 lg:flex">
+                    <section className="mx-auto mt-36 max-w-7xl gap-4 pr-4 lg:flex">
                         <FeatureArticle
                             background
                             article={featuredArticleSecondary}

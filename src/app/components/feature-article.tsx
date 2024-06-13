@@ -16,10 +16,15 @@ export default async function FeatureArticle({
         <Link
             href={`/articles/${article.slug.current}`}
             className={
-                "group relative block aspect-square w-full transition-transform"
+                "relative mt-8 block aspect-square w-full transition-transform lg:mt-0"
             }
         >
-            <div className={clsx("h-full w-full", background && "p-4 lg:p-6")}>
+            <div
+                className={clsx(
+                    "group h-full w-full transition-transform duration-300 hover:scale-[1.02]",
+                    background && "p-4 lg:p-6"
+                )}
+            >
                 <div className="relative h-full w-full">
                     <Image
                         src={article.mainImage.asset.url}
@@ -28,6 +33,15 @@ export default async function FeatureArticle({
                         className="object-cover"
                     />
                 </div>
+                {background && (
+                    <div className="absolute left-0 top-0 -z-10 h-full w-full -translate-x-2 translate-y-1 lg:-translate-x-3 lg:translate-y-2">
+                        <Image
+                            src="/images/paper_background.png"
+                            alt="sheet of paper"
+                            fill
+                        />
+                    </div>
+                )}
             </div>
             <div
                 className={clsx(
@@ -36,20 +50,11 @@ export default async function FeatureArticle({
                 )}
             >
                 <div className="mx-auto max-w-sm border border-black bg-beige/80 py-4">
-                    <h2 className="text-center text-2xl group-hover:underline lg:text-3xl">
+                    <h2 className="text-center text-2xl hover:underline lg:text-3xl">
                         {processSanityBlock(article.title[0])}
                     </h2>
                 </div>
             </div>
-            {background && (
-                <div className="absolute left-0 top-0 -z-10 h-full w-full -translate-x-2 translate-y-1 lg:-translate-x-3 lg:translate-y-2">
-                    <Image
-                        src="/images/paper_background.png"
-                        alt="sheet of paper"
-                        fill
-                    />
-                </div>
-            )}
         </Link>
     );
 }

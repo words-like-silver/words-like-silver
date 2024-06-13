@@ -11,19 +11,17 @@ export default function VerticalArticle({
     includeReadMore,
     includeCategory,
     textAlign = "text-center",
-    largerImage,
 }: {
     article: Article | null;
     includeDescription?: boolean;
     includeReadMore?: boolean;
     includeCategory?: boolean;
     textAlign?: string;
-    largerImage?: boolean;
 }) {
     if (!article) return null;
 
     return (
-        <div className="group row-span-5 grid grid-rows-subgrid">
+        <div className="row-span-5 grid grid-rows-subgrid">
             {includeCategory && (
                 <h3
                     className={clsx(
@@ -37,7 +35,7 @@ export default function VerticalArticle({
             )}
             <Link
                 href={`/articles/${article.slug.current}`}
-                className={`relative mx-auto aspect-square w-full transition-transform duration-300 group-hover:scale-[1.03]`}
+                className={`relative mx-auto aspect-square w-full transition-transform duration-300 hover:scale-[1.03]`}
             >
                 <Image
                     src={article.mainImage.asset.url}
@@ -47,7 +45,7 @@ export default function VerticalArticle({
                 />
                 {article.starred === true && (
                     <div className="absolute left-0 top-0 aspect-book h-full translate-x-1/4">
-                        <div className="absolute left-0 top-0 h-12 w-12 -translate-x-1/2 -translate-y-1/2 transition-transform group-hover:rotate-6 group-hover:scale-125">
+                        <div className="absolute left-0 top-0 h-12 w-12 -translate-x-1/2 -translate-y-1/2 transition-transform hover:rotate-6 hover:scale-125">
                             <Star className="h-12 w-12" />
                         </div>
                     </div>
@@ -56,14 +54,26 @@ export default function VerticalArticle({
             <Link
                 href={`/articles/${article.slug.current}`}
                 className={clsx(
-                    "py-8 text-2xl underline lg:text-3xl",
-                    textAlign
+                    "py-8 text-xl lg:text-2xl",
+                    textAlign,
+                    article.categories
+                        .map((category) => category.title)
+                        .includes("BOOKS") && "px-8"
                 )}
             >
                 {processSanityBlock(article.title[0])}
             </Link>
             {includeDescription && (
-                <p className="inline-block text-xl">{article.subhead}</p>
+                <p
+                    className={clsx(
+                        "inline-block text-xl",
+                        article.categories
+                            .map((category) => category.title)
+                            .includes("BOOKS") && "px-16"
+                    )}
+                >
+                    {article.subhead}
+                </p>
             )}
             {includeReadMore && (
                 <Link

@@ -9,7 +9,7 @@ export default function MobileArticlesCarousel({
     articles: Article[];
 }) {
     return (
-        <div className="mx-auto max-w-64 lg:hidden">
+        <div className="mx-auto px-16 lg:hidden">
             {articles.map((article) => (
                 <VerticalArticle
                     key={"mobile-articles-carousel-" + article._id}

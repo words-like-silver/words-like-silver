@@ -30,7 +30,7 @@ export async function getArticleBySlug(slug: string) {
 
 export async function getNewArticles(limit: number) {
     return await get<Article>(
-        `*[_type == 'article'][0...${limit}]{_id,title,slug,subhead,headerType,starred,"categories":*[_type == "category" && references(^._id)]{slug,title},mainImage{asset->{url}}}|order(publishedAt desc)`
+        `*[_type == 'article'][0...${limit}]{_id,title,slug,subhead,headerType,starred,categories[]->{slug,title},mainImage{asset->{url}}}|order(publishedAt desc)`
     );
 }
 
@@ -75,7 +75,7 @@ export async function getFeaturedArticleRow() {
 
 export async function getFeaturedCategory(limit: number) {
     const homepages = await get<Homepage>(
-        `*[_type=="homepage"]{featuredCategory->{...,articles[0...${limit}]->{title,slug,headerType,starred,mainImage{asset->{url}}}}}`
+        `*[_type=="homepage"]{featuredCategory->{...,"articles": *[_type == "article" && references(^._id)][0...${limit}]{title,slug,headerType,starred,mainImage{asset->{url}}}}}`
     );
     return homepages.at(0)?.featuredCategory;
 }

@@ -13,7 +13,7 @@ export default async function BookWidget() {
             </h2>
             <Link href={`/articles/${featuredBook.slug.current}`}>
                 <div className="px-2">
-                    <div className="relative aspect-book w-full">
+                    <div className="relative aspect-book w-full hover:scale-[1.03] transition-transform duration-300">
                         <Image
                             src={featuredBook.mainImage.asset.url}
                             fill

@@ -45,7 +45,7 @@ export default function MobileNavbar({
                 createPortal(
                     <nav
                         className={clsx(
-                            "absolute left-0 top-20 flex w-min flex-col gap-4 bg-beige px-6 py-4 font-sailing-club text-2xl shadow-lg",
+                            "absolute left-0 top-20 flex w-min flex-col gap-4 bg-beige px-6 py-4 font-sailing-club text-2xl shadow-lg lg:hidden",
                             isAnimating && "animate-slide-to-left",
                             isOpen && "animate-slide-from-left"
                         )}

@@ -8,7 +8,7 @@ export default async function FeaturedArticlesBlock() {
     return (
         <section className="bg-dark-green py-8 text-white">
             <h2 className="mb-8 text-center text-3xl">FEATURED</h2>
-            <div className="hidden grid-cols-3 justify-center gap-8 px-16 lg:grid">
+            <div className="hidden grid-cols-3 justify-center gap-x-8 px-16 lg:grid">
                 {articles.map((article, index) => (
                     <VerticalArticle
                         includeCategory

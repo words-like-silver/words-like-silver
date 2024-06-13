@@ -12,7 +12,7 @@ export default async function NewArticleList() {
             <ArticleList articles={newArticles} />
             <Link
                 href="/articles"
-                className="block text-center font-sailing-club text-3xl italic"
+                className="underline block text-center font-sailing-club text-3xl italic"
             >
                 all posts
             </Link>
