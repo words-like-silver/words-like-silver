@@ -17,7 +17,10 @@ export default async function Navbar({
     const halfOfNumNavItems = Math.floor(navigationItems.length / 2);
     return (
         <>
-            <nav className="sticky top-0 z-30 flex bg-beige font-sailing-club lg:min-h-[145px] lg:py-4">
+            <nav
+                className="sticky top-0 z-30 flex bg-beige font-sailing-club lg:min-h-[145px] lg:py-4"
+                id="navbar"
+            >
                 {!hideSearchBar && <SearchBar />}
                 <div
                     className={clsx(
@@ -45,17 +48,17 @@ export default async function Navbar({
                                 );
                             })}
                     </div>
-                    <div className="absolute left-4 top-4 z-30 lg:hidden">
+                    <div className="absolute left-6 top-4 z-30 lg:hidden">
                         <MobileNavbar navigationItems={navigationItems} />
                     </div>
                     <Link
                         href="/"
                         className={clsx(
-                            "mx-6 flex items-center py-2 lg:py-0",
+                            "mx-auto flex w-fit items-center py-2 lg:mx-6 lg:py-0",
                             secondary && "order-1 w-80"
                         )}
                     >
-                        <div className="relative mx-auto aspect-[3] w-52 lg:w-full">
+                        <div className="relative mx-auto aspect-[3] h-16 lg:w-full">
                             <Image
                                 src="/images/words_logo.png"
                                 fill

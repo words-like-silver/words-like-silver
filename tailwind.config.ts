@@ -37,6 +37,8 @@ const config: Config = {
             animation: {
                 "fade-in-up": "fade-in-up 0.5s ease-in-out both",
                 "underline-appear": "underline-appear 0.35s ease both",
+                "slide-from-left": "slide-from-left 0.35s ease both",
+                "slide-to-left": "slide-to-left 0.35s ease both",
             },
             keyframes: {
                 "fade-in-up": {
@@ -55,6 +57,22 @@ const config: Config = {
                     },
                     to: {
                         transform: "scaleX(1)",
+                    },
+                },
+                "slide-from-left": {
+                    from: {
+                        transform: "translateX(-100%)",
+                    },
+                    to: {
+                        transform: "translateX(0)",
+                    },
+                },
+                "slide-to-left": {
+                    from: {
+                        transform: "translateX(0)",
+                    },
+                    to: {
+                        transform: "translateX(-100%)",
                     },
                 },
             },

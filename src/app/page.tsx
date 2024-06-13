@@ -5,7 +5,6 @@ import FeatureArticle from "./components/feature-article";
 import FeaturedArticlesBlock from "./components/featured-articles-block";
 import Footer from "./components/footer";
 import HorizontalArticleBlocks from "./components/horizontal-article-blocks";
-import MobileNavbar from "./components/mobile-navbar/mobile-navbar";
 import MoreArticles from "./components/more-articles";
 import Navbar from "./components/navbar/navbar";
 import NewArticleList from "./components/new-articles-list";
@@ -13,15 +12,13 @@ import Sidebar from "./components/sidebar";
 import {
     getArticlesByCategory,
     getFeaturedArticle,
-    getFeaturedArticleSecondary,
-    getNavigationItems,
+    getFeaturedArticleSecondary
 } from "./lib/cms/queries";
 
 export default async function Home() {
     const featuredArticle = await getFeaturedArticle();
     const featuredArticleSecondary = await getFeaturedArticleSecondary();
     const books = await getArticlesByCategory("BOOKS", undefined, 11);
-    const navigationItems = await getNavigationItems();
 
     return (
         <>
@@ -30,9 +27,6 @@ export default async function Home() {
                     <HorizontalArticleBlocks />
                 </div>
                 <Navbar />
-                <div className="fixed left-4 top-4 z-30">
-                    <MobileNavbar navigationItems={navigationItems} />
-                </div>
                 <Sidebar />
                 <div className="lg:ml-72">
                     <section className="mb-16 mt-4 flex flex-col items-center gap-4 px-8 lg:grid xl:grid-cols-[1fr,1.75fr,1fr]">
