@@ -28,8 +28,13 @@ export default function Spoiler({ text }: { text: string }) {
                     backgroundColor: isHidden ? "black" : "transparent",
                     cursor: isHidden ? "pointer" : "auto",
                 }}
-                onClick={() => setIsHidden(!isHidden)}
-                onMouseEnter={() => setShowTooltip(true)}
+                onClick={() => {
+                    setShowTooltip(false);
+                    setIsHidden(!isHidden);
+                }}
+                onMouseEnter={() => {
+                    if (isHidden) setShowTooltip(true);
+                }}
                 onMouseLeave={() => setShowTooltip(false)}
                 onMouseMove={updateMousePosition}
             >
