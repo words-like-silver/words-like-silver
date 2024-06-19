@@ -39,8 +39,17 @@ const config: Config = {
                 "underline-appear": "underline-appear 0.35s ease both",
                 "slide-from-left": "slide-from-left 0.35s ease both",
                 "slide-to-left": "slide-to-left 0.35s ease both",
+                "fade-in": "fade-in 0.25s ease both",
             },
             keyframes: {
+                "fade-in": {
+                    "0%": {
+                        opacity: "0",
+                    },
+                    "100%": {
+                        opacity: "1",
+                    },
+                },
                 "fade-in-up": {
                     "0%": {
                         opacity: "0",

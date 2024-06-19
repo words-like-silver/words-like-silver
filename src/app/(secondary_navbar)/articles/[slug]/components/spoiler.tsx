@@ -35,19 +35,22 @@ export default function Spoiler({ text }: { text: string }) {
             >
                 {text}
             </span>
-            {createPortal(
-                <div
-                    className="pointer-events-none fixed rounded-md bg-black px-4 py-2 text-white transition-opacity"
-                    style={{
-                        left: `${mousePosition.x}px`,
-                        top: `${mousePosition.y}px`,
-                        opacity: showTooltip ? "1" : "0",
-                    }}
-                >
-                    Spoiler!
-                </div>,
-                document.body
-            )}
+            {showTooltip &&
+                createPortal(
+                    <div
+                        className="pointer-events-none fixed rounded-md bg-black px-4 py-2 text-white transition-opacity duration-200"
+                        style={{
+                            left: `${mousePosition.x}px`,
+                            top: `${mousePosition.y}px`,
+                        }}
+                    >
+                        <div className="text-center">Spoiler!</div>
+                        <div className="text-center text-white/80">
+                            (click to reveal)
+                        </div>
+                    </div>,
+                    document.body
+                )}
         </>
     );
 }
