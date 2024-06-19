@@ -1,3 +1,4 @@
+import Spoiler from "@/app/(secondary_navbar)/articles/[slug]/components/spoiler";
 import Highlight from "@/app/components/highlight";
 import { ReactNode } from "react";
 import { Block } from "../cms/types";
@@ -26,6 +27,9 @@ export function processSanityBlock(block: Block) {
                         {acc}
                     </span>
                 );
+            }
+            if (mark === "spoiler") {
+                return <Spoiler text={acc?.toString() || ""} key={key} />;
             }
             return acc;
         }, span.text);

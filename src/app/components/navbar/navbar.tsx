@@ -54,11 +54,11 @@ export default async function Navbar({
                     <Link
                         href="/"
                         className={clsx(
-                            "mx-auto flex w-fit items-center py-2 lg:mx-6 lg:py-0",
+                            "mx-auto flex items-center py-2 lg:mx-6 lg:py-0",
                             secondary && "order-1 w-80"
                         )}
                     >
-                        <div className="relative mx-auto aspect-[3] h-16 lg:w-full">
+                        <div className="relative mx-auto aspect-[3] h-16 lg:h-14 xl:h-16 2xl:h-24 lg:w-full">
                             <Image
                                 src="/images/words_logo.png"
                                 fill

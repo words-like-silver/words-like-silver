@@ -16,7 +16,7 @@ export default async function FeatureArticle({
         <Link
             href={`/articles/${article.slug.current}`}
             className={
-                "relative mt-8 block aspect-square w-full transition-transform lg:mt-0"
+                "relative block aspect-square w-full transition-transform"
             }
         >
             <div
