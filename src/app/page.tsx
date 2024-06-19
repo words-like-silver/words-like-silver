@@ -27,30 +27,32 @@ export default async function Home() {
                     <HorizontalArticleBlocks />
                 </div>
                 <Navbar />
-                <Sidebar />
-                <div className="lg:ml-72">
-                    <section className="mb-16 mt-4 flex flex-col items-center gap-4 px-8 lg:grid xl:grid-cols-[1fr,1.75fr,1fr]">
-                        <div className="hidden xl:block">
+                <div className="lg:grid lg:grid-cols-[18rem,1fr]">
+                    <Sidebar />
+                    <section className="mx-auto 2xl:mb-16 mt-4 flex flex-col items-center gap-x-4 gap-y-10 px-4 lg:grid lg:max-w-4xl lg:grid-cols-[1.5fr,1fr] lg:grid-rows-2 lg:px-8 2xl:max-w-none 2xl:grid-cols-[1fr,1.75fr,1fr] 2xl:grid-rows-none">
+                        <div className="w-full self-center justify-self-center lg:col-span-3 lg:px-8 2xl:order-2 2xl:col-auto 2xl:px-0">
+                            <FeatureArticle article={featuredArticle} />
+                        </div>
+                        <div className="mt-20 lg:mt-0 2xl:order-1">
                             <NewArticleList />
                         </div>
-                        <FeatureArticle article={featuredArticle} />
-                        <div className="mt-12 hidden lg:mt-0 xl:block">
+                        <div className="mt-12 lg:mt-0 2xl:order-3">
                             <BookWidget />
                         </div>
                     </section>
-                    <div className="mt-24">
-                        <FeaturedArticlesBlock />
-                    </div>
-                    <BookCarousel books={books} />
-                    <section className="mx-auto mt-36 max-w-7xl gap-4 pr-4 lg:flex">
-                        <FeatureArticle
-                            background
-                            article={featuredArticleSecondary}
-                        />
-                        <div className="mt-16 lg:hidden"></div>
-                        <CategoryArticleList />
-                    </section>
                 </div>
+                <div className="mt-16">
+                    <FeaturedArticlesBlock />
+                </div>
+                <BookCarousel books={books} />
+                <section className="mx-auto mt-36 max-w-7xl gap-4 pr-4 lg:flex">
+                    <FeatureArticle
+                        background
+                        article={featuredArticleSecondary}
+                    />
+                    <div className="mt-16 lg:hidden"></div>
+                    <CategoryArticleList />
+                </section>
                 <MoreArticles />
             </main>
             <Footer />
