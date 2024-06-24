@@ -3,7 +3,7 @@ import { getNewArticles } from "../lib/cms/queries";
 import ArticleList from "./article-list";
 
 export default async function NewArticleList() {
-    const newArticles = await getNewArticles(5);
+    const newArticles = await getNewArticles(4);
     return (
         <div className="">
             <h2 className="text-center font-sailing-club text-3xl italic">
