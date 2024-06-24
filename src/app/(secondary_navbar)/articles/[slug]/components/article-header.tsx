@@ -1,3 +1,4 @@
+import Star from "@/app/components/svg/star";
 import { Article } from "@/app/lib/cms/types";
 import { HeaderType } from "@/app/lib/constants";
 import { processSanityBlock } from "@/app/lib/text/process-sanity-block";
@@ -60,6 +61,7 @@ export default function ArticleHeader({ article }: { article: Article }) {
                                 fill
                             />
                         </div>
+                        <ArticleStar starred={article.starred} />
                     </div>
                 )}
                 {article.headerType === HeaderType.book && (
@@ -72,6 +74,7 @@ export default function ArticleHeader({ article }: { article: Article }) {
                                 className="object-cover"
                                 priority
                             />
+                            <ArticleStar starred={article.starred} />
                             <div className="absolute -left-20 -top-8 -z-10 aspect-square w-full scale-110 lg:-left-28">
                                 <Image
                                     src="/images/paper_background.png"
@@ -91,5 +94,17 @@ export default function ArticleHeader({ article }: { article: Article }) {
                 )}
             </section>
         </>
+    );
+}
+
+function ArticleStar({ starred }: { starred: boolean }) {
+    return (
+        starred === true && (
+            <div className="absolute left-0 top-0 aspect-book h-full">
+                <div className="absolute left-0 top-0 h-20 w-20 -translate-x-1/2 -translate-y-1/2 transition-transform duration-300 group-hover:rotate-6 group-hover:scale-125">
+                    <Star className="h-20 w-20" />
+                </div>
+            </div>
+        )
     );
 }
