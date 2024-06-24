@@ -35,7 +35,7 @@ export default function VerticalArticle({
             )}
             <Link
                 href={`/articles/${article.slug.current}`}
-                className={`relative mx-auto aspect-square w-full transition-transform duration-300 hover:scale-[1.03]`}
+                className={`group relative mx-auto aspect-square w-full transition-transform duration-300 hover:scale-[1.03]`}
             >
                 <Image
                     src={article.mainImage.asset.url}
@@ -45,7 +45,7 @@ export default function VerticalArticle({
                 />
                 {article.starred === true && (
                     <div className="absolute left-0 top-0 aspect-book h-full translate-x-1/4">
-                        <div className="absolute left-0 top-0 h-12 w-12 -translate-x-1/2 -translate-y-1/2 transition-transform hover:rotate-6 hover:scale-125">
+                        <div className="absolute left-0 top-0 h-12 w-12 -translate-x-1/2 -translate-y-1/2 transition-transform duration-300 group-hover:rotate-6 group-hover:scale-125">
                             <Star className="h-12 w-12" />
                         </div>
                     </div>
@@ -66,7 +66,7 @@ export default function VerticalArticle({
             {includeDescription && (
                 <p
                     className={clsx(
-                        "inline-block text-xl",
+                        "inline-block text-center text-xl",
                         article.categories
                             .map((category) => category.title)
                             .includes("BOOKS") && "px-16"

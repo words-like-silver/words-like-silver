@@ -82,7 +82,7 @@ export async function getFeaturedCategory(limit: number) {
 
 export async function getFeaturedBook() {
     const homepages = await get<Homepage>(
-        `*[_type=="homepage"]{featuredBook->{title,slug,mainImage{asset->{url}}}}`
+        `*[_type=="homepage"]{featuredBook->{title,slug,starred,mainImage{asset->{url}}}}`
     );
     return homepages.at(0)?.featuredBook;
 }
