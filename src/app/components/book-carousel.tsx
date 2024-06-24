@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { MouseEvent, useCallback, useMemo, useRef, useState } from "react";
 import { Article } from "../lib/cms/types";
+import Star from "./svg/star";
 
 export default function BookCarousel({ books }: { books: Article[] }) {
     const NUM_BOOKS = books.length;
@@ -104,6 +105,13 @@ export default function BookCarousel({ books }: { books: Article[] }) {
                         href={`/articles/${book.slug.current}`}
                     >
                         <Image src={book.mainImage.asset.url} alt="book" fill />
+                        {book.starred === true && (
+                            <div className="absolute left-0 top-0 aspect-book h-full">
+                                <div className="absolute left-0 top-0 h-12 w-12 -translate-x-1/2 -translate-y-1/2 transition-transform duration-300 group-hover:rotate-6 group-hover:scale-125">
+                                    <Star className="h-12 w-12" />
+                                </div>
+                            </div>
+                        )}
                     </Link>
                 ))}
             </div>
