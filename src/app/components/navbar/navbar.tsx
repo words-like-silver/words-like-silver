@@ -58,11 +58,19 @@ export default async function Navbar({
                             secondary && "order-1 w-80"
                         )}
                     >
-                        <div className="relative mx-auto aspect-[3] h-16 lg:h-14 xl:h-16 2xl:h-24 lg:w-full">
+                        <div
+                            className={clsx(
+                                "relative mx-auto aspect-[3] lg:w-full",
+                                secondary
+                                    ? "h-auto"
+                                    : "h-16 lg:h-14  xl:h-16 2xl:h-24"
+                            )}
+                        >
                             <Image
                                 src="/images/words_logo.png"
                                 fill
                                 alt="words like silver logo"
+                                className="object-contain"
                             />
                         </div>
                     </Link>
