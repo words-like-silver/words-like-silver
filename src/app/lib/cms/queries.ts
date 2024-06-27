@@ -93,15 +93,36 @@ export async function getAllCategorySlugs() {
 }
 
 export async function getCategoryBySlug(slug: string) {
+    if (slug === "all") {
+        return await getCategoryWithAllArticles();
+    }
     const categories = await get<Category>(
         `*[_type == 'category' && slug.current == '${slug}']{...,"articles": *[_type == "article" && references(^._id)]{title,slug,subhead,headerType,starred,tags[]->{name},categories[]->{title},mainImage{asset->{url}}}, featuredArticles[]->{title,slug,subhead,headerType,starred,categories[]->{title},mainImage{asset->{url}}}}`
     );
     return categories.at(0);
 }
 
+export async function getCategoryWithAllArticles() {
+    const articles = await getAllArticles();
+    const featuredArticles = await getFeaturedArticleRow();
+    const category: Category = {
+        _createdAt: "2024-06-27",
+        _id: "all-category",
+        _rev: "-all-category",
+        _type: "category",
+        _updatedAt: "2024-06-27",
+        title: "ALL",
+        articles: articles,
+        description: "",
+        slug: { _type: "slug", current: "all" },
+        featuredArticles: featuredArticles || null,
+    };
+    return category;
+}
+
 export async function getAllArticles() {
     const articles = await get<Article>(
-        `*[_type == 'article']{title,subhead,slug,headerType,starred,mainImage{asset->{url}}}`
+        `*[_type == 'article']{title,subhead,slug,headerType,starred,tags[]->{name},categories[]->{title},mainImage{asset->{url}}}`
     );
     return articles.map((article) => ({
         ...article,

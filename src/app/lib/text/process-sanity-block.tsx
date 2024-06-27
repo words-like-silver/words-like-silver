@@ -9,7 +9,7 @@ export function processSanityBlock(block: Block) {
     return block.children.map((span) => {
         const key = Math.random();
         if (span.marks.length === 0) {
-            if (span.text === "") return <br />;
+            if (span.text === "" || span.text === "\n") return <br />;
             return span.text;
         }
         let html = span.marks.reduce((acc: ReactNode, mark: ReactNode) => {

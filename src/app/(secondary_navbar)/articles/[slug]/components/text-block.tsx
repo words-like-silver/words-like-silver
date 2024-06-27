@@ -47,5 +47,9 @@ export default function TextBlock({
             </h5>
         );
     }
-    return <p className={clsx("text-xl lg:text-2xl", options?.p)}>{innerHtml}</p>;
+    return (
+        <p className={clsx("mb-4 mt-2 text-xl lg:text-2xl", options?.p)}>
+            {innerHtml}
+        </p>
+    );
 }

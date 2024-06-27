@@ -4,6 +4,7 @@ import {
     getCategoryBySlug,
     getNavigationItems,
 } from "@/app/lib/cms/queries";
+import { Category as CategoryType } from "@/app/lib/cms/types";
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
@@ -12,6 +13,7 @@ import CategoryArticles from "./components/category-articles";
 
 export async function generateStaticParams() {
     const categorySlugs = await getAllCategorySlugs();
+    categorySlugs.push("all");
 
     if (!categorySlugs?.length) return [];
 
@@ -55,9 +57,12 @@ export default async function Category({
 }: {
     params: { category: string };
 }) {
-    const category = await getCategoryBySlug(params.category);
+    let category: CategoryType | undefined = undefined;
+    category = await getCategoryBySlug(params.category);
     const navigationItems = await getNavigationItems();
     const tags: string[] = [];
+
+    console.log(category?.articles);
     category?.articles.forEach((article) => {
         const articleTags = article.tags?.map((tag) => tag.name);
         articleTags?.forEach((tag) => {
@@ -74,7 +79,11 @@ export default async function Category({
                 <h1 className="mx-auto my-8 text-balance px-24 text-center font-sailing-club text-6xl">
                     {category.title}
                 </h1>
-                <p className="text-2xl">{category.description}</p>
+                {!!category.description && (
+                    <p className="mx-auto px-24 pb-2 text-center text-2xl">
+                        {category.description}
+                    </p>
+                )}
                 <div className="mt-4 flex items-center justify-center gap-4">
                     <div>email</div>
                     <div>insta</div>
