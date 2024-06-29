@@ -3,22 +3,6 @@ import Highlight from "@/app/components/highlight";
 import { ReactNode } from "react";
 import { Block } from "../cms/types";
 
-function customJoin<T>(arr: T[], separator: Element) {
-    if (!Array.isArray(arr)) {
-        throw new TypeError("First argument must be an array");
-    }
-    let result = "";
-    for (let i = 0; i < arr.length; i++) {
-        if (i > 0) {
-            result += separator;
-        }
-        if (arr[i] !== undefined && arr[i] !== null) {
-            result += arr[i];
-        }
-    }
-    return result;
-}
-
 export function processSanityBlock(block: Block) {
     if (block._type !== "block") return "";
 
@@ -45,6 +29,7 @@ export function processSanityBlock(block: Block) {
             if (mark === "strike-through") return <s key={key}>{acc}</s>;
             if (mark === "code") return <code key={key}>{acc}</code>;
             if (mark === "highlight") {
+                console.log(acc);
                 return <Highlight text={acc?.toString() || ""} key={key} />;
             }
             if (mark === "sailing-club") {
