@@ -95,7 +95,7 @@ export default function BookCarousel({ books }: { books: Article[] }) {
             >
                 {books.map((book, index) => (
                     <Link
-                        className="relative aspect-book w-32 transition-transform duration-300 lg:w-44"
+                        className="group relative aspect-book w-32 transition-transform duration-300 lg:w-44"
                         key={index}
                         onMouseOver={() => handleMouseOver(index)}
                         style={{

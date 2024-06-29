@@ -37,7 +37,7 @@ export default async function Navbar({
                         )}
                     >
                         {navigationItems
-                            .slice(0, halfOfNumNavItems + 1)
+                            .slice(0, halfOfNumNavItems)
                             .map((navItem) => {
                                 return (
                                     <NavLink
@@ -81,7 +81,7 @@ export default async function Navbar({
                         )}
                     >
                         {navigationItems
-                            .slice(halfOfNumNavItems + 1)
+                            .slice(halfOfNumNavItems)
                             .map((navItem) => {
                                 return (
                                     <NavLink
