@@ -27,4 +27,5 @@ export const articleBodyMap: {
 export enum HeaderType {
     horizontalImage = "horizontalImage",
     book = "book",
+    squareImage = "squareImage"
 }

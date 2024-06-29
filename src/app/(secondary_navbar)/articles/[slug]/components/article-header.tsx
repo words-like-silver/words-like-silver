@@ -92,6 +92,25 @@ export default function ArticleHeader({ article }: { article: Article }) {
                         </div>
                     </div>
                 )}
+                {article.headerType === HeaderType.squareImage && (
+                    <div className="relative mx-auto mb-24 mt-16 aspect-square h-full max-w-xl">
+                        <Image
+                            src={article.mainImage.asset.url}
+                            alt=""
+                            fill
+                            className="object-cover"
+                            priority
+                        />
+                        <div className="absolute -z-10 aspect-square h-full translate-x-12 scale-110">
+                            <Image
+                                src="/images/paper_background.png"
+                                alt=""
+                                fill
+                            />
+                        </div>
+                        <ArticleStar starred={article.starred} />
+                    </div>
+                )}
             </section>
         </>
     );
