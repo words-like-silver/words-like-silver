@@ -78,24 +78,23 @@ export default function CategoryArticles({
                 </div>
             </section>
             <div className="mx-auto max-w-10xl px-4 text-white xl:px-28">
-                <div className="grid place-items-center items-start gap-16 md:grid-cols-2 xl:grid-cols-3">
-                    {articles?.slice(start, end).map((article, index) => (
-                        <div
-                            className="animate-fade-in-up"
-                            key={
-                                "category-article-" +
-                                article.slug.current +
-                                index
-                            }
-                            style={{ animationDelay: `${index * 100}ms` }}
-                        >
+                <div className="mx-auto grid max-w-10xl justify-center gap-x-8 px-4 sm:grid-cols-2 lg:grid-cols-3 lg:px-8 2xl:grid-cols-4">
+                    {articles
+                        ?.slice(start, end)
+                        .map((article, index) => (
                             <VerticalArticle
                                 article={article}
                                 includeReadMore
                                 includeDescription
+                                key={
+                                    "category-article-" +
+                                    article.slug.current +
+                                    index
+                                }
+                                additionalClassName="animate-fade-in-up"
+                                style={{ animationDelay: `${index * 100}ms` }}
                             />
-                        </div>
-                    ))}
+                        ))}
                 </div>
                 <div className="mt-32 flex justify-center gap-4 text-3xl">
                     <button

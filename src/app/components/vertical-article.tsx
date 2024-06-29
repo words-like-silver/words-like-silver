@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
+import { CSSProperties } from "react";
 import { Article } from "../lib/cms/types";
 import { processSanityBlock } from "../lib/text/process-sanity-block";
 import Star from "./svg/star";
@@ -11,17 +12,27 @@ export default function VerticalArticle({
     includeReadMore,
     includeCategory,
     textAlign = "text-center",
+    additionalClassName,
+    style,
 }: {
     article: Article | null;
     includeDescription?: boolean;
     includeReadMore?: boolean;
     includeCategory?: boolean;
     textAlign?: string;
+    additionalClassName?: string;
+    style?: CSSProperties;
 }) {
     if (!article) return null;
 
     return (
-        <div className="row-span-5 grid grid-rows-subgrid">
+        <div
+            className={clsx(
+                "row-span-5 mb-12 grid grid-rows-subgrid lg:mb-16",
+                additionalClassName
+            )}
+            style={style}
+        >
             {includeCategory && (
                 <h3
                     className={clsx(
@@ -54,7 +65,7 @@ export default function VerticalArticle({
             <Link
                 href={`/articles/${article.slug.current}`}
                 className={clsx(
-                    "py-8 text-xl lg:text-2xl",
+                    "pb-4 pt-8 text-xl lg:text-2xl",
                     textAlign,
                     article.categories
                         .map((category) => category.title)
