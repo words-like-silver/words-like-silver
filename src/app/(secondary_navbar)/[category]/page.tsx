@@ -62,7 +62,6 @@ export default async function Category({
     const navigationItems = await getNavigationItems();
     const tags: string[] = [];
 
-    console.log(category?.articles);
     category?.articles.forEach((article) => {
         const articleTags = article.tags?.map((tag) => tag.name);
         articleTags?.forEach((tag) => {

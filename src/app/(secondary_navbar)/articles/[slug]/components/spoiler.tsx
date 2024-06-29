@@ -13,7 +13,6 @@ export default function Spoiler({ text }: { text: string }) {
         const x = e.clientX + 10;
         const y = e.clientY + 10;
         setMousePosition({ x, y });
-        console.log({ x, y });
     };
 
     return (

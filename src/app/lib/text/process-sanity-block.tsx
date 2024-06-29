@@ -29,7 +29,6 @@ export function processSanityBlock(block: Block) {
             if (mark === "strike-through") return <s key={key}>{acc}</s>;
             if (mark === "code") return <code key={key}>{acc}</code>;
             if (mark === "highlight") {
-                console.log(acc);
                 return <Highlight text={acc?.toString() || ""} key={key} />;
             }
             if (mark === "sailing-club") {
