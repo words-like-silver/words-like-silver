@@ -23,7 +23,8 @@ export default function VerticalArticle({
     additionalClassName?: string;
     style?: CSSProperties;
 }) {
-    if (!article) return null;
+    // Extra check for draft articles
+    if (!article || !article.slug?.current) return null;
 
     return (
         <div
@@ -49,7 +50,7 @@ export default function VerticalArticle({
                 className={`group relative mx-auto aspect-square w-full transition-transform duration-300 hover:scale-[1.03]`}
             >
                 <Image
-                    src={article.mainImage.asset.url}
+                    src={article.mainImage?.asset.url}
                     fill
                     className={`${article.headerType === "book" ? "object-contain" : "object-cover"}`}
                     alt={article.mainImage.alt}
@@ -65,7 +66,7 @@ export default function VerticalArticle({
             <Link
                 href={`/articles/${article.slug.current}`}
                 className={clsx(
-                    "pb-4 pt-6 lg:pt-8 text-xl lg:text-2xl",
+                    "pb-4 pt-6 text-xl lg:pt-8 lg:text-2xl",
                     textAlign,
                     article.categories
                         .map((category) => category.title)
@@ -89,7 +90,7 @@ export default function VerticalArticle({
             {includeReadMore && (
                 <Link
                     href={`/articles/${article.slug.current}`}
-                    className="mt-6 lg:mt-8 block text-center font-sailing-club text-2xl italic underline lg:text-3xl"
+                    className="mt-6 block text-center font-sailing-club text-2xl italic underline lg:mt-8 lg:text-3xl"
                 >
                     read more
                 </Link>

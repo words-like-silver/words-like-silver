@@ -7,7 +7,7 @@ export default async function MoreArticles() {
     const filteredArticles = latestArticles.filter(
         (article) =>
             !article.categories
-                .map((category) => category.title)
+                ?.map((category) => category.title)
                 .includes("BOOKS")
     );
 

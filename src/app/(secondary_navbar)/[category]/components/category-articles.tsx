@@ -108,7 +108,7 @@ export default function CategoryArticles({
                                 includeDescription
                                 key={
                                     "category-article-" +
-                                    article.slug.current +
+                                    article.slug?.current +
                                     index
                                 }
                                 additionalClassName="animate-fade-in-up"

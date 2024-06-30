@@ -68,7 +68,7 @@ export default async function Article({
                     <div className="flex flex-col items-center gap-x-8 gap-y-8 px-6 xl:flex-row xl:items-start xl:justify-center">
                         <ArticleSidebar article={article} />
                         <ArticleBody article={article} />
-                        <div className="w-72 pr-8"></div>
+                        <div className="w-44 pr-8"></div>
                     </div>
                 </div>
             </article>

@@ -16,7 +16,6 @@ export default function ArticleImage({
     const width = Number(widthStr);
     const height = Number(heightStr);
     const background = !options?.noBackground;
-    console.log(body);
     return (
         <div
             className={clsx(

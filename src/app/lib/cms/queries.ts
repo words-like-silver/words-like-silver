@@ -136,6 +136,12 @@ async function get<T>(query: string) {
         searchParams.append("query", query);
         const res = await fetch(cmsUrl + "?" + searchParams.toString(), {
             method: "GET",
+            headers: {
+                ...((process.env.ENVIRONMENT === "preview" ||
+                    process.env.ENVIRONMENT === "development") && {
+                    Authorization: `bearer ${process.env.CMS_DRAFT_TOKEN}`,
+                }),
+            },
         });
         const data = (await res.json()) as SanityResponse<T>;
         if (data.error) throw new Error(data.error.description);
