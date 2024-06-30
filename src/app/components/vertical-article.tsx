@@ -52,7 +52,7 @@ export default function VerticalArticle({
                     src={article.mainImage.asset.url}
                     fill
                     className={`${article.headerType === "book" ? "object-contain" : "object-cover"}`}
-                    alt=""
+                    alt={article.mainImage.alt}
                 />
                 {article.starred === true && (
                     <div className="absolute left-0 top-0 aspect-book h-full translate-x-1/4">
@@ -65,7 +65,7 @@ export default function VerticalArticle({
             <Link
                 href={`/articles/${article.slug.current}`}
                 className={clsx(
-                    "pb-4 pt-8 text-xl lg:text-2xl",
+                    "pb-4 pt-6 lg:pt-8 text-xl lg:text-2xl",
                     textAlign,
                     article.categories
                         .map((category) => category.title)
@@ -77,7 +77,7 @@ export default function VerticalArticle({
             {includeDescription && (
                 <p
                     className={clsx(
-                        "inline-block text-center text-xl",
+                        "inline-block text-center lg:text-xl",
                         article.categories
                             .map((category) => category.title)
                             .includes("BOOKS") && "px-16"
@@ -89,7 +89,7 @@ export default function VerticalArticle({
             {includeReadMore && (
                 <Link
                     href={`/articles/${article.slug.current}`}
-                    className="mt-8 block text-center font-sailing-club text-2xl italic underline lg:text-3xl"
+                    className="mt-6 lg:mt-8 block text-center font-sailing-club text-2xl italic underline lg:text-3xl"
                 >
                     read more
                 </Link>

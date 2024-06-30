@@ -30,7 +30,7 @@ export async function getArticleBySlug(slug: string) {
 
 export async function getNewArticles(limit: number) {
     return await get<Article>(
-        `*[_type == 'article'][0...${limit}]{_id,title,slug,subhead,headerType,starred,categories[]->{slug,title},mainImage{asset->{url}}}|order(publishedAt desc)`
+        `*[_type == 'article'][0...${limit}]{_id,title,slug,subhead,headerType,starred,categories[]->{slug,title},mainImage{...,asset->{url}}}|order(publishedAt desc)`
     );
 }
 
@@ -40,49 +40,49 @@ export async function getArticlesByCategory(
     limit: number
 ) {
     const articles = await get<Article>(
-        `*[_type=="article" && "${category}" in categories[]->title][${start}...${limit}]{_id,title,headerType,starred,slug,mainImage{asset->{url}}}|order(publishedAt desc)`
+        `*[_type=="article" && "${category}" in categories[]->title][${start}...${limit}]{_id,title,headerType,starred,slug,mainImage{...,asset->{url}}}|order(publishedAt desc)`
     );
     return articles;
 }
 
 export async function getFeaturedArticle() {
     const homepages = await get<Homepage>(
-        `*[_type=="homepage"]{featuredArticle->{_id,title,slug,mainImage{asset->{url}}}}`
+        `*[_type=="homepage"]{featuredArticle->{_id,title,slug,mainImage{...,asset->{url}}}}`
     );
     return homepages.at(0)?.featuredArticle;
 }
 
 export async function getFeaturedArticleSecondary() {
     const homepages = await get<Homepage>(
-        `*[_type=="homepage"]{featuredArticleSecondary->{title,slug,mainImage{asset->{url}}}}`
+        `*[_type=="homepage"]{featuredArticleSecondary->{title,slug,mainImage{...,asset->{url}}}}`
     );
     return homepages.at(0)?.featuredArticleSecondary;
 }
 
 export async function getHorizontalArticles() {
     const homepages = await get<Homepage>(
-        `*[_type == 'homepage']{topBarArticles[]->{_id,title,slug,headerType,starred,mainImage{asset->{url}}}}`
+        `*[_type == 'homepage']{topBarArticles[]->{_id,title,slug,headerType,starred,mainImage{...,asset->{url}}}}`
     );
     return homepages.at(0)?.topBarArticles;
 }
 
 export async function getFeaturedArticleRow() {
     const homepages = await get<Homepage>(
-        `*[_type == 'homepage']{featuredArticleRow[]->{_id,title,slug,headerType,starred,mainImage{asset->{url}},"categories":*[_type == "category" && references(^._id)]{slug,title}}}`
+        `*[_type == 'homepage']{featuredArticleRow[]->{_id,title,slug,headerType,starred,mainImage{...,asset->{url}},"categories":*[_type == "category" && references(^._id)]{slug,title}}}`
     );
     return homepages.at(0)?.featuredArticleRow;
 }
 
 export async function getFeaturedCategory(limit: number) {
     const homepages = await get<Homepage>(
-        `*[_type=="homepage"]{featuredCategory->{...,"articles": *[_type == "article" && references(^._id)][0...${limit}]{title,slug,headerType,starred,mainImage{asset->{url}}}}}`
+        `*[_type=="homepage"]{featuredCategory->{...,"articles": *[_type == "article" && references(^._id)][0...${limit}]{title,slug,headerType,starred,mainImage{...,asset->{url}}}}}`
     );
     return homepages.at(0)?.featuredCategory;
 }
 
 export async function getFeaturedBook() {
     const homepages = await get<Homepage>(
-        `*[_type=="homepage"]{featuredBook->{title,slug,starred,mainImage{asset->{url}}}}`
+        `*[_type=="homepage"]{featuredBook->{title,slug,starred,mainImage{...,asset->{url}}}}`
     );
     return homepages.at(0)?.featuredBook;
 }
@@ -97,7 +97,7 @@ export async function getCategoryBySlug(slug: string) {
         return await getCategoryWithAllArticles();
     }
     const categories = await get<Category>(
-        `*[_type == 'category' && slug.current == '${slug}']{...,"articles": *[_type == "article" && references(^._id)]{title,slug,subhead,headerType,starred,tags[]->{name},categories[]->{title},mainImage{asset->{url}}}, featuredArticles[]->{title,slug,subhead,headerType,starred,categories[]->{title},mainImage{asset->{url}}}}`
+        `*[_type == 'category' && slug.current == '${slug}']{...,"articles": *[_type == "article" && references(^._id)]{title,slug,subhead,headerType,starred,tags[]->{name},categories[]->{title},mainImage{...,asset->{url}}}, featuredArticles[]->{title,slug,subhead,headerType,starred,categories[]->{title},mainImage{...,asset->{url}}}}`
     );
     return categories.at(0);
 }
@@ -122,7 +122,7 @@ export async function getCategoryWithAllArticles() {
 
 export async function getAllArticles() {
     const articles = await get<Article>(
-        `*[_type == 'article']{title,subhead,slug,headerType,starred,tags[]->{name},categories[]->{title},mainImage{asset->{url}}}`
+        `*[_type == 'article']{title,subhead,slug,headerType,starred,tags[]->{name},categories[]->{title},mainImage{...,asset->{url}}}`
     );
     return articles.map((article) => ({
         ...article,

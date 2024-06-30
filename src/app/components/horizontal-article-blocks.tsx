@@ -33,7 +33,11 @@ export default async function HorizontalArticleBlocks() {
                     <div
                         className={`relative ${article.headerType === "book" ? "aspect-book" : "aspect-square"} h-28`}
                     >
-                        <Image src={article.mainImage.asset.url} fill alt="" />
+                        <Image
+                            src={article.mainImage.asset.url}
+                            fill
+                            alt={article.mainImage.alt}
+                        />
                     </div>
                     <div className="mb-2 overflow-hidden px-4 pt-4">
                         {processSanityBlock(article.title[0])}

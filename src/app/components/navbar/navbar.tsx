@@ -60,10 +60,10 @@ export default async function Navbar({
                     >
                         <div
                             className={clsx(
-                                "relative mx-auto aspect-[3] lg:w-full",
+                                "relative mx-auto aspect-[3] h-16 lg:w-full",
                                 secondary
-                                    ? "h-auto"
-                                    : "h-16 lg:h-14  xl:h-16 2xl:h-24"
+                                    ? "lg:h-auto"
+                                    : "lg:h-14 xl:h-16 2xl:h-24"
                             )}
                         >
                             <Image

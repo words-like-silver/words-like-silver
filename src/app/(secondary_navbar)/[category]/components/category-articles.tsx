@@ -3,7 +3,7 @@
 import VerticalArticle from "@/app/components/vertical-article";
 import { Article } from "@/app/lib/cms/types";
 import clsx from "clsx";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function CategoryArticles({
     allArticles,
@@ -18,6 +18,22 @@ export default function CategoryArticles({
     const [activeTag, setActiveTag] = useState("");
     const start = (page - 1) * LIMIT;
     const end = start + LIMIT;
+    const categoryArticleContainerRef = useRef<HTMLDivElement>(null);
+    const hasSetPage = useRef(false);
+
+    const scrollToTop = () => {
+        if (categoryArticleContainerRef.current) {
+            categoryArticleContainerRef.current.scrollIntoView({
+                behavior: "smooth",
+            });
+        }
+    };
+
+    useEffect(() => {
+        if (hasSetPage.current === true) {
+            scrollToTop();
+        }
+    }, [page]);
 
     if (!articles) return null;
 
@@ -33,8 +49,12 @@ export default function CategoryArticles({
             }) || [];
         setArticles(filteredArticles);
     };
+
     return (
-        <section className="relative mb-16 pb-16">
+        <section
+            className="relative mb-16 scroll-m-44 pb-16"
+            ref={categoryArticleContainerRef}
+        >
             <section className="mx-auto mb-16 max-w-7xl px-4">
                 <div className="flex flex-wrap items-center justify-center font-sailing-club text-xl text-black lg:text-3xl">
                     {tags?.length && (
@@ -105,6 +125,7 @@ export default function CategoryArticles({
                         disabled={page === 1}
                         onClick={() => {
                             setPage(1);
+                            hasSetPage.current = true;
                         }}
                     >
                         first
@@ -112,15 +133,17 @@ export default function CategoryArticles({
                     <button
                         onClick={() => {
                             setPage(page - 1);
+                            hasSetPage.current = true;
                         }}
                         className={clsx(page === 1 && "invisible")}
                     >
                         {"<-----"}
                     </button>
-                    <div className="underline">{page}</div>
+                    <div>{page}</div>
                     <button
                         onClick={() => {
                             setPage(page + 1);
+                            hasSetPage.current = true;
                         }}
                         className={clsx(
                             page >= Math.ceil(articles.length / LIMIT) &&
@@ -133,6 +156,7 @@ export default function CategoryArticles({
                     <button
                         onClick={() => {
                             setPage(Math.ceil(articles.length / LIMIT));
+                            hasSetPage.current = true;
                         }}
                         className={clsx(
                             "font-sailing-club italic",

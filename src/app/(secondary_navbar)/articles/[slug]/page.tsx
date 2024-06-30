@@ -41,6 +41,7 @@ export async function generateMetadata({
             images: [
                 {
                     url: article.mainImage.asset.url,
+                    alt: article.mainImage.alt,
                 },
             ],
             type: "article",
