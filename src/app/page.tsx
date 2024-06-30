@@ -19,6 +19,7 @@ export default async function Home() {
     const featuredArticle = await getFeaturedArticle();
     const featuredArticleSecondary = await getFeaturedArticleSecondary();
     const books = await getArticlesByCategory("BOOKS", undefined, 11);
+
     if (books.length % 2 === 0) {
         books.pop();
     }
