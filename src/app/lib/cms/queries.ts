@@ -18,7 +18,7 @@ export async function getNavigationItems() {
 
 export async function getAllArticleSlugs() {
     const articles = await get<Article>("*[_type == 'article']{slug}");
-    return articles.map((article) => article!.slug.current);
+    return articles.map((article) => article!.slug?.current);
 }
 
 export async function getArticleBySlug(slug: string) {
