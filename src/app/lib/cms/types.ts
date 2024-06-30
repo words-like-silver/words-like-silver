@@ -103,6 +103,8 @@ export interface Image extends Document {
     _type: "image";
     _key: string;
     asset: Asset;
+    alt: string;
+    caption: Block[];
 }
 
 export interface Article extends Document {

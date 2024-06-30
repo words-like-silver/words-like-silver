@@ -1,4 +1,5 @@
 import { Body } from "@/app/lib/cms/types";
+import { processSanityBlock } from "@/app/lib/text/process-sanity-block";
 import clsx from "clsx";
 import Image from "next/image";
 
@@ -15,6 +16,7 @@ export default function ArticleImage({
     const width = Number(widthStr);
     const height = Number(heightStr);
     const background = !options?.noBackground;
+    console.log(body);
     return (
         <div
             className={clsx(
@@ -25,13 +27,20 @@ export default function ArticleImage({
         >
             <Image
                 src={body.asset.url}
-                className={clsx(background && "scale-105")}
-                alt=""
+                className={clsx(background && "scale-[1.02]")}
+                alt={body.alt}
                 fill
             />
+            {!!body.caption && (
+                <div className="absolute bottom-4 w-full">
+                    <div className="mx-auto w-fit border border-black bg-beige/90 px-4 py-2 text-lg">
+                        {processSanityBlock(body.caption[0])}
+                    </div>
+                </div>
+            )}
             {background && (
                 <div className="absolute -z-10 flex h-full w-full justify-center">
-                    <div className="aspect-square h-full scale-110 ">
+                    <div className="aspect-square h-full scale-[1.07] ">
                         <Image src="/images/paper_background.png" alt="" fill />
                     </div>
                 </div>

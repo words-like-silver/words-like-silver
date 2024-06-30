@@ -12,7 +12,7 @@ export default function CategoryArticles({
     allArticles: Article[] | null;
     tags?: (string | undefined)[] | null;
 }) {
-    const LIMIT = 9;
+    const LIMIT = 6;
     const [page, setPage] = useState(1);
     const [articles, setArticles] = useState(allArticles);
     const [activeTag, setActiveTag] = useState("");
@@ -78,7 +78,7 @@ export default function CategoryArticles({
                 </div>
             </section>
             <div className="mx-auto max-w-10xl px-4 text-white xl:px-28">
-                <div className="mx-auto grid max-w-10xl justify-center gap-x-8 px-4 sm:grid-cols-2 lg:grid-cols-3 lg:px-8 2xl:grid-cols-4">
+                <div className="mx-auto grid max-w-10xl justify-center gap-x-8 px-4 sm:grid-cols-2 lg:grid-cols-3 lg:px-8 2xl:grid-cols-3">
                     {articles
                         ?.slice(start, end)
                         .map((article, index) => (

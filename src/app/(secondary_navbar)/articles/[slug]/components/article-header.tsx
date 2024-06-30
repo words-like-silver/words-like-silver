@@ -49,7 +49,7 @@ export default function ArticleHeader({ article }: { article: Article }) {
                     <div className="relative mx-auto mb-24 mt-16 aspect-[16/12] w-full max-w-6xl lg:aspect-video">
                         <Image
                             src={article.mainImage.asset.url}
-                            alt=""
+                            alt={article.mainImage.alt}
                             fill
                             className="object-cover"
                             priority
@@ -69,7 +69,7 @@ export default function ArticleHeader({ article }: { article: Article }) {
                         <div className="relative mx-10 aspect-book h-full lg:mx-32">
                             <Image
                                 src={article.mainImage.asset.url}
-                                alt=""
+                                alt={article.mainImage.alt}
                                 fill
                                 className="object-cover"
                                 priority
@@ -96,7 +96,7 @@ export default function ArticleHeader({ article }: { article: Article }) {
                     <div className="relative mx-auto mb-24 mt-16 aspect-square h-full max-w-xl">
                         <Image
                             src={article.mainImage.asset.url}
-                            alt=""
+                            alt={article.mainImage.alt}
                             fill
                             className="object-cover"
                             priority
