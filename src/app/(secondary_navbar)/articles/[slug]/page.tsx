@@ -1,6 +1,6 @@
 import { getAllArticleSlugs, getArticleBySlug } from "@/app/lib/cms/queries";
 import { getTextFromBlock } from "@/app/lib/text/process-sanity-block";
-import { redirect } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import ArticleBody from "./components/article-body";
 import ArticleHeader from "./components/article-header";
 import ArticleSidebar from "./components/article-sidebar";
@@ -26,7 +26,7 @@ export async function generateMetadata({
 }) {
     const article = await getArticleBySlug(params.slug);
 
-    if (!article) {
+    if (!article || !article.slug?.current) {
         return {};
     }
 
@@ -59,6 +59,7 @@ export default async function Article({
 }) {
     const article = await getArticleBySlug(params.slug);
     if (!article) return redirect("/");
+    if (!article.slug?.current) return notFound();
 
     return (
         <main>
