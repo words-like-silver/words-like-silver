@@ -98,8 +98,8 @@ export default function CategoryArticles({
                     })}
                 </div>
             </section>
-            <div className="mx-auto max-w-10xl px-4 text-white xl:px-28">
-                <div className="mx-auto grid max-w-10xl justify-center gap-x-8 px-4 sm:grid-cols-2 lg:grid-cols-3 lg:px-8 2xl:grid-cols-3">
+            <div className="mx-auto max-w-9xl px-4 text-white xl:px-28">
+                <div className="mx-auto grid max-w-9xl justify-center gap-x-8 px-4 sm:grid-cols-2 lg:grid-cols-3 lg:px-8 2xl:grid-cols-3">
                     {articles
                         ?.slice(start, end)
                         .map((article, index) => (
@@ -117,70 +117,76 @@ export default function CategoryArticles({
                             />
                         ))}
                 </div>
-                <div className="mt-32 flex justify-center gap-4 text-3xl">
-                    <button
-                        className={clsx(
-                            "font-sailing-club italic",
-                            page === 1 && "invisible"
-                        )}
-                        disabled={page === 1}
-                        onClick={() => {
-                            setPage(1);
-                            hasSetPage.current = true;
-                        }}
-                    >
-                        first
-                    </button>
-                    <button
-                        onClick={() => {
-                            setPage(page - 1);
-                            hasSetPage.current = true;
-                        }}
-                        className={clsx(page === 1 && "invisible")}
-                    >
-                        <Image
-                            src="/images/arrow_left.png"
-                            width={100}
-                            height={25}
-                            alt=""
-                            className="invert"
-                        />
-                    </button>
-                    <div>{page}</div>
-                    <button
-                        onClick={() => {
-                            setPage(page + 1);
-                            hasSetPage.current = true;
-                        }}
-                        className={clsx(
-                            page >= Math.ceil(articles.length / LIMIT) &&
-                                "invisible"
-                        )}
-                        disabled={page >= Math.ceil(articles.length / LIMIT)}
-                    >
-                        <Image
-                            src="/images/arrow_right.png"
-                            width={100}
-                            height={25}
-                            alt=""
-                            className="invert"
-                        />
-                    </button>
-                    <button
-                        onClick={() => {
-                            setPage(Math.ceil(articles.length / LIMIT));
-                            hasSetPage.current = true;
-                        }}
-                        className={clsx(
-                            "font-sailing-club italic",
-                            page >= Math.ceil(articles.length / LIMIT) &&
-                                "invisible"
-                        )}
-                        disabled={page >= Math.ceil(articles.length / LIMIT)}
-                    >
-                        last
-                    </button>
-                </div>
+                {articles.length > LIMIT && (
+                    <div className="mt-32 flex justify-center gap-4 text-3xl">
+                        <button
+                            className={clsx(
+                                "font-sailing-club italic",
+                                page === 1 && "invisible"
+                            )}
+                            disabled={page === 1}
+                            onClick={() => {
+                                setPage(1);
+                                hasSetPage.current = true;
+                            }}
+                        >
+                            first
+                        </button>
+                        <button
+                            onClick={() => {
+                                setPage(page - 1);
+                                hasSetPage.current = true;
+                            }}
+                            className={clsx(page === 1 && "invisible")}
+                        >
+                            <Image
+                                src="/images/arrow_left.png"
+                                width={100}
+                                height={25}
+                                alt=""
+                                className="invert"
+                            />
+                        </button>
+                        <div>{page}</div>
+                        <button
+                            onClick={() => {
+                                setPage(page + 1);
+                                hasSetPage.current = true;
+                            }}
+                            className={clsx(
+                                page >= Math.ceil(articles.length / LIMIT) &&
+                                    "invisible"
+                            )}
+                            disabled={
+                                page >= Math.ceil(articles.length / LIMIT)
+                            }
+                        >
+                            <Image
+                                src="/images/arrow_right.png"
+                                width={100}
+                                height={25}
+                                alt=""
+                                className="invert"
+                            />
+                        </button>
+                        <button
+                            onClick={() => {
+                                setPage(Math.ceil(articles.length / LIMIT));
+                                hasSetPage.current = true;
+                            }}
+                            className={clsx(
+                                "font-sailing-club italic",
+                                page >= Math.ceil(articles.length / LIMIT) &&
+                                    "invisible"
+                            )}
+                            disabled={
+                                page >= Math.ceil(articles.length / LIMIT)
+                            }
+                        >
+                            last
+                        </button>
+                    </div>
+                )}
             </div>
             <div className="absolute left-0 top-0 -z-10 mt-40 h-[calc(100%-10rem)] w-full bg-dark-green lg:mt-32 lg:h-[calc(100%-8rem)]"></div>
         </section>

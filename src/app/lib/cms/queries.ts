@@ -40,7 +40,7 @@ export async function getArticlesByCategory(
     limit: number
 ) {
     const articles = await get<Article>(
-        `*[_type=="article" && "${category}" in categories[]->title][${start}...${limit}]{_id,title,headerType,starred,slug,mainImage{...,asset->{url}}}|order(publishedAt desc)`
+        `*[_type=="article" && "${category}" in categories[]->title][${start}...${limit}]{_id,title,headerType,starred,slug,categories[]->{slug,title},mainImage{...,asset->{url}}}|order(publishedAt desc)`
     );
     return articles;
 }

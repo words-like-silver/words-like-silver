@@ -14,12 +14,24 @@ import {
     getArticlesByCategory,
     getFeaturedArticle,
     getFeaturedArticleSecondary,
+    getNewArticles,
 } from "./lib/cms/queries";
 
 export default async function Home() {
     const featuredArticle = await getFeaturedArticle();
     const featuredArticleSecondary = await getFeaturedArticleSecondary();
     const books = await getArticlesByCategory("BOOKS", undefined, 11);
+    const latestArticles = await getNewArticles(20);
+
+    // filter out book category and trim overflow articles
+    let filteredMoreArticles = latestArticles.filter(
+        (article) =>
+            !article.categories
+                ?.map((category) => category.title)
+                .includes("BOOKS")
+    );
+    const extraArticles = filteredMoreArticles.length % 4;
+    filteredMoreArticles.slice(0, filteredMoreArticles.length - extraArticles);
 
     if (books.length % 2 === 0) {
         books.pop();
@@ -58,7 +70,12 @@ export default async function Home() {
                     <div className="mt-16 lg:hidden"></div>
                     <CategoryArticleList />
                 </section>
-                <MoreArticles />
+                <div className="mt-24 lg:mt-44">
+                    <MoreArticles
+                        articles={filteredMoreArticles}
+                        title="FURTHER READING"
+                    />
+                </div>
                 <div className="mx-auto my-12 h-24 w-24">
                     <Image
                         src="/images/arrow_left.png"

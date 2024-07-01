@@ -17,7 +17,7 @@ export default function ArticleList({ articles }: { articles: Article[] }) {
                     >
                         {processSanityBlock(article.title[0])}
                     </Link>
-                    <div className="px-16 pt-2">
+                    <div className="max-w-sm mx-auto pt-2">
                         <RandomUnderline />
                     </div>
                 </li>
