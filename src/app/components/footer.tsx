@@ -30,7 +30,10 @@ export default function Footer() {
                         <Image src="/images/line_vertical.png" alt="" fill />
                     </div>
                 </div>
-                <div className="flex flex-col items-center gap-8 py-24">
+                <div className="flex flex-col items-center gap-8 py-8 lg:py-24">
+                    <h2 className="mb-4 px-8 text-center font-sailing-club text-3xl">
+                        Okay, so it&apos;s not as sexy as a fashion blog.
+                    </h2>
                     <p className="px-4 text-center">
                         As a one-person labor of love since 2011, Words Like
                         Silver is made possible only by the support of dedicated
@@ -104,7 +107,7 @@ export default function Footer() {
                         </button>
                     </div>
                 </div>
-                <div className="flex flex-col items-center justify-between py-24">
+                <div className="flex flex-col items-center justify-between pb-8 lg:py-24">
                     <div className="relative mt-12 aspect-square h-52">
                         <Image
                             src="/images/words_logo_mini_beige.png"
@@ -112,7 +115,7 @@ export default function Footer() {
                             fill
                         />
                     </div>
-                    <div className="flex flex-1 flex-col justify-center">
+                    <div className="flex flex-1 flex-col justify-center mt-16 lg:mt-0">
                         <div className="relative mx-auto my-4 h-44 w-8">
                             <Image
                                 src="/images/arrow_tall_up.png"
