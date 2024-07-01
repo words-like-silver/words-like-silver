@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Article } from "../lib/cms/types";
 import { processSanityBlock } from "../lib/text/process-sanity-block";
-import Underline from "./svg/underline";
+import RandomUnderline from "./random-underline";
 
 export default function ArticleList({ articles }: { articles: Article[] }) {
     return (
@@ -17,8 +17,8 @@ export default function ArticleList({ articles }: { articles: Article[] }) {
                     >
                         {processSanityBlock(article.title[0])}
                     </Link>
-                    <div className="relative pt-4">
-                        <Underline className="w-full" />
+                    <div className="max-w-sm mx-auto pt-2">
+                        <RandomUnderline />
                     </div>
                 </li>
             ))}

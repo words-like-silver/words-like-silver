@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import ScrollToTopButton from "./scroll-top-top-button";
 export default function Footer() {
     return (
         <footer>
@@ -25,7 +26,9 @@ export default function Footer() {
                             <a>TIKTOK</a>
                         </li>
                     </ul>
-                    <div className="mx-auto h-full w-px bg-beige"></div>
+                    <div className="relative mx-auto h-full w-8">
+                        <Image src="/images/line_vertical.png" alt="" fill />
+                    </div>
                 </div>
                 <div className="flex flex-col items-center gap-8 py-24">
                     <p className="px-4 text-center">
@@ -101,7 +104,7 @@ export default function Footer() {
                         </button>
                     </div>
                 </div>
-                <div className="flex flex-col items-center py-24">
+                <div className="flex flex-col items-center justify-between py-24">
                     <div className="relative mt-12 aspect-square h-52">
                         <Image
                             src="/images/words_logo_mini_beige.png"
@@ -109,11 +112,16 @@ export default function Footer() {
                             fill
                         />
                     </div>
-                    <div>
-                        <div>^</div>
-                        <button className="font-sailing-club text-3xl underline">
-                            BACK TO TOP
-                        </button>
+                    <div className="flex flex-1 flex-col justify-center">
+                        <div className="relative mx-auto my-4 h-44 w-8">
+                            <Image
+                                src="/images/arrow_tall_up.png"
+                                alt=""
+                                fill
+                                className="object-cover object-top invert"
+                            />
+                        </div>
+                        <ScrollToTopButton />
                     </div>
                 </div>
             </div>

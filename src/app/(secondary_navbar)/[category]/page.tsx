@@ -1,3 +1,4 @@
+import SocialsBar from "@/app/components/socials-bar";
 import VerticalArticle from "@/app/components/vertical-article";
 import {
     getAllCategorySlugs,
@@ -84,9 +85,7 @@ export default async function Category({
                     </p>
                 )}
                 <div className="mt-4 flex items-center justify-center gap-4">
-                    <div>email</div>
-                    <div>insta</div>
-                    <div>twitter</div>
+                    <SocialsBar />
                 </div>
                 <div className="flex flex-col items-center text-2xl">
                     <div className="mt-6 font-sailing-club italic underline">
@@ -162,16 +161,11 @@ export default async function Category({
                         </div>
                     ))}
                 </div>
-                <Link
-                    href="/"
-                    className="block text-center font-sailing-club text-3xl underline"
-                >
+                <h2 className="block text-center font-sailing-club text-3xl underline">
                     Share with a friend
-                </Link>
+                </h2>
                 <div className="mt-4 flex items-center justify-center gap-4">
-                    <div>email</div>
-                    <div>insta</div>
-                    <div>twitter</div>
+                    <SocialsBar />
                 </div>
             </section>
             <section className="mx-auto mb-16 max-w-7xl px-4 underline">

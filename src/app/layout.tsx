@@ -34,7 +34,10 @@ const desirableCalligraphy = localFont({
 });
 
 export const metadata: Metadata = {
-    title: "Words Like Silver",
+    title: {
+        template: "%s | Words Like Silver",
+        default: "Words Like Silver",
+    },
     description: "A Blog",
 };
 

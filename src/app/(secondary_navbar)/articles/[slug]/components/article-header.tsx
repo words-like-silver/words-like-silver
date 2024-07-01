@@ -1,3 +1,4 @@
+import SocialsBar from "@/app/components/socials-bar";
 import Star from "@/app/components/svg/star";
 import { Article } from "@/app/lib/cms/types";
 import { HeaderType } from "@/app/lib/constants";
@@ -40,10 +41,8 @@ export default function ArticleHeader({ article }: { article: Article }) {
                         }
                     )}
                 </p>
-                <div className="mt-4 flex items-center justify-center gap-4">
-                    <div>email</div>
-                    <div>insta</div>
-                    <div>twitter</div>
+                <div className="mx-auto w-fit py-8">
+                    <SocialsBar />
                 </div>
                 {article.headerType === HeaderType.horizontalImage && (
                     <div className="relative mx-auto mb-24 mt-16 aspect-[16/12] w-full max-w-6xl lg:aspect-video">

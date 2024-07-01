@@ -18,7 +18,7 @@ export async function getNavigationItems() {
 
 export async function getAllArticleSlugs() {
     const articles = await get<Article>("*[_type == 'article']{slug}");
-    return articles.map((article) => article!.slug.current);
+    return articles.map((article) => article!.slug?.current);
 }
 
 export async function getArticleBySlug(slug: string) {
@@ -40,7 +40,7 @@ export async function getArticlesByCategory(
     limit: number
 ) {
     const articles = await get<Article>(
-        `*[_type=="article" && "${category}" in categories[]->title][${start}...${limit}]{_id,title,headerType,starred,slug,mainImage{...,asset->{url}}}|order(publishedAt desc)`
+        `*[_type=="article" && "${category}" in categories[]->title][${start}...${limit}]{_id,title,headerType,starred,slug,categories[]->{slug,title},mainImage{...,asset->{url}}}|order(publishedAt desc)`
     );
     return articles;
 }
