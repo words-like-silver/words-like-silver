@@ -1,11 +1,6 @@
 import MoreArticles from "@/app/components/more-articles";
 import SocialsBar from "@/app/components/socials-bar";
-import {
-    getAllArticleSlugs,
-    getArticleBySlug,
-    getArticlesByCategory,
-} from "@/app/lib/cms/queries";
-import { Article as ArticleType } from "@/app/lib/cms/types";
+import { getAllArticleSlugs, getArticleBySlug } from "@/app/lib/cms/queries";
 import { getTextFromBlock } from "@/app/lib/text/process-sanity-block";
 import Image from "next/image";
 import { notFound, redirect } from "next/navigation";
@@ -66,14 +61,6 @@ export default async function Article({
     params: { slug: string };
 }) {
     const article = await getArticleBySlug(params.slug);
-    let moreArticles: ArticleType[] = [];
-    if (article?.categories?.[0]?.title) {
-        moreArticles = await getArticlesByCategory(
-            article?.categories[0].title,
-            0,
-            8
-        );
-    }
     if (!article) return redirect("/");
     if (!article.slug?.current) return notFound();
 
@@ -89,23 +76,34 @@ export default async function Article({
                     </div>
                 </div>
             </article>
-            {moreArticles.length > 0 && (
-                <div>
-                    <div className="relative h-12 w-full">
-                        <Image src="/images/underline_long_1.png" fill alt="" />
-                    </div>
+            {!!article.relatedArticles &&
+                article.relatedArticles.length > 0 && (
                     <div>
-                        <MoreArticles
-                            articles={moreArticles}
-                            title="MORE LIKE THIS"
-                        />
+                        <div className="relative h-12 w-full">
+                            <Image
+                                src="/images/underline_long_1.png"
+                                fill
+                                alt=""
+                            />
+                        </div>
+                        <div>
+                            <MoreArticles
+                                articles={article.relatedArticles}
+                                title="MORE LIKE THIS"
+                                includeCategory={false}
+                                noGap
+                            />
+                        </div>
+                        <div className="relative h-12 w-full">
+                            <Image
+                                src="/images/underline_long_2.png"
+                                fill
+                                alt=""
+                            />
+                        </div>
                     </div>
-                    <div className="relative h-12 w-full">
-                        <Image src="/images/underline_long_2.png" fill alt="" />
-                    </div>
-                </div>
-            )}
-            <div className="flex flex-col items-center mb-44">
+                )}
+            <div className="mb-44 flex flex-col items-center">
                 <h2 className="mb-8 mt-16 text-center text-3xl underline lg:text-4xl">
                     Share this article
                 </h2>

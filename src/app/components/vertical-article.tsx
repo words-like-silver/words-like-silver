@@ -66,7 +66,7 @@ export default function VerticalArticle({
             <Link
                 href={`/articles/${article.slug.current}`}
                 className={clsx(
-                    "pb-4 pt-6 text-xl lg:pt-8 lg:text-2xl",
+                    "mt-6 text-xl lg:mt-8 lg:text-2xl",
                     textAlign,
                     article.categories
                         .map((category) => category.title)
@@ -75,10 +75,10 @@ export default function VerticalArticle({
             >
                 {processSanityBlock(article.title[0])}
             </Link>
-            {includeDescription && (
+            {includeDescription && !!article.subhead && (
                 <p
                     className={clsx(
-                        "inline-block text-center lg:text-xl",
+                        "mt-4 inline-block text-center lg:text-xl",
                         article.categories
                             .map((category) => category.title)
                             .includes("BOOKS") && "px-16"

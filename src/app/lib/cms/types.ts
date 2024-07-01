@@ -119,6 +119,7 @@ export interface Article extends Document {
     headerType: HeaderType;
     tags: Tag[] | null;
     starred: boolean;
+    relatedArticles: Article[] | null;
 }
 
 export interface Homepage extends Document {

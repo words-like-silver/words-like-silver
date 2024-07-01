@@ -1,10 +1,8 @@
 "use client";
 
-import VerticalArticle from "@/app/components/vertical-article";
+import ArticlePagination from "@/app/components/article-pagination";
+import BackgroundArticles from "@/app/components/background-articles";
 import { Article } from "@/app/lib/cms/types";
-import clsx from "clsx";
-import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
 
 export default function CategoryArticles({
     allArticles,
@@ -13,182 +11,16 @@ export default function CategoryArticles({
     allArticles: Article[] | null;
     tags?: (string | undefined)[] | null;
 }) {
-    const LIMIT = 6;
-    const [page, setPage] = useState(1);
-    const [articles, setArticles] = useState(allArticles);
-    const [activeTag, setActiveTag] = useState("");
-    const start = (page - 1) * LIMIT;
-    const end = start + LIMIT;
-    const categoryArticleContainerRef = useRef<HTMLDivElement>(null);
-    const hasSetPage = useRef(false);
-
-    const scrollToTop = () => {
-        if (categoryArticleContainerRef.current) {
-            categoryArticleContainerRef.current.scrollIntoView({
-                behavior: "smooth",
-            });
-        }
-    };
-
-    useEffect(() => {
-        if (hasSetPage.current === true) {
-            scrollToTop();
-        }
-    }, [page]);
-
-    if (!articles) return null;
-
-    const filterArticles = (tag: string) => {
-        if (tag == "") {
-            setArticles(allArticles);
-            return;
-        }
-        const filteredArticles =
-            allArticles?.filter((article) => {
-                const tagNames = article.tags?.map((tag) => tag.name);
-                return tagNames?.includes(tag);
-            }) || [];
-        setArticles(filteredArticles);
-    };
-
     return (
-        <section
-            className="relative mb-16 scroll-m-44 pb-16"
-            ref={categoryArticleContainerRef}
-        >
-            <section className="mx-auto mb-16 max-w-7xl px-4">
-                <div className="flex flex-wrap items-center justify-center font-sailing-club text-xl text-black lg:text-3xl">
-                    {tags?.length && (
-                        <button
-                            className={clsx(
-                                "relative mx-4 text-center hover:underline hover:[text-decoration-color:grey]"
-                            )}
-                            key={"tag all"}
-                            onClick={() => {
-                                setActiveTag("");
-                                filterArticles("");
-                            }}
-                        >
-                            ALL
-                            {activeTag === "" && (
-                                <div className="animate-underline-appear absolute bottom-0.5 left-0 h-[3px] w-full origin-left bg-black"></div>
-                            )}
-                        </button>
-                    )}
-                    {tags?.map((tag) => {
-                        return (
-                            tag && (
-                                <button
-                                    className={clsx(
-                                        "relative mx-4 text-center hover:underline hover:[text-decoration-color:grey]"
-                                    )}
-                                    key={"tag" + tag}
-                                    onClick={() => {
-                                        setActiveTag(tag);
-                                        filterArticles(tag);
-                                    }}
-                                >
-                                    {tag.toUpperCase()}
-                                    {activeTag === tag && (
-                                        <div className="animate-underline-appear absolute bottom-0.5 left-0 h-[3px] w-full origin-left bg-black"></div>
-                                    )}
-                                </button>
-                            )
-                        );
-                    })}
-                </div>
-            </section>
-            <div className="mx-auto max-w-9xl px-4 text-white xl:px-28">
-                <div className="mx-auto grid max-w-9xl justify-center gap-x-8 px-4 sm:grid-cols-2 lg:grid-cols-3 lg:px-8 2xl:grid-cols-3">
-                    {articles
-                        ?.slice(start, end)
-                        .map((article, index) => (
-                            <VerticalArticle
-                                article={article}
-                                includeReadMore
-                                includeDescription
-                                key={
-                                    "category-article-" +
-                                    article.slug?.current +
-                                    index
-                                }
-                                additionalClassName="animate-fade-in-up"
-                                style={{ animationDelay: `${index * 100}ms` }}
-                            />
-                        ))}
-                </div>
-                {articles.length > LIMIT && (
-                    <div className="mt-32 flex justify-center gap-4 text-3xl">
-                        <button
-                            className={clsx(
-                                "font-sailing-club italic",
-                                page === 1 && "invisible"
-                            )}
-                            disabled={page === 1}
-                            onClick={() => {
-                                setPage(1);
-                                hasSetPage.current = true;
-                            }}
-                        >
-                            first
-                        </button>
-                        <button
-                            onClick={() => {
-                                setPage(page - 1);
-                                hasSetPage.current = true;
-                            }}
-                            className={clsx(page === 1 && "invisible")}
-                        >
-                            <Image
-                                src="/images/arrow_left.png"
-                                width={100}
-                                height={25}
-                                alt=""
-                                className="invert"
-                            />
-                        </button>
-                        <div>{page}</div>
-                        <button
-                            onClick={() => {
-                                setPage(page + 1);
-                                hasSetPage.current = true;
-                            }}
-                            className={clsx(
-                                page >= Math.ceil(articles.length / LIMIT) &&
-                                    "invisible"
-                            )}
-                            disabled={
-                                page >= Math.ceil(articles.length / LIMIT)
-                            }
-                        >
-                            <Image
-                                src="/images/arrow_right.png"
-                                width={100}
-                                height={25}
-                                alt=""
-                                className="invert"
-                            />
-                        </button>
-                        <button
-                            onClick={() => {
-                                setPage(Math.ceil(articles.length / LIMIT));
-                                hasSetPage.current = true;
-                            }}
-                            className={clsx(
-                                "font-sailing-club italic",
-                                page >= Math.ceil(articles.length / LIMIT) &&
-                                    "invisible"
-                            )}
-                            disabled={
-                                page >= Math.ceil(articles.length / LIMIT)
-                            }
-                        >
-                            last
-                        </button>
-                    </div>
-                )}
-            </div>
-            <div className="absolute left-0 top-0 -z-10 mt-40 h-[calc(100%-10rem)] w-full bg-dark-green lg:mt-32 lg:h-[calc(100%-8rem)]"></div>
-        </section>
+        <div className="relative mb-16">
+            <ArticlePagination
+                limit={6}
+                allArticles={allArticles || []}
+                tags={tags}
+                ArticleRenderer={BackgroundArticles}
+                colour="white"
+            />
+            <div className="absolute left-0 top-0 -z-10 mt-40 h-[calc(100%-10rem)] w-full bg-dark-green lg:mt-32 lg:h-[calc(100%-6rem)]"></div>
+        </div>
     );
 }

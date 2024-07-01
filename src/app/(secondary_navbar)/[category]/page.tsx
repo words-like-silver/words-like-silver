@@ -1,3 +1,5 @@
+import ArticlePagination from "@/app/components/article-pagination";
+import MoreArticles from "@/app/components/more-articles";
 import SocialsBar from "@/app/components/socials-bar";
 import VerticalArticle from "@/app/components/vertical-article";
 import {
@@ -127,6 +129,7 @@ export default async function Category({
                     );
                 })}
             </section>
+
             <CategoryArticles allArticles={category.articles} tags={tags} />
             <section className="mx-auto mb-8 max-w-xl space-y-8 text-2xl">
                 <p>
