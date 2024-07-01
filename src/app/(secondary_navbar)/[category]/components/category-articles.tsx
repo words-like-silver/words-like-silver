@@ -3,6 +3,7 @@
 import VerticalArticle from "@/app/components/vertical-article";
 import { Article } from "@/app/lib/cms/types";
 import clsx from "clsx";
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 export default function CategoryArticles({
@@ -137,7 +138,13 @@ export default function CategoryArticles({
                         }}
                         className={clsx(page === 1 && "invisible")}
                     >
-                        {"<-----"}
+                        <Image
+                            src="/images/arrow_left.png"
+                            width={100}
+                            height={25}
+                            alt=""
+                            className="invert"
+                        />
                     </button>
                     <div>{page}</div>
                     <button
@@ -151,7 +158,13 @@ export default function CategoryArticles({
                         )}
                         disabled={page >= Math.ceil(articles.length / LIMIT)}
                     >
-                        {"----->"}
+                        <Image
+                            src="/images/arrow_right.png"
+                            width={100}
+                            height={25}
+                            alt=""
+                            className="invert"
+                        />
                     </button>
                     <button
                         onClick={() => {

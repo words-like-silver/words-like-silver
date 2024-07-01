@@ -1,8 +1,9 @@
+import SocialsBar from "./socials-bar";
 export default function Sidebar() {
     return (
         <section className="hidden w-72 text-lg lg:block">
             <div className="flex flex-col items-center bg-beige px-8 pb-6 text-xl ">
-                <div>Email insta twitter</div>
+                <SocialsBar />
                 <div className="mt-6 font-sailing-club italic underline">
                     newsletters
                 </div>
