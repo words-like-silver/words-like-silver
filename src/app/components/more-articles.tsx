@@ -14,7 +14,7 @@ export default async function MoreArticles() {
     const extraArticles = filteredArticles.length % 4;
 
     return (
-        <section className="my-24 lg:my-44">
+        <section className="mt-24 lg:mt-44">
             <h2 className="mb-12 mt-24 text-center text-3xl lg:text-4xl">
                 FURTHER READING
             </h2>
