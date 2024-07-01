@@ -5,8 +5,8 @@ import CategoryArticleList from "./components/category-article-list";
 import FeatureArticle from "./components/feature-article";
 import FeaturedArticlesBlock from "./components/featured-articles-block";
 import Footer from "./components/footer";
+import FurtherReading from "./components/further-reading";
 import HorizontalArticleBlocks from "./components/horizontal-article-blocks";
-import MoreArticles from "./components/more-articles";
 import Navbar from "./components/navbar/navbar";
 import NewArticleList from "./components/new-articles-list";
 import Sidebar from "./components/sidebar";
@@ -21,7 +21,7 @@ export default async function Home() {
     const featuredArticle = await getFeaturedArticle();
     const featuredArticleSecondary = await getFeaturedArticleSecondary();
     const books = await getArticlesByCategory("BOOKS", undefined, 11);
-    const latestArticles = await getNewArticles(20);
+    const latestArticles = await getNewArticles(100);
 
     // filter out book category and trim overflow articles
     let filteredMoreArticles = latestArticles.filter(
@@ -71,10 +71,10 @@ export default async function Home() {
                     <CategoryArticleList />
                 </section>
                 <div className="mt-24 lg:mt-44">
-                    <MoreArticles
-                        articles={filteredMoreArticles}
-                        title="FURTHER READING"
-                    />
+                    <FurtherReading articles={filteredMoreArticles} />
+                    <div className="relative h-12 w-full">
+                        <Image src="/images/underline_long_2.png" fill alt="" />
+                    </div>
                 </div>
                 <div className="mx-auto my-12 h-24 w-24">
                     <Image
