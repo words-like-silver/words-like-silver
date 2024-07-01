@@ -7,7 +7,7 @@ export default function FurtherReading({ articles }: { articles: Article[] }) {
     return (
         <div className="relative mb-16">
             <ArticlePagination
-                limit={6}
+                limit={8}
                 allArticles={articles || []}
                 ArticleRenderer={MoreArticles}
                 articleRendererProps={{ title: "FURTHER READING" }}

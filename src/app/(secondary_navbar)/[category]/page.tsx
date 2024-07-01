@@ -1,5 +1,4 @@
-import ArticlePagination from "@/app/components/article-pagination";
-import MoreArticles from "@/app/components/more-articles";
+import RedirectCounter from "@/app/components/redirect-counter";
 import SocialsBar from "@/app/components/socials-bar";
 import VerticalArticle from "@/app/components/vertical-article";
 import {
@@ -129,9 +128,8 @@ export default async function Category({
                     );
                 })}
             </section>
-
             <CategoryArticles allArticles={category.articles} tags={tags} />
-            <section className="mx-auto mb-8 max-w-xl space-y-8 text-2xl">
+            <section className="mx-auto mb-8 px-4 max-w-xl space-y-8 text-2xl">
                 <p>
                     For more travel recommendations, be sure to follow
                     @placeandplacebo on Instagram and sign up for my weekly
@@ -186,6 +184,7 @@ export default async function Category({
                     })}
                 </div>
             </section>
+            <RedirectCounter />
         </main>
     );
 }

@@ -1,4 +1,6 @@
+import BackButton from "@/app/components/back-button";
 import MoreArticles from "@/app/components/more-articles";
+import RedirectCounter from "@/app/components/redirect-counter";
 import SocialsBar from "@/app/components/socials-bar";
 import { getAllArticleSlugs, getArticleBySlug } from "@/app/lib/cms/queries";
 import { getTextFromBlock } from "@/app/lib/text/process-sanity-block";
@@ -66,6 +68,9 @@ export default async function Article({
 
     return (
         <main>
+            <div className="mb-4 mt-4 flex justify-center lg:-mb-10 lg:mt-8 lg:justify-start lg:pl-16">
+                <BackButton />
+            </div>
             <article className="">
                 <div>
                     <ArticleHeader article={article} />
@@ -86,14 +91,12 @@ export default async function Article({
                                 alt=""
                             />
                         </div>
-                        <div>
-                            <MoreArticles
-                                articles={article.relatedArticles}
-                                title="MORE LIKE THIS"
-                                includeCategory={false}
-                                noGap
-                            />
-                        </div>
+                        <MoreArticles
+                            articles={article.relatedArticles}
+                            title="MORE LIKE THIS"
+                            includeCategory={false}
+                            noGap
+                        />
                         <div className="relative h-12 w-full">
                             <Image
                                 src="/images/underline_long_2.png"
@@ -109,6 +112,7 @@ export default async function Article({
                 </h2>
                 <SocialsBar />
             </div>
+            <RedirectCounter />
         </main>
     );
 }

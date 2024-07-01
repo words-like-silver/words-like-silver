@@ -20,7 +20,7 @@ export default function CategoryArticles({
                 ArticleRenderer={BackgroundArticles}
                 colour="white"
             />
-            <div className="absolute left-0 top-0 -z-10 mt-40 h-[calc(100%-10rem)] w-full bg-dark-green lg:mt-32 lg:h-[calc(100%-6rem)]"></div>
+            <div className="absolute left-0 top-0 -z-10 mt-40 h-[calc(100%-7rem)] w-full bg-dark-green lg:mt-32 lg:h-[calc(100%-6rem)]"></div>
         </div>
     );
 }

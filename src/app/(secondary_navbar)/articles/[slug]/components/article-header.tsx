@@ -9,7 +9,7 @@ import Link from "next/link";
 export default function ArticleHeader({ article }: { article: Article }) {
     return (
         <>
-            <section className="mx-auto my-16 max-w-6xl px-6 lg:px-8">
+            <section className="mx-auto mb-16 max-w-6xl px-6 lg:px-8">
                 <div className="flex flex-wrap items-center justify-center gap-4 font-sailing-club">
                     {article.categories.map((category) => (
                         <Link

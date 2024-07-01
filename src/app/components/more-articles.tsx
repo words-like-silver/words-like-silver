@@ -15,7 +15,12 @@ export default function MoreArticles({
 }) {
     return (
         <section>
-            <h2 className="mb-12 mt-24 text-center text-3xl lg:text-4xl">
+            <h2
+                className={clsx(
+                    "mb-12 mt-24 text-center text-3xl lg:text-4xl",
+                    !includeCategory ? "mb-16" : "mb-12"
+                )}
+            >
                 {title}
             </h2>
             <div

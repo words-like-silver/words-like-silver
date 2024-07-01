@@ -9,6 +9,7 @@ import FurtherReading from "./components/further-reading";
 import HorizontalArticleBlocks from "./components/horizontal-article-blocks";
 import Navbar from "./components/navbar/navbar";
 import NewArticleList from "./components/new-articles-list";
+import RedirectCounter from "./components/redirect-counter";
 import Sidebar from "./components/sidebar";
 import {
     getArticlesByCategory,
@@ -62,7 +63,7 @@ export default async function Home() {
                     <FeaturedArticlesBlock />
                 </div>
                 <BookCarousel books={books} />
-                <section className="mx-auto mt-36 max-w-7xl gap-4 pr-4 lg:flex">
+                <section className="mx-auto mt-36 max-w-7xl gap-4 lg:flex lg:pr-4">
                     <FeatureArticle
                         background
                         article={featuredArticleSecondary}
@@ -72,8 +73,13 @@ export default async function Home() {
                 </section>
                 <div className="mt-24 lg:mt-44">
                     <FurtherReading articles={filteredMoreArticles} />
-                    <div className="relative h-12 w-full">
-                        <Image src="/images/underline_long_2.png" fill alt="" />
+                    <div className="relative h-6 w-full lg:h-12">
+                        <Image
+                            src="/images/underline_long_2.png"
+                            fill
+                            alt=""
+                            className="object-cover lg:object-fill"
+                        />
                     </div>
                 </div>
                 <div className="mx-auto my-12 h-24 w-24">
@@ -87,6 +93,7 @@ export default async function Home() {
                 </div>
             </main>
             <Footer />
+            <RedirectCounter />
         </>
     );
 }
