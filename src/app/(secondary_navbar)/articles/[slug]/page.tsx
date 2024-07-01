@@ -86,14 +86,12 @@ export default async function Article({
                                 alt=""
                             />
                         </div>
-                        <div>
-                            <MoreArticles
-                                articles={article.relatedArticles}
-                                title="MORE LIKE THIS"
-                                includeCategory={false}
-                                noGap
-                            />
-                        </div>
+                        <MoreArticles
+                            articles={article.relatedArticles}
+                            title="MORE LIKE THIS"
+                            includeCategory={false}
+                            noGap
+                        />
                         <div className="relative h-12 w-full">
                             <Image
                                 src="/images/underline_long_2.png"
